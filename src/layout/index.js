@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <h1>React Movie Finder</h1>
         <Navigation />
       </header>
-      {children}
+      <main>{children}</main>
       <footer>Created by @eunha0ne</footer>
     </>
   );
