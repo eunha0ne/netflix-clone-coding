@@ -1,9 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Layout from './layout';
+import Layout from './Layout';
 
-const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('./pages/About'));
+const Home = lazy(() => import('~/pages/Home'));
+const About = lazy(() => import('~/pages/About'));
 
 function App() {
   return (
