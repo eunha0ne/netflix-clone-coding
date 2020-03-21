@@ -7,7 +7,7 @@
 
 * 라우트 설정
 
-  - [react-router]](https://reacttraining.com/react-router/web/guides/quick-start)
+  - [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
 
 * 환경 설정 오버라이딩
 
@@ -28,8 +28,9 @@
 
   - [redux](https://redux.js.org/introduction/getting-started)
   - [react-redux](https://github.com/reduxjs/react-redux)
+  - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
   - [redux-thunk](https://github.com/reduxjs/redux-thunk)
-    - 미들웨어, 리듀서가 사이드 이펙트를 갖고 있을 때, 해결하기 위한 방법으로 사용
+    - [참고](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
   - [Redux Toolkit](https://redux-toolkit.js.org/)
 
 * SESSION
@@ -39,3 +40,7 @@
 * SEO
 
   - [robots](https://www.robotstxt.org/robotstxt.html)
+
+* 타입스크립트
+
+  - [참고 블로그](https://infoscis.github.io/2017/06/19/TypeScript-handbook-advanced-types/)
