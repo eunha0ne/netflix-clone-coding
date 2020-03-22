@@ -44,3 +44,38 @@
 * 타입스크립트
 
   - [참고 블로그](https://infoscis.github.io/2017/06/19/TypeScript-handbook-advanced-types/)
+
+---
+
+### 트러블 슈팅
+
+- 터미널에서 tsc 관리자 권한 실행 오류
+
+  - powershell 권한 설정
+    ```powershell
+    $ Set-ExecutionPolicy Unrestricted
+    ```
+
+- tsc, import path alias
+
+  ```json
+  // tsconfing.json
+  {
+    "extends": "./tsconfig.paths.json"
+  }
+  ```
+
+  ```json
+  // tsconfig.paths
+  {
+    "compilerOptions": {
+      "baseUrl": "./",
+      "paths": {
+        "~/*": ["./src/*"]
+      }
+    }
+  }
+  ```
+
+- Property 'hot' does not exist on type 'NodeModule'.
+  - npm install --save @types/webpack-env
