@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 
+import * as serviceWorker from './serviceWorker';
 import store from './features/store';
 
 const render = () => {
@@ -15,13 +15,13 @@ const render = () => {
   const App = require('./components/App').default;
 
   ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
-    </React.StrictMode>,
+    // <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+    // </React.StrictMode>,
     document.getElementById('root')
   );
 };

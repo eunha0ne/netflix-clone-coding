@@ -29,9 +29,11 @@
   - [redux](https://redux.js.org/introduction/getting-started)
   - [react-redux](https://github.com/reduxjs/react-redux)
   - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
+  - [rtk-convert-todos-example](https://github.com/reduxjs/rtk-convert-todos-example)
   - [redux-thunk](https://github.com/reduxjs/redux-thunk)
     - [참고](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
   - [Redux Toolkit](https://redux-toolkit.js.org/)
+  - [redux-made-easy-with-redux-toolkit-and-typescrip](https://www.mattbutton.com/redux-made-easy-with-redux-toolkit-and-typescript/)
 
 * SESSION
 
@@ -44,6 +46,8 @@
 * 타입스크립트
 
   - [참고 블로그](https://infoscis.github.io/2017/06/19/TypeScript-handbook-advanced-types/)
+  - [I-prefix 참고](https://github.com/microsoft/TypeScript-Handbook/issues/121)
+  - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 
 ---
 

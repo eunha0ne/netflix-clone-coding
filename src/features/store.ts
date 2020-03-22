@@ -1,4 +1,4 @@
-import { configureStore, Action } from '@reduxjs/toolkit';
+import { Action, configureStore } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
 import rootReducer, { RootState } from './rootReducer';
 
@@ -16,5 +16,8 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   });
 }
 
-export default store;
+export type AppDispatch = typeof store.dispatch;
+
 export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>;
+
+export default store;

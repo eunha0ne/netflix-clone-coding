@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
-import { API_KEY, BASE_URL } from '~/constants';
+import { useDispatch } from 'react-redux';
+import { addMovie } from '~/features/movies/moviesSlice';
+
+import AddTodo from '~/features/todoList/AddTodo';
 
 const Home = () => {
-  useEffect(() => {
-    fetchApi();
-  }, []);
+  const dispatch = useDispatch();
 
-  const nexflixShows = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_networks=213&sort_by=popularity.desc&language=ko`;
-  const fetchApi = async () => {
-    const response = await axios.get(nexflixShows);
-    console.log(response.data);
-  };
+  useEffect(() => {
+    console.log('/1', addMovie);
+    dispatch(addMovie());
+    console.log('/2', dispatch);
+  }, []);
 
   return (
     <>
       <header>
         <h2>Home contents</h2>
       </header>
+      <AddTodo />
     </>
   );
 };

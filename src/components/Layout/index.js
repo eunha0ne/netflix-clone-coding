@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <header>
-        <h1>React Movie Finder</h1>
+        <h1>Netflix Clone Coding</h1>
         <Navigation />
       </header>
       <main>{children}</main>

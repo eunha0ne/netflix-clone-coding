@@ -1,36 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { AppThunk } from '~/features/store';
-import axios from 'axios';
-import { BASE_URL, API_KEY } from '~/constants';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AppThunk, AppDispatch } from '~/features/store';
+import { Movie } from '~/features/movies/types';
+import getMovies from '~/api/getMovies';
+
+const initialState: Movie[] = [];
 
 const moviesSlice = createSlice({
   name: 'movies',
-  initialState: {
-    movies: []
-  },
+  initialState,
   reducers: {
-    fetched(state, action) {
-      const { movies } = action.payload;
-
-      state.movies = movies;
+    addMovie(state, action: PayloadAction<Movie>) {
+      console.log('action', action);
+      state.push(action.payload);
     }
   }
 });
 
-export const moviesActions = moviesSlice.actions;
+// export const { fetched } = moviesSlice.actions;
 
-export function fetchMovies(): AppThunk {
-  return async function(dispatch) {
-    try {
-      const nexflixShows = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_networks=213&sort_by=popularity.desc&language=ko`;
-      const movies = await axios.get(nexflixShows);
-      dispatch(moviesActions.fetched({ movies: movies }));
-    } catch (e) {
-      //...
-    } finally {
-      //...
-    }
-  };
-}
+export const addMovie = (): AppThunk => async (dispatch: AppDispatch) => {
+  console.log('/');
+  const result = await getMovies();
+
+  dispatch(moviesSlice.actions.addMovie(result));
+};
 
 export default moviesSlice.reducer;
