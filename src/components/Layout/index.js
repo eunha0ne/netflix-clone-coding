@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigation from '~/components/Navigation';
 
+import './index.css';
+
 const Layout = ({ children }) => {
   return (
     <>

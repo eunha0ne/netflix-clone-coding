@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from './todoSlice';
-import { addMovie } from '~/features/movies/moviesSlice';
 
 export default function AddTodo(): JSX.Element {
   const dispatch = useDispatch();
@@ -18,7 +17,6 @@ export default function AddTodo(): JSX.Element {
       return;
     }
     dispatch(addTodo(text));
-    dispatch(addMovie());
 
     setText('');
   }
