@@ -1,24 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMovie } from '~/features/movies/moviesSlice';
+import { fetchPopularMovies } from '~/features/movie/movieSlice';
 
+import MovieList from '~/features/movie/MovieList';
 import AddTodo from '~/features/todoList/AddTodo';
+import TodoList from '~/features/todoList/TodoList';
 
 const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('/1', addMovie);
-    dispatch(addMovie());
-    console.log('/2', dispatch);
-  }, []);
+    dispatch(fetchPopularMovies());
+  }, [dispatch]);
 
   return (
     <>
       <header>
         <h2>Home contents</h2>
       </header>
+      <MovieList />
       <AddTodo />
+      <TodoList />
     </>
   );
 };
