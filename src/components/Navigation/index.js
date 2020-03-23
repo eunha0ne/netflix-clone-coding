@@ -6,14 +6,23 @@ import * as S from './index.style';
 export const Navigation = () => {
   return (
     <S.Nav>
-      <ul>
+      <S.Ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">홈</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to="/tv">TV프로그램</Link>
         </li>
-      </ul>
+        <li>
+          <Link to="/movie">영화</Link>
+        </li>
+        <li>
+          <Link to="/movie">최신 콘텐츠</Link>
+        </li>
+        <li>
+          <Link to="/movie">내가 찜한 콘텐츠</Link>
+        </li>
+      </S.Ul>
     </S.Nav>
   );
 };
