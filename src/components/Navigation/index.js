@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navigation = () => {
+import * as S from './index.style';
+
+export const Navigation = () => {
   return (
-    <nav>
+    <S.Nav>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -12,8 +14,6 @@ const Navigation = () => {
           <Link to="/about">About</Link>
         </li>
       </ul>
-    </nav>
+    </S.Nav>
   );
 };
-
-export { Navigation as default };

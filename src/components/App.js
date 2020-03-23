@@ -1,11 +1,11 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Layout from './Layout';
+import Layout from '~/layout';
 
 const Home = lazy(() => import('~/pages/Home'));
 const About = lazy(() => import('~/pages/About'));
 
-function App() {
+export default function App() {
   return (
     <Layout>
       <Suspense fallback={<div>Loading...</div>}>
@@ -21,5 +21,3 @@ function App() {
     </Layout>
   );
 }
-
-export default App;

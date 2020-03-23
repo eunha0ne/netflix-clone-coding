@@ -35,7 +35,7 @@ export const fetchPopularMovies = (): AppThunk => async (
     const response = await getPopularMovies();
     dispatch(setPopularMovies(response));
   } catch (error) {
-    throw 'error';
+    throw error;
   }
 };
 
