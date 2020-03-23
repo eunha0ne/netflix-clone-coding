@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      {children}
       <footer>Created by @eunha0ne</footer>
     </>
   );
