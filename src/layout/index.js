@@ -1,15 +1,14 @@
 import React from 'react';
-import Navigation from '~/components/Navigation';
+import { Header } from '~/components/Header';
 
-import './index.css';
+import './reset.css';
+import 'normalize.css';
+import '~/styles/index.scss';
 
 const Layout = ({ children }) => {
   return (
     <>
-      <header>
-        <h1>Netflix Clone Coding</h1>
-        <Navigation />
-      </header>
+      <Header />
       <main>{children}</main>
       <footer>Created by @eunha0ne</footer>
     </>

@@ -8,7 +8,7 @@ import { MovieListItem } from './MovieListItem';
 
 import styled from '@emotion/styled';
 
-export default function MovieList() {
+export const MovieList = () => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(5);
   const populars = useSelector((state: RootState) => {
@@ -42,12 +42,10 @@ export default function MovieList() {
       })}
     </S.Ul>
   );
-}
+};
 
 function _slice(count: number, entries: IMovie[]): IMovie[] {
   const result = entries.slice(0, count + 5);
-
-  console.log(result);
 
   return result;
 }
