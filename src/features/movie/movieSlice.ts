@@ -1,15 +1,17 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/features/store';
-import { IMovie, IMovieKeys } from '~/features/movie/types';
-import { getMovies } from '~/api/movie';
+import { IMovie } from '~/features/movie/types';
+import { getPopularMovies } from '~/api/movie';
 
 export interface IMoiveState {
   populars: IMovie[];
+  currPopulars: IMovie[];
   isError: boolean;
 }
 
 const initialState: IMoiveState = {
   populars: [],
+  currPopulars: [],
   isError: false
 };
 
@@ -20,25 +22,20 @@ const movieSlice = createSlice({
     setPopularMovies(state, { payload }) {
       state.populars = payload;
       state.isError = false;
-    },
-    setFailure(state) {
-      state.isError = true;
     }
   }
 });
 
-export const { setPopularMovies, setFailure } = movieSlice.actions;
+export const { setPopularMovies } = movieSlice.actions;
 
 export const fetchPopularMovies = (): AppThunk => async (
   dispatch: AppDispatch
 ) => {
   try {
-    const response = await getMovies();
-    console.log('response', response);
-
+    const response = await getPopularMovies();
     dispatch(setPopularMovies(response));
   } catch (error) {
-    dispatch(setFailure());
+    throw 'error';
   }
 };
 

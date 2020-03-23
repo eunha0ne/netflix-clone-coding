@@ -6,7 +6,7 @@ export type GetMoiveResponse = {
   results: IMovie[];
 };
 
-export async function getMovies(): Promise<GetMoiveResponse> {
+export async function getPopularMovies(): Promise<GetMoiveResponse> {
   const requestURL = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_networks=213&sort_by=popularity.desc&language=ko`;
   const response = await axios.get(requestURL);
   // const response = await axios.get(requestURL);

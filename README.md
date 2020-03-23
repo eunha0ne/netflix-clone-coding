@@ -23,7 +23,7 @@
 - API 개발
 
   - [axios](https://github.com/axios/axios)
-  - [API 연동](ttps://velog.io/@smooth97/Netflix-Clone-1-API-)
+  - [API 연동](https://velog.io/@smooth97/Netflix-Clone-1-API-)
 
 - 상태 관리, Redux
 
@@ -34,7 +34,7 @@
   - [redux-thunk](https://github.com/reduxjs/redux-thunk)
     - [참고](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
   - [Redux Toolkit](https://redux-toolkit.js.org/)
-    - [참고 redux-react-guide](https://www.taniarascia.com/redux-react-guide/)
+    - [참고 \*\*redux-react-guide](https://www.taniarascia.com/redux-react-guide/)
   - [redux-made-easy-with-redux-toolkit-and-typescrip](https://www.mattbutton.com/redux-made-easy-with-redux-toolkit-and-typescript/)
   - [최적화: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
 
@@ -57,7 +57,6 @@
 
 * 최적화
 
-  - [infinite-scroll](https://medium.com/@ghur2002/react%EC%97%90%EC%84%9C-infinite-scroll-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-128d64ea24b5)
   - [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
   - [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
   - [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
