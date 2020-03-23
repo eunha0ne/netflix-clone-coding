@@ -1,38 +1,40 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, shallowEqual, useDispatch } from 'react-redux';
 import { RootState } from '~/features/rootReducer';
-// import { fetchPopularMovies } from '~/features/movie/movieSlice';
+import { fetchPopularMovies } from '~/features/movie/movieSlice';
 import { IMovie } from './types';
 
 import { MovieListItem } from './MovieListItem';
 
 import styled from '@emotion/styled';
 
-function _slice(entries: IMovie[], count: number): IMovie[] {
-  return entries.slice(0, count + 5);
-}
-
-function MovieList() {
-  const movie = useSelector((state: RootState) => state.movie);
-  const [count, setCount] = useState(0);
-  const lastItemEl = useRef(null);
-  let populars: IMovie[] = _slice(movie.populars, count);
+export default function MovieList() {
+  const dispatch = useDispatch();
+  const [count, setCount] = useState(5);
+  const populars = useSelector((state: RootState) => {
+    console.log('/root', count);
+    return state.movie.populars.slice(0, count);
+  }, shallowEqual);
 
   useEffect(() => {
-    console.log(count);
-  }, [count]);
+    dispatch(fetchPopularMovies());
+    console.log('/ues');
+  }, []);
+
+  console.log('/');
 
   return (
     <S.Ul>
       {populars.map((movie: IMovie, idx: number) => {
         const isLastItem: boolean = idx + 1 === populars.length;
-        console.log(isLastItem);
+
         return isLastItem ? (
           <MovieListItem
             key={`popural-${movie.id}`}
             {...movie}
             idx={idx}
             isLastItem
+            loadItem={() => setCount(count + 5)}
           />
         ) : (
           <MovieListItem key={`popural-${movie.id}`} {...movie} idx={idx} />
@@ -40,6 +42,14 @@ function MovieList() {
       })}
     </S.Ul>
   );
+}
+
+function _slice(count: number, entries: IMovie[]): IMovie[] {
+  const result = entries.slice(0, count + 5);
+
+  console.log(result);
+
+  return result;
 }
 
 const S = {
@@ -50,5 +60,3 @@ const S = {
     overflow-x: auto;
   `
 };
-
-export default MovieList;
