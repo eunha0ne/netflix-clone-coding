@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import { RootState } from '~/features/rootReducer';
+import { RootState } from '~/app/rootReducer';
 import { fetchPopularMovies } from '~/features/movie/movieSlice';
 import { IMovie } from './types';
 

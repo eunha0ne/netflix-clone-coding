@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
-import store from './features/store';
+import store from '~/app/store';
 
 const render = () => {
   // The require('./rootReducer').default looks a bit odd.
@@ -12,7 +12,7 @@ const render = () => {
   // so the "default export" is in a object field called default.
   // We could probably also have used import()
   // and handled the reducer replacement asynchronously as well.
-  const App = require('./components/App').default;
+  const App = require('./app/App').default;
 
   ReactDOM.render(
     <React.StrictMode>
@@ -29,7 +29,7 @@ const render = () => {
 render();
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./components/App', render);
+  module.hot.accept('./app/App', render);
 }
 
 // If you want your app to work offline and load faster, you can change

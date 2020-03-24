@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { guide } from '~/styles/utils';
+import { guide } from '~/common/styles/utils';
 
 export const Header = styled.header`
   padding: 0 4%;

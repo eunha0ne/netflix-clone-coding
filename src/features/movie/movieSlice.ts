@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AppThunk, AppDispatch } from '~/features/store';
+import { AppThunk, AppDispatch } from '~/app/store';
 import { IMovie } from '~/features/movie/types';
 import { getPopularMovies } from '~/api/movie';
 
