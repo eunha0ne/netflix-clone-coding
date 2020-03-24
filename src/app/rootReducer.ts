@@ -1,8 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import movieReducer from '~/features/movie/movieSlice';
-import todos from '~/features/todoList/todoSlice';
 
-const rootReducer = combineReducers({ movie: movieReducer, todos });
+const rootReducer = combineReducers({ movie: movieReducer });
 
 export type RootState = ReturnType<typeof rootReducer>;
 
