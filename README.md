@@ -1,79 +1,79 @@
 ## 개발 참고
 
-- 리액트 <기본>
+### 리액트
 
-  - [React](https://ko.reactjs.org/docs/getting-started.html)
-  - [CRA](https://create-react-app.dev/)
+- [React](https://ko.reactjs.org/docs/getting-started.html)
+- [CRA](https://create-react-app.dev/)
+- [코드 스플릿팅]()
+- [throttle-debounce]()
+- [Effect hook](https://ko.reactjs.org/docs/hooks-effect.html)
 
-* 리액트 <고급>
+### 라우트 설정
 
-  - [코드 스플릿팅]()
-  - [throttle-debounce]()
-  - [Effect hook](https://ko.reactjs.org/docs/hooks-effect.html)
+- [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
 
-* 라우트 설정
+### 환경 설정 오버라이딩
 
-  - [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [customize-cra](https://github.com/arackaf/customize-cra)
+- [react-app-rewired](https://github.com/timarney/react-app-rewired)
 
-* 환경 설정 오버라이딩
+### API 개발
 
-  - [customize-cra](https://github.com/arackaf/customize-cra)
-  - [react-app-rewired](https://github.com/timarney/react-app-rewired)
+- [Axios](https://github.com/axios/axios)
+- [(참고) API 연동](https://velog.io/@smooth97/Netflix-Clone-1-API-)
 
-- API 개발
+### 상태 관리, Redux
 
-  - [axios](https://github.com/axios/axios)
-  - [API 연동](https://velog.io/@smooth97/Netflix-Clone-1-API-)
+- [Redux: 리덕스](https://redux.js.org/introduction/getting-started)
+- [Redux: 리덕스 스타일 가이드](https://redux.js.org/style-guide/style-guide)
+- [React Redux: 리엑트 리덕스 (Offical React bindings for Redux)](https://react-redux.js.org/)
+- [Redux Toolkit: 리덕스 툴킷](https://redux-toolkit.js.org/)
 
-- 상태 관리, Redux
+  - [(예제) RTK 투두: rtk-convert-todos-example](https://github.com/reduxjs/rtk-convert-todos-example)
+  - [(참고) 리덕스 툴킷: redux-react-guide (with Redux Toolkit)](https://www.taniarascia.com/redux-react-guide/)
+  - [(참고) 리덕스 툴킷, 타입스크립트: redux-made-easy-with-redux-toolkit-and-typescrip](https://www.mattbutton.com/redux-made-easy-with-redux-toolkit-and-typescript/)
 
-  - [redux](https://redux.js.org/introduction/getting-started)
-  - [react-redux](https://github.com/reduxjs/react-redux)
-  - [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
-  - [rtk-convert-todos-example](https://github.com/reduxjs/rtk-convert-todos-example)
-  - [redux-thunk](https://github.com/reduxjs/redux-thunk)
-    - [참고](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
-  - [Redux Toolkit](https://redux-toolkit.js.org/)
-    - [참고 \*\*redux-react-guide](https://www.taniarascia.com/redux-react-guide/)
-  - [redux-made-easy-with-redux-toolkit-and-typescrip](https://www.mattbutton.com/redux-made-easy-with-redux-toolkit-and-typescript/)
-  - [최적화: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
+- [Redux Thunk: 리덕스 미들웨어](https://github.com/reduxjs/redux-thunk)
 
-* 타입스크립트
+  - [(참고) Redux Thunk 소개](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
 
-  - [참고](https://jeonghwan-kim.github.io/dev/2019/07/15/react-redux-ts.html)
-  - [참고](https://infoscis.github.io/2017/06/19/TypeScript-handbook-advanced-types/)
+- [(참고) useSelector 최적화: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
+- [(참고) 리덕스 데브툴: Redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
-  - I 프리픽스
+### 타입스크립트
 
-    - [I-prefix 참고](https://github.com/microsoft/TypeScript-Handbook/issues/121)
-    - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
+- [참고](https://jeonghwan-kim.github.io/dev/2019/07/15/react-redux-ts.html)
+- [참고](https://infoscis.github.io/2017/06/19/TypeScript-handbook-advanced-types/)
 
-  - [keyof-and-lookup-types-in-typescript](https://mariusschulz.com/blog/keyof-and-lookup-types-in-typescript)
-  - [a-complete-guide-to-react-hooks-and-typescript](https://levelup.gitconnected.com/usetypescript-a-complete-guide-to-react-hooks-and-typescript-db1858d1fb9c)
+- I 프리픽스
 
-* 스타일
+  - [I-prefix 참고](https://github.com/microsoft/TypeScript-Handbook/issues/121)
+  - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
 
-  - [타입스크립트 스타일드 컴포넌트 설정](https://github.com/microsoft/typescript-styled-plugin/tree/f82699d1a0027cb850118adfcdd8cf88203573dc)
+- [keyof-and-lookup-types-in-typescript](https://mariusschulz.com/blog/keyof-and-lookup-types-in-typescript)
+- [a-complete-guide-to-react-hooks-and-typescript](https://levelup.gitconnected.com/usetypescript-a-complete-guide-to-react-hooks-and-typescript-db1858d1fb9c)
 
-* 최적화
+### 스타일
 
-  - [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
-  - [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
-  - [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
-    ```html
-    <img src="https://ik.imagekit.io/demo/img/image3.jpg?tr=w-400,h-300" />
-    <img
-      class="lazy"
-      src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300,bl-30,q-50"
-      data-src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300"
-    />
-    ```
+- [타입스크립트 스타일드 컴포넌트 설정](https://github.com/microsoft/typescript-styled-plugin/tree/f82699d1a0027cb850118adfcdd8cf88203573dc)
 
-* SEO
+### 최적화
 
-  - [robots](https://www.robotstxt.org/robotstxt.html)
+- [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+- [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
+- [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
+  ```html
+  <img src="https://ik.imagekit.io/demo/img/image3.jpg?tr=w-400,h-300" />
+  <img
+    class="lazy"
+    src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300,bl-30,q-50"
+    data-src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300"
+  />
+  ```
 
----
+### SEO
+
+- [robots](https://www.robotstxt.org/robotstxt.html)
 
 ### 트러블 슈팅
 
