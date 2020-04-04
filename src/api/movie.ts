@@ -1,4 +1,5 @@
-import { BASE_URL, API_KEY, TV_IMG_URL, BACK_IMG_URL } from '~/constants';
+import { BASE_URL, API_KEY } from '~/constants';
+import { IMovie as KeyVisualResponse } from '~/features/keyVisual/types';
 import { IMovie } from '~/features/movie/types';
 import axios from 'axios';
 
@@ -14,12 +15,19 @@ export async function getPopularMovies(): Promise<GetMoiveResponse> {
   return response.data.results;
 }
 
-export async function getImage(movieId: number, imgType: string): Promise<any> {
-  // https://api.themoviedb.org/3/tv/{tv_id}/images?api_key=<<api_key>>&language=en-US
-  // 'https://image.tmdb.org/t/p/original';
+/**
+ * KeyVisual 가져오기
+ *
+ * https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
+ */
 
-  const requestURL = `${TV_IMG_URL}/${movieId}/images?api_key=${API_KEY}&language=ko`;
-  const response = await axios.get(requestURL);
+export async function getKeyVisual({
+  genre
+}: {
+  genre: string;
+}): Promise<KeyVisualResponse> {
+  const url = `${BASE_URL}/${genre}/4935?api_key=${API_KEY}&language=ko`;
+  const { data } = await axios.get(url);
 
-  return response.data.results;
+  return data;
 }

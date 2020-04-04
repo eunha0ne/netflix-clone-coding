@@ -10,10 +10,7 @@ const store = configureStore({
 // we can re-import the new version of the root reducer function
 // whenever it's been recompiled, and tell the store to use the new version instead.
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./rootReducer', () => {
-    const newRootReducer = require('./rootReducer').default;
-    store.replaceReducer(newRootReducer);
-  });
+  module.hot.accept('./rootReducer', () => store.replaceReducer(rootReducer));
 }
 
 export type AppDispatch = typeof store.dispatch;
