@@ -9,4 +9,13 @@ export const Ul = styled.ul`
   li {
     padding-left: 1.6rem;
   }
+
+  a {
+    text-decoration: none;
+    font-size: 1.3rem;
+
+    &.is-active {
+      font-weight: bold;
+    }
+  }
 `;
