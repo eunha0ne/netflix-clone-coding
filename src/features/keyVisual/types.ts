@@ -1,6 +1,14 @@
 export interface IMovie {
-  adult: boolean;
-  backdrop_path: string | null;
   id: number;
   title: string;
+  original_title: string;
+  tagline: string;
+  overview: string;
+  genres: [{ id: number; name: string }];
+  backdrop_path: string | null;
+  poster_path: string | null;
+  vote_average: number;
+  production_countries: [{ name: string }];
+  runtime: number;
+  release_date: string;
 }
