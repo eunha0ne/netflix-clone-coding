@@ -1,13 +1,16 @@
 import React from 'react';
 import { Header } from '~/components/Header';
+import * as S from './index.style';
+import 'reset-css';
 
-import './reset.css';
-import 'normalize.css';
-import '~/styles/index.scss';
+interface ILayout {
+  children: string;
+}
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: ILayout) => {
   return (
     <>
+      <S.Global />
       <Header />
       {children}
       <footer>Created by @eunha0ne</footer>
