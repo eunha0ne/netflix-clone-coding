@@ -10,12 +10,12 @@ export const KeyVisualContents = (props: IMovie) => {
     <S.Wrapper backPath={backURL}>
       <div className="visual">
         <h3 className="visual__title">{title}</h3>
+        <p>{tagline}</p>
         <ul className="visual__genres">
           {genres.map((genre, idx) => (
             <li key={`key-genre-${idx}`}>{genre.name}</li>
           ))}
         </ul>
-        <p>{tagline}</p>
         <p>{overview}</p>
         <BtnGroups />
       </div>

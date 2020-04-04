@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { KeyVisualContents } from './KeyVisualContents';
+import { KeyVisualContents } from './keyVisualContents';
 
 export const KeyVisual = () => {
   const dispatch = useDispatch();
