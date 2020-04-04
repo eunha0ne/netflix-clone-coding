@@ -3,36 +3,36 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { IMovie } from './types';
-
-import { KeyVisualWrapper } from './KeyVisualWrapper';
-import * as S from './index.style';
+import { KeyVisualContents } from './KeyVisualContents';
 
 export const KeyVisual = () => {
   const dispatch = useDispatch();
   const keyVisual = useSelector((state: RootState) => state.keyVisual);
-  const { isLoad, loading } = keyVisual;
+  const { loading, movie }: IKeyVisual = keyVisual;
+  let wrapper: null | object = null;
 
   useEffect(() => {
-    if (!isLoad) {
+    if (!movie) {
       dispatch(fetchKeyVisual());
     }
-    console.log('keyVisual', keyVisual);
-  }, [keyVisual, dispatch]);
+  }, [loading, dispatch]);
 
-  if (loading === 'pending') return <p>콘텐츠를 가져오는 중입니다.</p>;
-  // if (isError) return <p>콘텐츠를 가져올 수 없습니다.</p>;
-  return (
-    <S.Wrapper backPath={null}>
-      {/* <KeyVisualContents /> */}
-      <BtnGroups />
-    </S.Wrapper>
-  );
+  switch (loading) {
+    case 'idle':
+    case 'pending': {
+      wrapper = <p>콘텐츠 준비 중입니다.</p>;
+      break;
+    }
+
+    case 'error': {
+      wrapper = <p>콘텐츠를 가져오는데 실패했습니다.</p>;
+      break;
+    }
+
+    default: {
+      wrapper = movie ? <KeyVisualContents {...movie} /> : null;
+    }
+  }
+
+  return wrapper;
 };
-
-const BtnGroups = () => (
-  <>
-    <button>재생</button>
-    <button>상세 정보</button>
-  </>
-);
