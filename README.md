@@ -25,20 +25,21 @@
 ### 상태 관리, Redux
 
 - [Redux: 리덕스](https://redux.js.org/introduction/getting-started)
-- [Redux: 리덕스 스타일 가이드](https://redux.js.org/style-guide/style-guide)
+- [Redux: 리덕스, 스타일 가이드](https://redux.js.org/style-guide/style-guide)
+  - [(참고) 번역: 리덕스, 스타일 가이드](https://baeharam.netlify.com/posts/architecture/%EB%B2%88%EC%97%AD-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C)
 - [React Redux: 리엑트 리덕스 (Offical React bindings for Redux)](https://react-redux.js.org/)
+- [Redux Thunk: 리덕스 미들웨어](https://github.com/reduxjs/redux-thunk)
+
+  - [(참고) Redux Thunk 소개](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
+
 - [Redux Toolkit: 리덕스 툴킷](https://redux-toolkit.js.org/)
 
   - [(예제) RTK 투두: rtk-convert-todos-example](https://github.com/reduxjs/rtk-convert-todos-example)
   - [(참고) 리덕스 툴킷: redux-react-guide (with Redux Toolkit)](https://www.taniarascia.com/redux-react-guide/)
   - [(참고) 리덕스 툴킷, 타입스크립트: redux-made-easy-with-redux-toolkit-and-typescrip](https://www.mattbutton.com/redux-made-easy-with-redux-toolkit-and-typescript/)
 
-- [Redux Thunk: 리덕스 미들웨어](https://github.com/reduxjs/redux-thunk)
-
-  - [(참고) Redux Thunk 소개](http://react.vlpt.us/redux-middleware/04-redux-thunk.html)
-
-- [(참고) useSelector 최적화: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
-- [(참고) 리덕스 데브툴: Redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
+* [(참고) useSelector 최적화: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
+* [(참고) 리덕스 데브툴: Redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ### 타입스크립트
 
@@ -56,9 +57,14 @@
 ### 스타일
 
 - [타입스크립트 스타일드 컴포넌트 설정](https://github.com/microsoft/typescript-styled-plugin/tree/f82699d1a0027cb850118adfcdd8cf88203573dc)
+- [Read: naming-styled-components](https://medium.com/inturn-eng/naming-styled-components-d7097950a245)
+- [Read: normalize-css-or-css-reset](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
+- [Read: em-vs-rem-vs-px](https://engageinteractive.co.uk/blog/em-vs-rem-vs-px)
+- [Read: CSS/length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 
 ### 최적화
 
+- [Read: webp](https://post.naver.com/viewer/postView.nhn?volumeNo=9688816&memberNo=1834)
 - [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
 - [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
 - [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)

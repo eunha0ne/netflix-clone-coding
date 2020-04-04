@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, shallowEqual, useDispatch } from 'react-redux';
+import { createSelector } from 'reselect';
 import { RootState } from '~/app/rootReducer';
 import { fetchPopularMovies } from '~/features/movie/movieSlice';
 import { IMovie } from './types';
@@ -8,24 +9,27 @@ import { MovieListItem } from './MovieListItem';
 
 import styled from '@emotion/styled';
 
+// const selectPopulars = createSelector(state => state.movie);
+
 export const MovieList = () => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(5);
-  const populars = useSelector((state: RootState) => {
-    console.log('/root', count);
-    return state.movie.populars.slice(0, count);
-  }, shallowEqual);
 
-  useEffect(() => {
-    dispatch(fetchPopularMovies());
-    console.log('/ues');
-  }, []);
+  // const populars = useSelector((state: RootState) => {
+  //   console.log('/root', count);
+  //   return state.movie.populars.slice(0, count);
+  // }, shallowEqual);
 
-  console.log('/');
+  // useEffect(() => {
+  //   dispatch(fetchPopularMovies());
+  //   console.log('/ues');
+  // }, []);
+
+  // console.log('/');
 
   return (
     <S.Ul>
-      {populars.map((movie: IMovie, idx: number) => {
+      {/* {populars.map((movie: IMovie, idx: number) => {
         const isLastItem: boolean = idx + 1 === populars.length;
 
         return isLastItem ? (
@@ -39,7 +43,7 @@ export const MovieList = () => {
         ) : (
           <MovieListItem key={`popural-${movie.id}`} {...movie} idx={idx} />
         );
-      })}
+      })} */}
     </S.Ul>
   );
 };

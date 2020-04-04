@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { BACK_IMG_URL } from '~/constants';
 import { IMovie } from './types';
 
-import blank from '~/static/images/blank.png';
+import blankPath from '~/assets/images/blank.png';
 import styled from '@emotion/styled';
 
 interface IMoiveItem extends IMovie {
@@ -13,7 +13,7 @@ interface IMoiveItem extends IMovie {
 
 export const MovieListItem = (props: IMoiveItem) => {
   const { name, backdrop_path } = props;
-  const [imgSrc, setImgSrc] = useState<string>(blank);
+  const [imgSrc, setImgSrc] = useState<string>(blankPath);
   const targetEl = useRef(null);
 
   useEffect(() => {
