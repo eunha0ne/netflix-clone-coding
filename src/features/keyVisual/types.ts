@@ -2,6 +2,8 @@ export interface IMovie {
   id: number;
   title: string;
   original_title: string;
+  name: string;
+  original_name: string;
   tagline: string;
   overview: string;
   genres: [{ id: number; name: string }];
@@ -11,4 +13,9 @@ export interface IMovie {
   production_countries: [{ name: string }];
   runtime: number;
   release_date: string;
+}
+export interface IKeyVisualProps {
+  viewName: string;
+  genre: string;
+  id: number;
 }

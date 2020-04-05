@@ -2,13 +2,13 @@ import React from 'react';
 import { MovieList } from '~/features/movie/MovieList';
 import { KeyVisual } from '~/features/keyVisual';
 
-const Home = () => {
+const Latest = () => {
   return (
     <main>
-      <KeyVisual viewName={'home'} genre={'movie'} id={4935} />
+      <KeyVisual viewName={'latest'} genre={'movie'} id={653567} />
       <MovieList />
     </main>
   );
 };
 
-export { Home as default };
+export { Latest as default };
