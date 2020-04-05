@@ -3,19 +3,23 @@ import { IMovie } from './types';
 
 import * as S from './keyVisualContents.style';
 
-export const KeyVisualContents = (props: IMovie) => {
-  const { title, tagline, overview, genres, backdrop_path: backURL } = props;
-
+export const KeyVisualContents = ({
+  title,
+  tagline,
+  overview,
+  genres,
+  backdrop_path: backURL
+}: IMovie) => {
   return (
     <S.Wrapper backPath={backURL}>
       <div className="visual">
         <h3 className="visual__title">{title}</h3>
+        <p>{tagline}</p>
         <ul className="visual__genres">
           {genres.map((genre, idx) => (
             <li key={`key-genre-${idx}`}>{genre.name}</li>
           ))}
         </ul>
-        <p>{tagline}</p>
         <p>{overview}</p>
         <BtnGroups />
       </div>

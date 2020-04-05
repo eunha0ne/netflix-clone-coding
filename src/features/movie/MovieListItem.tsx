@@ -12,7 +12,7 @@ interface IMoiveItem extends IMovie {
 }
 
 export const MovieListItem = (props: IMoiveItem) => {
-  const { name, backdrop_path } = props;
+  const { name, backdrop_path, poster_path: posterPath } = props;
   const [imgSrc, setImgSrc] = useState<string>(blankPath);
   const targetEl = useRef(null);
 
@@ -24,7 +24,7 @@ export const MovieListItem = (props: IMoiveItem) => {
         const { isIntersecting } = entry;
 
         if (isIntersecting) {
-          const URL = `${BACK_IMG_URL}/original/${backdrop_path}`;
+          const URL = `${BACK_IMG_URL}/w500/${posterPath}`;
           const { isLastItem, loadItem } = props;
 
           if (isLastItem && loadItem !== undefined) {
@@ -42,23 +42,33 @@ export const MovieListItem = (props: IMoiveItem) => {
     }
 
     return () => iO.disconnect();
-  }, [targetEl]);
+  }, [props, targetEl, posterPath]);
 
   return (
-    <li ref={targetEl}>
-      <article>
-        <header>
-          <h3>{name}</h3>
-        </header>
-        <S.Img src={imgSrc} />
-      </article>
-    </li>
+    <S.Li ref={targetEl}>
+      <h3>{name}</h3>
+      <S.Img src={imgSrc} />
+    </S.Li>
   );
 };
 
 const S = {
+  Li: styled.li`
+    padding: 0 4px;
+    display: inline-block;
+    width: 20%;
+    height: 37vw;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    /* &:hover {
+      transition: all 500ms;
+      transform: translate3d(-25px, 0, 0);
+    } */
+  `,
+
   Img: styled('img')`
-    width: 300px;
-    height: auto;
+    width: 100%;
+    height: 100%;
   `
 };

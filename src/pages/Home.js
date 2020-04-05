@@ -5,7 +5,7 @@ import { KeyVisual } from '~/features/keyVisual';
 const Home = () => {
   return (
     <main>
-      <h2 class="blind">홈</h2>
+      <h2 className="blind">홈</h2>
       <KeyVisual />
       <MovieList />
     </main>

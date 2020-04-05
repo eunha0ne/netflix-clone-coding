@@ -8,6 +8,22 @@ interface ImageProps {
 export const Wrapper = styled.div`
   position: relative;
   height: 56.25vw;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      270deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 1) 91%
+    );
+  }
 
   &:after {
     content: '';
@@ -15,7 +31,6 @@ export const Wrapper = styled.div`
     position: absolute;
     left: 0;
     top: 0;
-    display: inline-block;
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -28,13 +43,13 @@ export const Wrapper = styled.div`
   }
 
   .visual {
-    padding: 5vw;
-    padding-top: 10vw;
+    padding: 10rem 4%;
     z-index: 1;
     position: relative;
     font-size: 1.6rem;
     line-height: 1.4;
     width: 36%;
+    word-break: keep-all;
 
     &__btns {
       margin-top: 15px;

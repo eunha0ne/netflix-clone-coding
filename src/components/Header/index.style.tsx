@@ -3,7 +3,7 @@ import logoPath from '~/assets/images/netflix_logo.png';
 
 export const Header = styled.header`
   padding: 0 4%;
-  z-index: 1;
+  z-index: 10;
   position: absolute;
   left: 0;
   top: 0;
@@ -11,7 +11,11 @@ export const Header = styled.header`
   align-items: center;
   width: 100%;
   height: 68px;
-  background-color: rgba(20, 20, 20, 0.25);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  );
 `;
 
 export const H1 = styled.h1`

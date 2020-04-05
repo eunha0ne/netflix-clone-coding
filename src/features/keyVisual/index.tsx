@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { KeyVisualContents } from './KeyVisualContents';
+import { KeyVisualContents } from './keyVisualContents';
 
 export const KeyVisual = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ export const KeyVisual = () => {
     if (!movie) {
       dispatch(fetchKeyVisual());
     }
-  }, [loading, dispatch]);
+  }, [loading, movie, dispatch]);
 
   switch (loading) {
     case 'idle':

@@ -13,10 +13,11 @@ export interface IMovie {
   overview: string;
   poster_path: string;
 }
-export interface IMoiveState {
+export interface IPopular {
   movies: IMovie[];
   populars: IMovie[];
   currPopulars: IMovie[];
   isError: boolean;
   loading: string;
+  pageCount: number;
 }
