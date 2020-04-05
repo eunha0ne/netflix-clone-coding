@@ -24,5 +24,5 @@ export const KeyVisual = ({
 
   if (isLoading || !data) return <p>콘텐츠 준비 중입니다.</p>;
   if (isError) return <p>콘텐츠를 가져오는데 실패했습니다.</p>;
-  return <KeyVisualContents {...data} />;
+  return <KeyVisualContents {...data} viewName={viewName} />;
 };
