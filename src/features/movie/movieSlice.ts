@@ -25,8 +25,6 @@ const movieSlice = createSlice({
       if (state.loading === 'pending') {
         state.loading = 'sucess';
         state.movies = action.payload;
-
-        console.log(state.movies);
       }
     },
 
@@ -41,6 +39,7 @@ export const fetchPopularMovies = (): AppThunk => async (
   dispatch: AppDispatch
 ) => {
   try {
+    dispatch(getStartPopulars());
     const populars = await getPopularMovies();
     dispatch(getSuccessPopulars(populars));
   } catch (error) {

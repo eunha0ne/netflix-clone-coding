@@ -8,6 +8,7 @@ interface ImageProps {
 export const Wrapper = styled.div`
   position: relative;
   height: 56.25vw;
+  overflow: hidden;
 
   &:before {
     content: '';

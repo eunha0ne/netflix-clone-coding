@@ -40,9 +40,12 @@ export const MovieList = () => {
 
 const S = {
   Ul: styled('ul')`
-    border: 1px solid red;
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
+    z-index: 1;
+    position: relative;
+    padding: 0 4%;
+    white-space: nowrap;
+    font-size: 0;
+    vertical-align: top;
+    transform: translateY(-10vh);
   `
 };
