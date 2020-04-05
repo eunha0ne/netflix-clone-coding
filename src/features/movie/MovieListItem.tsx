@@ -42,7 +42,7 @@ export const MovieListItem = (props: IMoiveItem) => {
     }
 
     return () => iO.disconnect();
-  }, [targetEl]);
+  }, [props, targetEl, backdrop_path]);
 
   return (
     <li ref={targetEl}>

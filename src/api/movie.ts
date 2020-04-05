@@ -1,25 +1,14 @@
 import { BASE_URL, API_KEY } from '~/constants';
 import { IMovie as KeyVisualResponse } from '~/features/keyVisual/types';
-import { IMovie } from '~/features/movie/types';
+import { IMovie as PopularsResponse } from '~/features/movie/types';
 import axios from 'axios';
 
-export type GetMoiveResponse = {
-  results: IMovie[];
-};
+export async function getPopularMovies(): Promise<PopularsResponse[]> {
+  const url = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_networks=213&sort_by=popularity.desc&language=ko`;
+  const { data } = await axios.get(url);
 
-export async function getPopularMovies(): Promise<GetMoiveResponse> {
-  const requestURL = `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_networks=213&sort_by=popularity.desc&language=ko`;
-  const response = await axios.get(requestURL);
-  // const response = await axios.get(requestURL);
-
-  return response.data.results;
+  return data.results;
 }
-
-/**
- * KeyVisual 가져오기
- *
- * https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
- */
 
 export async function getKeyVisual({
   genre

@@ -15,7 +15,7 @@ export const KeyVisual = () => {
     if (!movie) {
       dispatch(fetchKeyVisual());
     }
-  }, [loading, dispatch]);
+  }, [loading, movie, dispatch]);
 
   switch (loading) {
     case 'idle':

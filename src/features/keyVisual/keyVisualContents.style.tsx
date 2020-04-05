@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
     background: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 1) 90%
+      rgba(0, 0, 0, 1) 91%
     );
   }
 
@@ -42,8 +42,7 @@ export const Wrapper = styled.div`
   }
 
   .visual {
-    padding: 5vw;
-    padding-top: 10vw;
+    padding: 10rem 4%;
     z-index: 1;
     position: relative;
     font-size: 1.6rem;

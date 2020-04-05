@@ -3,9 +3,13 @@ import { IMovie } from './types';
 
 import * as S from './keyVisualContents.style';
 
-export const KeyVisualContents = (props: IMovie) => {
-  const { title, tagline, overview, genres, backdrop_path: backURL } = props;
-
+export const KeyVisualContents = ({
+  title,
+  tagline,
+  overview,
+  genres,
+  backdrop_path: backURL
+}: IMovie) => {
   return (
     <S.Wrapper backPath={backURL}>
       <div className="visual">

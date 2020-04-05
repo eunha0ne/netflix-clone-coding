@@ -1,29 +1,32 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getPopularMovies } from '~/api/movie';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
-import { IMoiveState } from './types';
+import { getPopularMovies } from '~/api/movie';
+import { IPopular, IMovie } from './types';
 
-const initialState: IMoiveState = {
+const initialState: IPopular = {
   movies: [],
   populars: [],
   currPopulars: [],
   isError: false,
-  loading: 'idle'
+  loading: 'idle',
+  pageCount: 0
 };
 
 const movieSlice = createSlice({
   name: 'movie',
   initialState,
   reducers: {
-    moviesLoading(state, action) {
+    getStartPopulars(state) {
       if (state.loading === 'idle') {
         state.loading = 'pending';
       }
     },
-    moviesReceived(state, action) {
+    getSuccessPopulars(state, action: PayloadAction<IMovie[]>) {
       if (state.loading === 'pending') {
-        state.loading = 'idle';
+        state.loading = 'sucess';
         state.movies = action.payload;
+
+        console.log(state.movies);
       }
     },
 
@@ -38,13 +41,13 @@ export const fetchPopularMovies = (): AppThunk => async (
   dispatch: AppDispatch
 ) => {
   try {
-    const response = await getPopularMovies();
-    dispatch(moviesReceived(response));
+    const populars = await getPopularMovies();
+    dispatch(getSuccessPopulars(populars));
   } catch (error) {
     throw error;
   }
 };
 
 const { actions, reducer } = movieSlice;
-export const { moviesLoading, moviesReceived } = actions;
+export const { getStartPopulars, getSuccessPopulars } = actions;
 export default reducer;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Global as _Global, css } from '@emotion/core';
+import { Global as GLOBAL, css } from '@emotion/core';
 
 const cssText = css`
   html {
@@ -19,5 +19,5 @@ const cssText = css`
 `;
 
 export const Global = () => {
-  return <_Global styles={cssText} />;
+  return <GLOBAL styles={cssText} />;
 };
