@@ -1,7 +1,7 @@
 import React from 'react';
 import { IMovie } from './types';
 
-import * as S from './keyVisualContents.style';
+import * as S from './KeyVisualContents.style';
 
 export const KeyVisualContents = ({
   title,

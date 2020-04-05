@@ -57,7 +57,7 @@ const S = {
     padding: 0 4px;
     display: inline-block;
     width: 20%;
-    height: 37vw;
+    height: 30vw;
     overflow: hidden;
     box-sizing: border-box;
 

@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { KeyVisualContents } from './keyVisualContents';
+import { KeyVisualContents } from './KeyVisualContents';
 
 export const KeyVisual = () => {
   const dispatch = useDispatch();
   const keyVisual = useSelector((state: RootState) => state.keyVisual);
   const { loading, movie }: IKeyVisual = keyVisual;
-  let wrapper: null | object = null;
+  let wrapper: JSX.Element | null = null;
 
   useEffect(() => {
     if (!movie) {
