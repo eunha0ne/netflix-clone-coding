@@ -10,12 +10,16 @@ export async function getPopularMovies(): Promise<PopularsResponse[]> {
   return data.results;
 }
 
-export async function getKeyVisual({
-  genre
-}: {
+interface IGetKeyVisual {
   genre: string;
-}): Promise<KeyVisualResponse> {
-  const url = `${BASE_URL}/${genre}/4935?api_key=${API_KEY}&language=ko`;
+  id: number;
+}
+
+export async function getKeyVisual({
+  genre,
+  id
+}: IGetKeyVisual): Promise<KeyVisualResponse> {
+  const url = `${BASE_URL}/${genre}/${id}?api_key=${API_KEY}&language=ko`;
   const { data } = await axios.get(url);
 
   return data;

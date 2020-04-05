@@ -12,7 +12,7 @@ interface IMoiveItem extends IMovie {
 }
 
 export const MovieListItem = (props: IMoiveItem) => {
-  const { name, backdrop_path, poster_path: posterPath } = props;
+  const { name, poster_path: posterPath } = props;
   const [imgSrc, setImgSrc] = useState<string>(blankPath);
   const targetEl = useRef(null);
 
@@ -57,7 +57,7 @@ const S = {
     padding: 0 4px;
     display: inline-block;
     width: 20%;
-    height: 37vw;
+    height: 30vw;
     overflow: hidden;
     box-sizing: border-box;
 

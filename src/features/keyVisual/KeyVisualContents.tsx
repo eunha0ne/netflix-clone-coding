@@ -1,10 +1,11 @@
 import React from 'react';
 import { IMovie } from './types';
 
-import * as S from './keyVisualContents.style';
+import * as S from './KeyVisualContents.style';
 
 export const KeyVisualContents = ({
   title,
+  name,
   tagline,
   overview,
   genres,
@@ -13,7 +14,7 @@ export const KeyVisualContents = ({
   return (
     <S.Wrapper backPath={backURL}>
       <div className="visual">
-        <h3 className="visual__title">{title}</h3>
+        <h3 className="visual__title">{title || name}</h3>
         <p>{tagline}</p>
         <ul className="visual__genres">
           {genres.map((genre, idx) => (

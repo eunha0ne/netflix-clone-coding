@@ -1,18 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getKeyVisual } from '~/api/movie';
-import { IMovie } from './types';
+import { IMovie, IKeyVisualProps } from './types';
 
 export interface IKeyVisual {
-  loading: 'idle' | 'pending' | 'sucess' | 'error';
-  error: null | string;
-  movie: null | IMovie;
+  isLoading: boolean;
+  isError: boolean;
+  views: {
+    [key: string]: IMovie | null;
+    home: IMovie | null;
+    movie: IMovie | null;
+    tv: IMovie | null;
+    latest: IMovie | null;
+    myList: IMovie | null;
+  };
 }
 
 const initialState: IKeyVisual = {
-  loading: 'idle',
-  error: null,
-  movie: null
+  isLoading: false,
+  isError: false,
+  views: {
+    home: null,
+    movie: null,
+    tv: null,
+    latest: null,
+    myList: null
+  }
 };
 
 const keyVisualSlice = createSlice({
@@ -20,30 +33,40 @@ const keyVisualSlice = createSlice({
   initialState,
   reducers: {
     getkeyVisualStart(state) {
-      if (state.loading === 'idle') {
-        state.loading = 'pending';
+      if (!state.isLoading) {
+        state.isLoading = true;
       }
     },
-    getKeyVisualSuccess(state, action: PayloadAction<IMovie>) {
-      if (state.loading === 'pending') {
-        state.loading = 'sucess';
-        state.movie = action.payload;
+    getKeyVisualSuccess(state, action: PayloadAction<IKeyVisaulPayload>) {
+      if (state.isLoading) {
+        const { keyVisual, viewName }: IKeyVisaulPayload = action.payload;
+        state.views[viewName] = keyVisual;
+        state.isLoading = false;
       }
     },
-    getKeyVisualFailure(state, action: PayloadAction<string>) {
-      state.loading = 'error';
-      state.error = action.payload;
+    getKeyVisualFailure(state) {
+      state.isError = true;
     }
   }
 });
 
-export const fetchKeyVisual = (): AppThunk => async (dispatch: AppDispatch) => {
+interface IKeyVisaulPayload {
+  viewName: string;
+  keyVisual: IMovie;
+}
+
+export const fetchKeyVisual = ({
+  viewName,
+  genre,
+  id
+}: IKeyVisualProps): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getkeyVisualStart());
-    const keyVisual = await getKeyVisual({ genre: 'movie' });
-    dispatch(getKeyVisualSuccess(keyVisual));
+    const keyVisual = await getKeyVisual({ genre, id });
+    dispatch(getKeyVisualSuccess({ viewName, keyVisual }));
   } catch (err) {
-    dispatch(getKeyVisualFailure(err));
+    dispatch(getKeyVisualFailure());
+    throw err;
   }
 };
 

@@ -3,36 +3,26 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { KeyVisualContents } from './keyVisualContents';
+import { KeyVisualContents } from './KeyVisualContents';
+import { IKeyVisualProps } from './types';
 
-export const KeyVisual = () => {
+export const KeyVisual = ({
+  viewName = 'home',
+  genre = 'movie',
+  id
+}: IKeyVisualProps) => {
   const dispatch = useDispatch();
   const keyVisual = useSelector((state: RootState) => state.keyVisual);
-  const { loading, movie }: IKeyVisual = keyVisual;
-  let wrapper: null | object = null;
+  const { isLoading, isError, views }: IKeyVisual = keyVisual;
+  const data = views[viewName];
 
   useEffect(() => {
-    if (!movie) {
-      dispatch(fetchKeyVisual());
+    if (!data) {
+      dispatch(fetchKeyVisual({ viewName, genre, id }));
     }
-  }, [loading, movie, dispatch]);
+  }, [dispatch, data, viewName, genre, id]);
 
-  switch (loading) {
-    case 'idle':
-    case 'pending': {
-      wrapper = <p>콘텐츠 준비 중입니다.</p>;
-      break;
-    }
-
-    case 'error': {
-      wrapper = <p>콘텐츠를 가져오는데 실패했습니다.</p>;
-      break;
-    }
-
-    default: {
-      wrapper = movie ? <KeyVisualContents {...movie} /> : null;
-    }
-  }
-
-  return wrapper;
+  if (isLoading || !data) return <p>콘텐츠 준비 중입니다.</p>;
+  if (isError) return <p>콘텐츠를 가져오는데 실패했습니다.</p>;
+  return <KeyVisualContents {...data} />;
 };

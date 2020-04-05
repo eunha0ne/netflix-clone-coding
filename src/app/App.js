@@ -3,7 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import Layout from '~/layout';
 
 const Home = lazy(() => import('~/pages/Home'));
-const About = lazy(() => import('~/pages/About'));
+const Tv = lazy(() => import('~/pages/Tv'));
+const Movie = lazy(() => import('~/pages/Movie'));
+const Latest = lazy(() => import('~/pages/Latest'));
+const MyList = lazy(() => import('~/pages/MyList'));
 
 export default function App() {
   return (
@@ -13,8 +16,17 @@ export default function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
-            <About />
+          <Route path="/tv">
+            <Tv />
+          </Route>
+          <Route path="/movie">
+            <Movie />
+          </Route>
+          <Route path="/latest">
+            <Latest />
+          </Route>
+          <Route path="/my-list">
+            <MyList />
           </Route>
         </Switch>
       </Suspense>
