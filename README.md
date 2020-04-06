@@ -65,6 +65,7 @@
 ### 최적화
 
 - [Read: webp](https://post.naver.com/viewer/postView.nhn?volumeNo=9688816&memberNo=1834)
+- [Read: IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
 - [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
 - [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
 - [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
@@ -124,3 +125,9 @@
   ```
   git config core.ignorecase false
   ```
+
+### 개발하면서 느낀 점
+
+- API 추상화에 대한 부분
+
+개발 초기에는 서비스 페이지나 특정 컴포넌트 단위에 따라서 가져오는 데이터가 다를 것이라고 생각하였으나 결국 이런 복잡한 흐름도 사실은 여러 슬라이스를 통해 응답한 결과 데이터는 동영상을 복수 개로 가져올 것인지 혹은 단수 개로 가져올 것인지에 대한 것으로 추상화 되었다.

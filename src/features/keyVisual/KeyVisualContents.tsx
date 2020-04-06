@@ -19,8 +19,8 @@ export const KeyVisualContents = ({
 
   return (
     <S.Section>
+      <h2 className="blind">특별 컨텐츠</h2>
       <S.Background backPath={backPath} backDir={backDir}>
-        <h2 className="blind">특별 컨텐츠</h2>
         <S.Contents>
           <h3 className="title">{title || name}</h3>
           <p className="subTitle">{tagline}</p>
