@@ -60,11 +60,6 @@ const S = {
     height: 30vw;
     overflow: hidden;
     box-sizing: border-box;
-
-    /* &:hover {
-      transition: all 500ms;
-      transform: translate3d(-25px, 0, 0);
-    } */
   `,
 
   Img: styled('img')`

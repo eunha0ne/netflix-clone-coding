@@ -10,6 +10,9 @@ const cssText = css`
   body {
     user-select: none;
     position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
     color: white;
     background-color: #141414;
     word-break: keep-all;
@@ -18,6 +21,10 @@ const cssText = css`
   a {
     color: white;
     text-decoration: underline;
+  }
+
+  #root {
+    overflow-y: hidden;
   }
 
   .blind {
