@@ -46,6 +46,5 @@ const S = {
     white-space: nowrap;
     font-size: 0;
     vertical-align: top;
-    transform: translateY(-10vh);
   `
 };

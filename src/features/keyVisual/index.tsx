@@ -6,11 +6,7 @@ import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
 import { KeyVisualContents } from './KeyVisualContents';
 import { IKeyVisualProps } from './types';
 
-export const KeyVisual = ({
-  viewName = 'home',
-  genre = 'movie',
-  id
-}: IKeyVisualProps) => {
+export const KeyVisual = ({ viewName, genre, id }: IKeyVisualProps) => {
   const dispatch = useDispatch();
   const keyVisual = useSelector((state: RootState) => state.keyVisual);
   const { isLoading, isError, views }: IKeyVisual = keyVisual;
