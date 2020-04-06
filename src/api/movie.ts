@@ -24,3 +24,14 @@ export async function getKeyVisual({
 
   return data;
 }
+
+interface IGetMoives {
+  genre: string;
+}
+
+export async function getMovies({ genre }: IGetMoives) {
+  const url = `${BASE_URL}/discover/${genre}?api_key=${API_KEY}&with_networks=213&sort_by=popularity.desc&language=ko`;
+  const { data } = await axios.get(url);
+
+  return data.results;
+}

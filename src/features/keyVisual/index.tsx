@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { KeyVisualContents } from './KeyVisualContents';
 import { IKeyVisualProps } from './types';
+
+import { KeyVisualContents } from './KeyVisualContents';
 
 export const KeyVisual = ({ viewName, genre, id }: IKeyVisualProps) => {
   const dispatch = useDispatch();

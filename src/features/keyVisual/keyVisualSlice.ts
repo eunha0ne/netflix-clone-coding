@@ -64,9 +64,9 @@ export const fetchKeyVisual = ({
     dispatch(getkeyVisualStart());
     const keyVisual = await getKeyVisual({ genre, id });
     dispatch(getKeyVisualSuccess({ viewName, keyVisual }));
-  } catch (err) {
+  } catch (error) {
     dispatch(getKeyVisualFailure());
-    throw err;
+    throw error;
   }
 };
 

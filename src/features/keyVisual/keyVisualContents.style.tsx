@@ -75,7 +75,7 @@ export const Contents = styled.div`
   }
 
   .overview {
-    margin-top: 1rem;
+    margin-top: 3rem;
     font-size: 1.3vw;
     line-height: 1.6;
   }
