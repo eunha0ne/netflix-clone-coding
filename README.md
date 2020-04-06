@@ -116,4 +116,11 @@
   ```
 
 - Property 'hot' does not exist on type 'NodeModule'.
+
   - npm install --save @types/webpack-env
+
+- 깃 대소문자 민감도 설정
+
+  ```
+  git config core.ignorecase false
+  ```
