@@ -3,7 +3,7 @@
  */
 
 interface InObserverProps {
-  entries: [];
+  entries: [] | JSX.Element[];
   options: {
     root?: Element;
     rootMargin?: string;
