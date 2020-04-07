@@ -11,7 +11,7 @@ interface ILink {
 const Link = ({ path, children }: ILink) => {
   return (
     <li>
-      <NavLink to={path} activeClassName="is-active">
+      <NavLink exact to={path} activeClassName="is-active">
         {children}
       </NavLink>
     </li>
