@@ -81,6 +81,8 @@
 
   - [Read: usememo](https://alligator.io/react/usememo/)
   - [Read: review-when-to-usememo-and-usecallback](https://rinae.dev/posts/review-when-to-usememo-and-usecallback)
+  - [Read: debounce-and-throttle-in-real-life-scenario](https://medium.com/walkme-engineering/debounce-and-throttle-in-real-life-scenarios-1cc7e2e38c68)
+  - [Read: debounce-react-synthetic-event](https://hyunseob.github.io/2018/06/24/debounce-react-synthetic-event/)
 
 ### SEO
 
