@@ -24,8 +24,8 @@ export const InObserver = ({ target, options, callback }: InObserverProps) => {
     entries.forEach(entry => {
       const { isIntersecting } = entry;
       if (isIntersecting) {
-        interObserver.disconnect();
         callback();
+        interObserver.disconnect();
       }
     });
   }, options);
