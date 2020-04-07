@@ -69,6 +69,7 @@
 - [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
 - [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
 - [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
+
   ```html
   <img src="https://ik.imagekit.io/demo/img/image3.jpg?tr=w-400,h-300" />
   <img
@@ -77,6 +78,9 @@
     data-src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300"
   />
   ```
+
+  - [Read: usememo](https://alligator.io/react/usememo/)
+  - [Read: review-when-to-usememo-and-usecallback](https://rinae.dev/posts/review-when-to-usememo-and-usecallback)
 
 ### SEO
 

@@ -40,6 +40,7 @@ export const Ul = styled.ul`
   position: relative;
   white-space: nowrap;
   transition: transform 0.54s cubic-bezier(0.5, 0, 0.1, 1) 0s;
+
   ${({ pageIndex }: UlProps) => {
     const shift = 100 * pageIndex;
     return `transform: translate3d(-${shift}%, 0, 0);`;

@@ -1,14 +1,11 @@
-import React, { useState, useRef, ReactNode } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { BACK_IMG_URL, SLIDE_PER_CARDS_LEN as CARDS_LEN } from '~/constants';
-import { InObserver } from '~/utils/intersectionObserver';
+
+import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
+import { IBillBoardProps, IMovie } from '~/features/billBoard/types';
 import blankPath from '~/assets/images/blank.png';
 
-import { IBillBoardProps } from '~/features/billBoard/types';
 import * as S from './index.style';
-
-interface ICarousel {
-  children: ReactNode;
-}
 
 export const Carousel = (props: IBillBoardProps) => {
   const { movies } = props;
@@ -38,30 +35,57 @@ interface IListProps extends IBillBoardProps {
   pageIndex: number;
 }
 
-const ListGroup = (props: IListProps) => {
-  const { pageIndex } = props;
-
+const ListGroup = ({ pageIndex, movies, genre }: IListProps) => {
   return (
     <S.Ul pageIndex={pageIndex}>
-      <ListItems {...props} />
+      {useMemo(() => {
+        return movies.map((movie, idx) => (
+          <ListItems
+            key={`${genre}-board-${idx}`}
+            movie={movie}
+            genre={genre}
+          />
+        ));
+      }, [movies])}
     </S.Ul>
   );
 };
 
-const ListItems = ({ movies, genre }: IListProps) => {
-  const element = useRef(null);
-  const Items = movies.map((movie, idx) => {
-    const imgPath = `${BACK_IMG_URL}/w500/${movie.poster_path}`;
+interface IListItem {
+  movie: IMovie;
+  genre: string;
+}
 
-    return (
-      <S.Li key={`${genre}-board-${idx}`}>
-        <strong>{movie.title}</strong>
-        <img src={imgPath} />
-      </S.Li>
-    );
-  });
+const ListItems = ({ movie }: IListItem) => {
+  const itemEl = useRef<HTMLLIElement>(null);
+  const [imgPath, setImgPath] = useState(blankPath);
 
-  // InObserver.observe({ entries: Items });
+  let iO: InObserverClosure;
+  const options = { threshold: 0.1 };
+  const func = () => {
+    const url = `${BACK_IMG_URL}/w500/${movie.poster_path}`;
+    setImgPath(url);
+    iO.disconnect();
+  };
 
-  return <>{Items}</>;
+  useEffect(() => {
+    if (itemEl.current) {
+      iO = InObserver({
+        target: itemEl.current,
+        options: options,
+        callback: func
+      });
+
+      iO.observe();
+    }
+
+    return () => iO.disconnect();
+  }, [imgPath, itemEl.current, options]);
+
+  return (
+    <S.Li ref={itemEl}>
+      <strong>{movie.title}</strong>
+      <img src={imgPath} />
+    </S.Li>
+  );
 };
