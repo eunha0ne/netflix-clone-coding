@@ -1,4 +1,4 @@
-import { BACK_IMG_URL } from '~/constants';
+import { IMG_URL } from '~/constants';
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
@@ -45,8 +45,7 @@ export const Background = styled.div`
     background-size: cover;
 
     ${({ backPath }: IBackground) =>
-      backPath &&
-      `background-image: url(${BACK_IMG_URL}/original/${backPath});`};
+      backPath && `background-image: url(${IMG_URL}/original/${backPath});`};
 
     ${({ backDir }: IBackground) =>
       backDir === 'default'

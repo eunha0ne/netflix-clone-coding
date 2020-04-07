@@ -1,12 +1,19 @@
 import React from 'react';
-import { MovieList } from '~/features/movie/MovieList';
+
 import { KeyVisual } from '~/features/keyVisual';
+import { BillBoard } from '~/features/billBoard';
 
 const Latest = () => {
+  const pageDefs = {
+    viewName: 'latest',
+    genre: 'movie',
+    query: `/trending/all/week`
+  };
+
   return (
     <main>
-      <KeyVisual viewName={'latest'} genre={'movie'} id={653567} />
-      <MovieList />
+      <KeyVisual {...pageDefs} id={653567} />
+      <BillBoard {...pageDefs} />
     </main>
   );
 };

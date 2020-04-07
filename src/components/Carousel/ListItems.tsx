@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
-import { BACK_IMG_URL } from '~/constants';
+import { IMG_URL } from '~/constants';
 import { IMovie } from '~/features/billBoard/types';
 
 import blankPath from '~/assets/images/blank.png';
@@ -14,34 +14,29 @@ interface IListItems {
 export const ListItems = ({ movie }: IListItems) => {
   const itemEl = useRef<HTMLLIElement>(null);
   const [imgPath, setImgPath] = useState(blankPath);
-
-  let iO: InObserverClosure;
-  const options = { threshold: 0.1 };
-  const func = () => {
-    const url = `${BACK_IMG_URL}/w500/${movie.poster_path}`;
-
-    setImgPath(url);
-    iO.disconnect();
-  };
+  const posterPath = movie.poster_path;
 
   useEffect(() => {
-    if (itemEl.current) {
-      iO = InObserver({
-        target: itemEl.current,
-        options: options,
-        callback: func
-      });
+    const iO: InObserverClosure = InObserver({
+      target: itemEl.current!,
+      options: { threshold: 0.1 },
+      callback: () => {
+        const url = `${IMG_URL}/w500/${posterPath}`;
+        setImgPath(url);
+        iO.disconnect();
+      }
+    });
 
+    if (imgPath !== posterPath) {
       iO.observe();
     }
 
     return () => iO.disconnect();
-  }, [imgPath, itemEl.current, options]);
+  }, [itemEl, imgPath, posterPath]);
 
   return (
     <S.Li ref={itemEl}>
-      <strong>{movie.title}</strong>
-      <img src={imgPath} />
+      <img src={imgPath} alt={movie.title} />
     </S.Li>
   );
 };

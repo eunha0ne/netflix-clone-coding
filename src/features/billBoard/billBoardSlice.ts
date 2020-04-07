@@ -58,11 +58,12 @@ const billBoardSlice = createSlice({
 
 export const fetchBillBoard = ({
   viewName,
-  genre
+  genre,
+  query
 }: IBoardProps): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getBoardStart());
-    const movies = await getMovies({ genre });
+    const movies = await getMovies(query);
     dispatch(getBoardSuccess({ viewName, movies }));
   } catch (error) {
     dispatch(getBoardFailure());

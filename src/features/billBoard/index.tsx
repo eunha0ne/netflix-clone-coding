@@ -5,19 +5,24 @@ import { RootState } from '~/app/rootReducer';
 import { fetchBillBoard } from './billBoardSlice';
 import { IBoardProps } from './types';
 
-import { BillBoardContents } from './BillBoardContents';
+import { Carousel } from '~/components/Carousel';
 
-export const BillBoard = ({ genre, viewName }: IBoardProps) => {
+export const BillBoard = (props: IBoardProps) => {
+  const { genre, viewName } = props;
   const dispatch = useDispatch();
-  const board = useSelector((state: RootState) => state.billBoard);
-  const { isLoading, isError, views } = board;
-  const movies = views[viewName];
+  const data = useSelector((state: RootState) => state.billBoard);
+  const movies = data.views[viewName];
 
   useEffect(() => {
     if (!movies.length) {
-      dispatch(fetchBillBoard({ genre, viewName }));
+      dispatch(fetchBillBoard(props));
     }
-  }, [movies, genre, viewName]);
+  }, [dispatch, movies, props]);
 
-  return <BillBoardContents movies={movies} genre={genre} />;
+  return (
+    <section>
+      <h2>추천 콘텐츠</h2>
+      <Carousel movies={movies} genre={genre} />
+    </section>
+  );
 };

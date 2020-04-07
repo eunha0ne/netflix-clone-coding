@@ -20,7 +20,7 @@ export const KeyVisualContents = ({
   const backDir = ['tv'].includes(viewName) ? 'default' : 'reverse';
 
   return (
-    <S.Section>
+    <>
       <h2 className="blind">특별 컨텐츠</h2>
       <S.Background backPath={backPath} backDir={backDir}>
         <S.Contents>
@@ -31,7 +31,7 @@ export const KeyVisualContents = ({
           <BtnGroups />
         </S.Contents>
       </S.Background>
-    </S.Section>
+    </>
   );
 };
 
@@ -54,6 +54,7 @@ const BtnGroups = () => (
     <button className="play">
       <span>재생</span>
     </button>
+
     <button className="details">
       <UI.InfoCircle width="1.75vw" height="100%" />
       <span>상세 정보</span>

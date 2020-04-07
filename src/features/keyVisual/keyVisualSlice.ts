@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
-import { getKeyVisual } from '~/api/movie';
+import { getMovie } from '~/api/movie';
 import { IMovie, IKeyVisualProps } from './types';
 
 export interface IKeyVisual {
@@ -58,11 +58,12 @@ interface IKeyVisaulPayload {
 export const fetchKeyVisual = ({
   viewName,
   genre,
-  id
+  id,
+  query
 }: IKeyVisualProps): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getkeyVisualStart());
-    const keyVisual = await getKeyVisual({ genre, id });
+    const keyVisual = await getMovie(genre, id);
     dispatch(getKeyVisualSuccess({ viewName, keyVisual }));
   } catch (error) {
     dispatch(getKeyVisualFailure());
