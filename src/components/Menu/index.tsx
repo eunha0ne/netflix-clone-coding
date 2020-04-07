@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Menu = () => (
-  <>
-    <div></div>
-  </>
-);
+import { Search } from '~/components/Search';
+import * as S from './index.style';
+
+export const Menu = () => <Search />;
