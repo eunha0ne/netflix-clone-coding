@@ -7,6 +7,7 @@ const Tv = lazy(() => import('~/pages/Tv'));
 const Movie = lazy(() => import('~/pages/Movie'));
 const Latest = lazy(() => import('~/pages/Latest'));
 const MyList = lazy(() => import('~/pages/MyList'));
+const Search = lazy(() => import('~/pages/Search'));
 
 export default function App() {
   return (
@@ -27,6 +28,9 @@ export default function App() {
           </Route>
           <Route path="/my-list">
             <MyList />
+          </Route>
+          <Route path="/search">
+            <Search />
           </Route>
         </Switch>
       </Suspense>
