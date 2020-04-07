@@ -1,4 +1,4 @@
-import { BACK_IMG_URL } from '~/constants';
+import { IMG_URL } from '~/constants';
 import styled from '@emotion/styled';
 
 export const Section = styled.section`

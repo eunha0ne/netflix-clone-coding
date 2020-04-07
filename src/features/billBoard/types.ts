@@ -18,6 +18,7 @@ export interface IMovie {
 export interface IBoardProps {
   viewName: string;
   genre: string;
+  query: string;
 }
 
 export interface IBillBoardProps {

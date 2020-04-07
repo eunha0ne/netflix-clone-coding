@@ -7,15 +7,14 @@ import { IBoardProps } from './types';
 
 import { BillBoardContents } from './BillBoardContents';
 
-export const BillBoard = ({ genre, viewName }: IBoardProps) => {
+export const BillBoard = ({ genre, viewName, query }: IBoardProps) => {
   const dispatch = useDispatch();
-  const board = useSelector((state: RootState) => state.billBoard);
-  const { isLoading, isError, views } = board;
-  const movies = views[viewName];
+  const data = useSelector((state: RootState) => state.billBoard);
+  const movies = data.views[viewName];
 
   useEffect(() => {
     if (!movies.length) {
-      dispatch(fetchBillBoard({ genre, viewName }));
+      dispatch(fetchBillBoard({ genre, viewName, query }));
     }
   }, [movies, genre, viewName]);
 

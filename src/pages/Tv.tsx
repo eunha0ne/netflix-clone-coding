@@ -1,12 +1,19 @@
 import React from 'react';
-import { MovieList } from '~/features/movie/MovieList';
+
 import { KeyVisual } from '~/features/keyVisual';
+import { BillBoard } from '~/features/billBoard';
 
 const Tv = () => {
+  const pageDefs = {
+    viewName: 'tv',
+    genre: 'tv',
+    query: `/discover/tv`
+  };
+
   return (
     <main>
-      <KeyVisual viewName={'tv'} genre={'tv'} id={71912} />
-      <MovieList />
+      <KeyVisual {...pageDefs} id={71912} />
+      <BillBoard {...pageDefs} />
     </main>
   );
 };

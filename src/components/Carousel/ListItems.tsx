@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
-import { BACK_IMG_URL } from '~/constants';
+import { IMG_URL } from '~/constants';
 import { IMovie } from '~/features/billBoard/types';
 
 import blankPath from '~/assets/images/blank.png';
@@ -18,8 +18,7 @@ export const ListItems = ({ movie }: IListItems) => {
   let iO: InObserverClosure;
   const options = { threshold: 0.1 };
   const func = () => {
-    const url = `${BACK_IMG_URL}/w500/${movie.poster_path}`;
-
+    const url = `${IMG_URL}/w500/${movie.poster_path}`;
     setImgPath(url);
     iO.disconnect();
   };
@@ -31,6 +30,8 @@ export const ListItems = ({ movie }: IListItems) => {
         options: options,
         callback: func
       });
+
+      console.log('/');
 
       iO.observe();
     }

@@ -18,4 +18,5 @@ export interface IKeyVisualProps {
   viewName: string;
   genre: string;
   id: number;
+  query: string;
 }
