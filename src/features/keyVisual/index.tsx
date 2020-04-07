@@ -32,3 +32,8 @@ export const KeyVisual = (props: IKeyVisualProps) => {
 
   return <S.Section>{contents}</S.Section>;
 };
+
+// if (isOnline === null) {
+//   return 'Loading...';
+// }
+// return isOnline ? 'Online' : 'Offline';

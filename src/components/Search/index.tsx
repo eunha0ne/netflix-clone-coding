@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { debounce } from '~/utils/debounce';
 
 import * as S from './index.style';
@@ -7,38 +8,38 @@ export const Search = () => {
   const inputEl = useRef<HTMLInputElement>(null);
   const [userInput, setUserInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  let history = useHistory();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const inputs = event.target.value;
     setIsTyping(true);
-    setUserInput(inputs);
+    setUserInput(event.target.value);
     debounceOnChange();
   };
-  const func = () => {
+  const goSearch = () => {
     setIsTyping(false);
+
     if (inputEl.current !== null) {
-      const userinputs = inputEl.current;
-      console.log('/debounced', userinputs.value);
+      let keywords = inputEl.current.value;
+      if (/^\s/.test(keywords)) {
+        keywords = keywords.replace(/^\s/, '');
+      }
+
+      keywords.length > 0
+        ? history.push(`/search?q=${keywords}`)
+        : history.push(`/`);
     }
   };
-  const debounceOnChange = debounce(func, 1000, isTyping);
+  const debounceOnChange = debounce(goSearch, 600, isTyping);
 
   return (
-    <div>
-      <label htmlFor="headerSearch">
-        <input
-          ref={inputEl}
-          id="headerSearch"
-          type="text"
-          value={userInput}
-          onChange={onChange}
-        />
-      </label>
-    </div>
+    <label htmlFor="headerSearch">
+      <input
+        ref={inputEl}
+        id="headerSearch"
+        type="search"
+        value={userInput}
+        onChange={onChange}
+      />
+    </label>
   );
 };
-
-// if (isOnline === null) {
-//   return 'Loading...';
-// }
-// return isOnline ? 'Online' : 'Offline';
