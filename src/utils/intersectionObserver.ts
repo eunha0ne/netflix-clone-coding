@@ -3,30 +3,37 @@
  */
 
 interface InObserverProps {
-  entries: [] | JSX.Element[];
+  target: HTMLLIElement;
   options: {
     root?: Element;
     rootMargin?: string;
-    thresholds?: number;
+    threshold?: number;
   };
-  callback: Function;
+  callback: CallableFunction;
 }
 
-export const InObserver = ({ entries, options, callback }: InObserverProps) => {
-  const iO = new IntersectionObserver(() => {
+export interface InObserverClosure {
+  observe: CallableFunction;
+  disconnect: CallableFunction;
+  takeRecords: CallableFunction;
+  unobserve: CallableFunction;
+}
+
+export const InObserver = ({ target, options, callback }: InObserverProps) => {
+  const interObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const { isIntersecting } = entry;
       if (isIntersecting) {
-        callback && callback();
-        iO.disconnect();
+        interObserver.disconnect();
+        callback();
       }
     });
   }, options);
 
   return {
-    observe: (entries: Element) => iO.observe(entries),
-    disconnect: () => iO.disconnect(),
-    takeRecords: () => iO.takeRecords(),
-    unobserve: (element: Element) => iO.unobserve(element)
+    observe: () => interObserver.observe(target),
+    disconnect: () => interObserver.disconnect(),
+    takeRecords: () => interObserver.takeRecords(),
+    unobserve: () => interObserver.unobserve(target)
   };
 };
