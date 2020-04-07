@@ -54,6 +54,7 @@ const BtnGroups = () => (
     <button className="play">
       <span>재생</span>
     </button>
+
     <button className="details">
       <UI.InfoCircle width="1.75vw" height="100%" />
       <span>상세 정보</span>

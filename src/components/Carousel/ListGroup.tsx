@@ -19,7 +19,7 @@ export const ListGroup = ({ pageIndex, movies, genre }: IListProps) => {
             genre={genre}
           />
         ));
-      }, [movies])}
+      }, [movies, genre])}
     </S.Ul>
   );
 };
