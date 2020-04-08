@@ -5,7 +5,7 @@ import { PosterCard } from '~/features/PosterCard';
 
 const Latest = () => {
   const pageDefs = {
-    viewName: 'latest',
+    menuName: 'latest',
     genre: 'movie',
     resourcePath: `/movie/now_playing`
   };

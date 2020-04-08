@@ -6,7 +6,7 @@ import { Billboard } from '~/features/Billboard';
 
 const Home = () => {
   const pageDefs = {
-    viewName: 'home',
+    menuName: 'home',
     genre: 'movie',
     resourcePath: `/trending/all/week`
   };

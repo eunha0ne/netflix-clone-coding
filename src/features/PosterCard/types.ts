@@ -1,12 +1,12 @@
 import { IMovie } from '~/features/common/types';
 
 export interface IPosterCard {
-  viewName: string;
+  menuName: string;
   genre: string;
   resourcePath: string;
 }
 
 export interface PosterCardPayload {
-  viewName: string;
+  menuName: string;
   movies: IMovie[];
 }

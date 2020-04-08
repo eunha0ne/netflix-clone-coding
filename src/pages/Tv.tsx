@@ -5,7 +5,7 @@ import { PosterCard } from '~/features/PosterCard';
 
 const Tv = () => {
   const pageDefs = {
-    viewName: 'tv',
+    menuName: 'tv',
     genre: 'tv',
     resourcePath: `/discover/tv`
   };

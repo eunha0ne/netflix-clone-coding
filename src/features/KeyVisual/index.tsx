@@ -10,7 +10,7 @@ import { KeyVisualContents } from './KeyVisualContents';
 import * as S from './KeyVisualContents.style';
 
 export const KeyVisual = (props: IKeyVisual) => {
-  const { viewName } = props;
+  const { menuName } = props;
   const dispatch = useDispatch();
   const { isLoading, isError, movie } = useSelector((state: RootState): {
     isLoading: boolean;
@@ -19,7 +19,7 @@ export const KeyVisual = (props: IKeyVisual) => {
   } => ({
     isLoading: state.keyVisual.isLoading,
     isError: state.keyVisual.isError,
-    movie: state.keyVisual.views[viewName]
+    movie: state.keyVisual.views[menuName]
   }));
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export const KeyVisual = (props: IKeyVisual) => {
   // 리팩토링 필요
   let contents;
   if (isLoading || !movie) contents = <p>콘텐츠 준비 중입니다.</p>;
-  else contents = <KeyVisualContents {...movie} viewName={viewName} />;
+  else contents = <KeyVisualContents {...movie} menuName={menuName} />;
 
   if (isError) {
     contents = <p>콘텐츠를 가져오는데 실패했습니다.</p>;

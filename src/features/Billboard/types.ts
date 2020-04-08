@@ -1,12 +1,13 @@
 import { IMovie } from '~/features/common/types';
 
 export interface IBillboard {
-  viewName: string;
+  menuName: string;
   genre: string;
   resourcePath: string;
+  page?: number;
 }
 
 export interface BillboardPayload {
-  viewName: string;
+  menuName: string;
   movies: IMovie[];
 }

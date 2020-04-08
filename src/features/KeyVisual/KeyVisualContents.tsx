@@ -5,7 +5,7 @@ import * as UI from '~/assets/ui/Icons';
 import * as S from './KeyVisualContents.style';
 
 interface IMovieContent extends IMovie {
-  viewName: string;
+  menuName: string;
 }
 
 export const KeyVisualContents = ({
@@ -15,9 +15,9 @@ export const KeyVisualContents = ({
   overview,
   genres,
   backdrop_path: backPath,
-  viewName
+  menuName
 }: IMovieContent) => {
-  const backDir = ['tv'].includes(viewName) ? 'default' : 'reverse';
+  const backDir = ['tv'].includes(menuName) ? 'default' : 'reverse';
 
   return (
     <>

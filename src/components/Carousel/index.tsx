@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { SLIDE_PER_CARDS_LEN as CARDS_LEN } from '~/constants';
-import { ICarousel } from './types';
 
+import { ICarousel } from './types';
 import { ListGroup } from './ListGroup';
+import { CARDS_LEN_PER_SLIDE as CARDS_LEN } from '~/constants';
+
 import * as UI from '~/assets/ui/Icons';
 import * as S from './index.style';
 
@@ -10,7 +11,7 @@ export const Carousel = (props: ICarousel) => {
   const { movies } = props;
   const [pageIndex, setPageIndex] = useState(0);
 
-  const isNotStart = pageIndex > 0;
+  const isNotStart = 0 < pageIndex;
   const isNotEnd = pageIndex + 1 < movies.length / CARDS_LEN;
   const goPrev = () => isNotStart && setPageIndex(pageIndex - 1);
   const goNext = () => isNotEnd && setPageIndex(pageIndex + 1);
