@@ -2,29 +2,42 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getMovies } from '~/api/movie';
 
-import { IMovie, IFeature } from '~/features/common/types';
+import { IMovie } from '~/features/common/types';
 import { IBillboard, BillboardPayload } from './types';
 
-interface BillboardState extends IFeature {
-  views: {
-    [key: string]: IMovie[];
-    home: IMovie[];
-    movie: IMovie[];
-    tv: IMovie[];
-    latest: IMovie[];
-    myList: IMovie[];
+interface BillboardState {
+  [key: string]: {
+    isLoading: boolean;
+    isError: boolean;
+    data: IMovie[];
   };
 }
 
 const initialState: BillboardState = {
-  isLoading: false,
-  isError: false,
-  views: {
-    home: [],
-    movie: [],
-    tv: [],
-    latest: [],
-    myList: []
+  home: {
+    isLoading: false,
+    isError: false,
+    data: []
+  },
+  movie: {
+    isLoading: false,
+    isError: false,
+    data: []
+  },
+  tv: {
+    isLoading: false,
+    isError: false,
+    data: []
+  },
+  latest: {
+    isLoading: false,
+    isError: false,
+    data: []
+  },
+  myList: {
+    isLoading: false,
+    isError: false,
+    data: []
   }
 };
 
@@ -32,34 +45,46 @@ const billboardSlice = createSlice({
   name: 'billboard',
   initialState,
   reducers: {
-    getBoardStart(state) {
-      if (!state.isLoading) {
-        state.isLoading = true;
+    getBoardStart(state, action) {
+      const { menuName } = action.payload;
+      if (!state[menuName].isLoading) {
+        state[menuName].isLoading = true;
       }
     },
     getBoardSuccess(state, action: PayloadAction<BillboardPayload>) {
-      if (state.isLoading) {
-        const { movies, viewName }: BillboardPayload = action.payload;
-        state.views[viewName] = movies;
-        state.isLoading = false;
+      const { movies, menuName }: BillboardPayload = action.payload;
+      if (state[menuName].isLoading) {
+        state[menuName].data.push(...movies);
+        state[menuName].isLoading = false;
       }
     },
-    getBoardFailure(state) {
-      state.isError = true;
+    getBoardFailure(state, action) {
+      const { menuName } = action.payload;
+      state[menuName].isError = true;
     }
   }
 });
 
 export const fetchBillboard = ({
-  viewName,
-  resourcePath
+  menuName,
+  resourcePath,
+  page
 }: IBillboard): AppThunk => async (dispatch: AppDispatch) => {
   try {
-    dispatch(getBoardStart());
-    const movies = await getMovies({ resourcePath });
-    dispatch(getBoardSuccess({ viewName, movies }));
+    dispatch(getBoardStart({ menuName }));
+
+    console.log(
+      '/',
+
+      menuName,
+      resourcePath,
+      page
+    );
+
+    const movies = await getMovies({ resourcePath, page });
+    dispatch(getBoardSuccess({ menuName, movies }));
   } catch (error) {
-    dispatch(getBoardFailure());
+    dispatch(getBoardFailure({ menuName }));
     console.log(error);
   }
 };

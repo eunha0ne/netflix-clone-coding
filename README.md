@@ -1,32 +1,39 @@
 ## 개발 참고
 
+> 개발하면서 참고한 문서들 및 다시 읽고 싶은 문서 모음
+
+### 아키텍처
+
+- [Link: gatsby-starter-bee](https://github.com/JaeYeopHan/gatsby-starter-bee)
+- [Read: baeharam/architecture](https://baeharam.netlify.com/posts/architecture/%EB%B2%88%EC%97%AD-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C)
+- [Read: redux-toolkit/advanced-tutorial](https://redux-toolkit.js.org/tutorials/advanced-tutorial)
+
 ### 리액트
 
-- [React](https://ko.reactjs.org/docs/getting-started.html)
-- [CRA](https://create-react-app.dev/)
-- [코드 스플릿팅]()
-- [throttle-debounce]()
-- [Effect hook](https://ko.reactjs.org/docs/hooks-effect.html)
+- [Link: ko.reactjs](https://ko.reactjs.org/docs/getting-started.html)
+- [Link: create-react-app](https://create-react-app.dev/)
+- [Read: hooks-effect](https://ko.reactjs.org/docs/hooks-effect.html)
 
-### 라우트 설정
+### 라우터
 
-- [react-router](https://reacttraining.com/react-router/web/guides/quick-start)
+- [Read: react-router](https://reacttraining.com/react-router/web/guides/quick-start)
 
-### 환경 설정 오버라이딩
+### 환경 설정, 오버라이딩
 
 - [customize-cra](https://github.com/arackaf/customize-cra)
 - [react-app-rewired](https://github.com/timarney/react-app-rewired)
 
-### API 개발
+### API
 
-- [Axios](https://github.com/axios/axios)
-- [(참고) API 연동](https://velog.io/@smooth97/Netflix-Clone-1-API-)
+- [Link: axios](https://github.com/axios/axios)
+- [Read: @smooth97/Netflix-Clone-1-API](https://velog.io/@smooth97/Netflix-Clone-1-API-)
+- [Link: themoviedb](https://developers.themoviedb.org/3)
 
-### 상태 관리, Redux
+### 상태 관리
 
 - [Redux: 리덕스](https://redux.js.org/introduction/getting-started)
 - [Redux: 리덕스, 스타일 가이드](https://redux.js.org/style-guide/style-guide)
-  - [(참고) 번역: 리덕스, 스타일 가이드](https://baeharam.netlify.com/posts/architecture/%EB%B2%88%EC%97%AD-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C)
+
 - [React Redux: 리엑트 리덕스 (Offical React bindings for Redux)](https://react-redux.js.org/)
 - [Redux Thunk: 리덕스 미들웨어](https://github.com/reduxjs/redux-thunk)
 
@@ -66,8 +73,8 @@
 - [Read: webp](https://post.naver.com/viewer/postView.nhn?volumeNo=9688816&memberNo=1834)
 - [Read: MDN IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
 
-  - [Read: intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
-  - [Read: intersectionobserver-overview](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
+- [Read: intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+- [Read: intersectionobserver-overview](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
 
 - [Read: lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
 - [Read: usememo](https://alligator.io/react/usememo/)
