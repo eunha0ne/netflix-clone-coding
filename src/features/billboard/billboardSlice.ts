@@ -29,7 +29,7 @@ const initialState: BillboardState = {
 };
 
 const billboardSlice = createSlice({
-  name: 'billBoard',
+  name: 'billboard',
   initialState,
   reducers: {
     getBoardStart(state) {
