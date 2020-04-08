@@ -60,7 +60,7 @@ export const fetchBillboard = ({
     dispatch(getBoardSuccess({ viewName, movies }));
   } catch (error) {
     dispatch(getBoardFailure());
-    throw error;
+    console.log(error);
   }
 };
 
