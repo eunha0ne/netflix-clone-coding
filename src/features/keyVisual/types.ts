@@ -4,7 +4,7 @@ export interface IKeyVisual {
   viewName: string;
   genre: string;
   id: number;
-  query: string;
+  resourcePath: string;
 }
 
 export interface KeyVisualPayload {

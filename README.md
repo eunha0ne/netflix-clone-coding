@@ -38,7 +38,6 @@
   - [(참고) 리덕스 툴킷: redux-react-guide (with Redux Toolkit)](https://www.taniarascia.com/redux-react-guide/)
   - [(참고) 리덕스 툴킷, 타입스크립트: redux-made-easy-with-redux-toolkit-and-typescrip](https://www.mattbutton.com/redux-made-easy-with-redux-toolkit-and-typescript/)
 
-* [(참고) useSelector 최적화: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
 * [(참고) 리덕스 데브툴: Redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ### 타입스크립트
@@ -65,24 +64,17 @@
 ### 최적화
 
 - [Read: webp](https://post.naver.com/viewer/postView.nhn?volumeNo=9688816&memberNo=1834)
-- [Read: IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
-- [intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
-- [IntersectionObserver를 이용한 이미지 동적 로딩 기능 개선](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
-- [lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
+- [Read: MDN IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
 
-  ```html
-  <img src="https://ik.imagekit.io/demo/img/image3.jpg?tr=w-400,h-300" />
-  <img
-    class="lazy"
-    src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300,bl-30,q-50"
-    data-src="https://ik.imagekit.io/demo/img/image4.jpeg?tr=w-400,h-300"
-  />
-  ```
+  - [Read: intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+  - [Read: intersectionobserver-overview](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
 
-  - [Read: usememo](https://alligator.io/react/usememo/)
-  - [Read: review-when-to-usememo-and-usecallback](https://rinae.dev/posts/review-when-to-usememo-and-usecallback)
-  - [Read: debounce-and-throttle-in-real-life-scenario](https://medium.com/walkme-engineering/debounce-and-throttle-in-real-life-scenarios-1cc7e2e38c68)
-  - [Read: debounce-react-synthetic-event](https://hyunseob.github.io/2018/06/24/debounce-react-synthetic-event/)
+- [Read: lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
+- [Read: usememo](https://alligator.io/react/usememo/)
+- [Read: review-when-to-usememo-and-usecallback](https://rinae.dev/posts/review-when-to-usememo-and-usecallback)
+- [Read: debounce-and-throttle-in-real-life-scenario](https://medium.com/walkme-engineering/debounce-and-throttle-in-real-life-scenarios-1cc7e2e38c68)
+- [Read: debounce-react-synthetic-event](https://hyunseob.github.io/2018/06/24/debounce-react-synthetic-event/)
+- [Read: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
 
 ### SEO
 

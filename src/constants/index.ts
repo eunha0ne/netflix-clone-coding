@@ -3,13 +3,13 @@ export const BASE_URL = 'https://api.themoviedb.org/3';
 export const IMG_URL = 'https://image.tmdb.org/t/p';
 export const SLIDE_PER_CARDS_LEN = 5;
 
+// ## Image Sizes
+
 // poster   = Poster ............  500 x 750   2000 x 3000
 // backdrop = Fanart ............ 1280 x 720   3840 x 2160
 // still    = TV Show Episode ... 1280 x 720   3840 x 2160
 // profile  = Actors Actresses ..  300 x 450   2000 x 3000
 // logo     = TMDb Logo
-
-// ## Image Sizes
 
 // |  poster  | backdrop |  still   | profile  |   logo   |
 // | :------: | :------: | :------: | :------: | :------: |
