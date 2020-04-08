@@ -7,7 +7,7 @@ const Latest = () => {
   const pageDefs = {
     viewName: 'latest',
     genre: 'movie',
-    query: `/trending/all/week`
+    resourcePath: `/movie/now_playing`
   };
 
   return (

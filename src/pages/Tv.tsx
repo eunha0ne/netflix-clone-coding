@@ -7,7 +7,7 @@ const Tv = () => {
   const pageDefs = {
     viewName: 'tv',
     genre: 'tv',
-    query: `/discover/tv`
+    resourcePath: `/discover/tv`
   };
 
   return (

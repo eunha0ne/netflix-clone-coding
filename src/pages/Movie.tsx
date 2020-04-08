@@ -7,7 +7,7 @@ const Movie = () => {
   const pageDefs = {
     viewName: 'movie',
     genre: 'movie',
-    query: '/discover/movie'
+    resourcePath: '/discover/movie'
   };
 
   return (

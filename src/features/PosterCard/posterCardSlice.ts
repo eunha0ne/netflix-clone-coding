@@ -52,11 +52,11 @@ const posterCardSlice = createSlice({
 
 export const fetchBillboard = ({
   viewName,
-  query
+  resourcePath
 }: IPosterCard): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getBoardStart());
-    const movies = await getMovies(query);
+    const movies = await getMovies({ resourcePath });
     dispatch(getBoardSuccess({ viewName, movies }));
   } catch (error) {
     dispatch(getBoardFailure());
