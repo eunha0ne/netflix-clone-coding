@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
 import { IMG_URL } from '~/constants';
-import { IMovie } from '~/features/billBoard/types';
+
+import { IMovie } from '~/features/common/types';
 
 import blankPath from '~/assets/images/blank.png';
 import * as S from './ListItems.style';

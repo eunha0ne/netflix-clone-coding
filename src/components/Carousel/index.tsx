@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { SLIDE_PER_CARDS_LEN as CARDS_LEN } from '~/constants';
-import { IBillBoardProps } from '~/features/billBoard/types';
+import { ICarousel } from './types';
 
 import { ListGroup } from './ListGroup';
 import * as UI from '~/assets/ui/Icons';
 import * as S from './index.style';
 
-export const Carousel = (props: IBillBoardProps) => {
+export const Carousel = (props: ICarousel) => {
   const { movies } = props;
   const [pageIndex, setPageIndex] = useState(0);
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { KeyVisual } from '~/features/keyVisual';
-import { BillBoard } from '~/features/billBoard';
+import { Billboard } from '~/features/billboard';
 
 const Latest = () => {
   const pageDefs = {
@@ -13,7 +13,7 @@ const Latest = () => {
   return (
     <main>
       <KeyVisual {...pageDefs} id={653567} />
-      <BillBoard {...pageDefs} />
+      <Billboard {...pageDefs} />
     </main>
   );
 };
