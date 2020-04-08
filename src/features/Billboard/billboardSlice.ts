@@ -45,21 +45,23 @@ const billboardSlice = createSlice({
   name: 'billboard',
   initialState,
   reducers: {
-    getBoardStart(state, action) {
-      const { menuName } = action.payload;
-      if (!state[menuName].isLoading) {
+    getBoardStart(state, { payload }: PayloadAction<{ menuName: string }>) {
+      const { menuName } = payload;
+      const isLoading = state[menuName].isLoading;
+      if (!isLoading) {
         state[menuName].isLoading = true;
       }
     },
-    getBoardSuccess(state, action: PayloadAction<BillboardPayload>) {
-      const { movies, menuName }: BillboardPayload = action.payload;
-      if (state[menuName].isLoading) {
+    getBoardSuccess(state, { payload }: PayloadAction<BillboardPayload>) {
+      const { movies, menuName } = payload;
+      const isLoading = state[menuName].isLoading;
+      if (isLoading) {
         state[menuName].data.push(...movies);
         state[menuName].isLoading = false;
       }
     },
-    getBoardFailure(state, action) {
-      const { menuName } = action.payload;
+    getBoardFailure(state, { payload }: PayloadAction<{ menuName: string }>) {
+      const { menuName } = payload;
       state[menuName].isError = true;
     }
   }
@@ -72,15 +74,6 @@ export const fetchBillboard = ({
 }: IBillboard): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getBoardStart({ menuName }));
-
-    console.log(
-      '/',
-
-      menuName,
-      resourcePath,
-      page
-    );
-
     const movies = await getMovies({ resourcePath, page });
     dispatch(getBoardSuccess({ menuName, movies }));
   } catch (error) {

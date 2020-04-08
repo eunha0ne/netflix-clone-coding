@@ -8,12 +8,13 @@ const Home = () => {
   const pageDefs = {
     menuName: 'home',
     genre: 'movie',
-    resourcePath: `/trending/all/week`
+    resourcePath: '/trending/all/week',
+    sectionTitle: '특별 콘텐츠'
   };
 
   return (
     <main>
-      <KeyVisual {...pageDefs} id={4935} />
+      <KeyVisual {...pageDefs} uid={4935} />
       <PosterCard {...pageDefs} />
       <Billboard {...pageDefs} />
     </main>

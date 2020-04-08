@@ -5,9 +5,9 @@ import { BASE_URL, API_KEY } from '~/constants';
 
 export async function getMovie(
   resourcePath: string,
-  id: number
+  uid: number
 ): Promise<IMovie> {
-  const URL = `${BASE_URL}/${resourcePath}/${id}`;
+  const URL = `${BASE_URL}/${resourcePath}/${uid}`;
   const params = {
     api_key: `${API_KEY}`,
     language: `ko`

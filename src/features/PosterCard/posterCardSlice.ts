@@ -32,19 +32,19 @@ const posterCardSlice = createSlice({
   name: 'posterCard',
   initialState,
   reducers: {
-    getBoardStart(state) {
+    getPosterStart(state) {
       if (!state.isLoading) {
         state.isLoading = true;
       }
     },
-    getBoardSuccess(state, action: PayloadAction<PosterCardPayload>) {
+    getPosterSuccess(state, action: PayloadAction<PosterCardPayload>) {
       if (state.isLoading) {
         const { movies, menuName }: PosterCardPayload = action.payload;
         state.views[menuName] = movies;
         state.isLoading = false;
       }
     },
-    getBoardFailure(state) {
+    getPosterFailure(state) {
       state.isError = true;
     }
   }
@@ -55,15 +55,15 @@ export const fetchBillboard = ({
   resourcePath
 }: IPosterCard): AppThunk => async (dispatch: AppDispatch) => {
   try {
-    dispatch(getBoardStart());
+    dispatch(getPosterStart());
     const movies = await getMovies({ resourcePath });
-    dispatch(getBoardSuccess({ menuName, movies }));
+    dispatch(getPosterSuccess({ menuName, movies }));
   } catch (error) {
-    dispatch(getBoardFailure());
+    dispatch(getPosterFailure());
     console.log(error);
   }
 };
 
 const { actions, reducer } = posterCardSlice;
-export const { getBoardStart, getBoardSuccess, getBoardFailure } = actions;
+export const { getPosterStart, getPosterSuccess, getPosterFailure } = actions;
 export default reducer;

@@ -12,7 +12,7 @@ const Tv = () => {
 
   return (
     <main>
-      <KeyVisual {...pageDefs} id={71912} />
+      <KeyVisual {...pageDefs} uid={71912} />
       <PosterCard {...pageDefs} />
     </main>
   );

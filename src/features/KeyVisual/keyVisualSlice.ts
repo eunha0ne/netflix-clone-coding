@@ -53,11 +53,11 @@ const keyVisualSlice = createSlice({
 export const fetchKeyVisual = ({
   menuName,
   genre,
-  id
+  uid
 }: IKeyVisual): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getkeyVisualStart());
-    const keyVisual = await getMovie(genre, id);
+    const keyVisual = await getMovie(genre, uid);
     dispatch(getKeyVisualSuccess({ menuName, keyVisual }));
   } catch (error) {
     dispatch(getKeyVisualFailure());

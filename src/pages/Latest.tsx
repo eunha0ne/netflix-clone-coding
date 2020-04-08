@@ -12,7 +12,7 @@ const Latest = () => {
 
   return (
     <main>
-      <KeyVisual {...pageDefs} id={653567} />
+      <KeyVisual {...pageDefs} uid={653567} />
       <PosterCard {...pageDefs} />
     </main>
   );
