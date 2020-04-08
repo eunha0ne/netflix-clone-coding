@@ -5,7 +5,7 @@ import { PosterCard } from '~/features/PosterCard';
 
 const Movie = () => {
   const pageDefs = {
-    viewName: 'movie',
+    menuName: 'movie',
     genre: 'movie',
     resourcePath: '/discover/movie'
   };

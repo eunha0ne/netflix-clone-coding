@@ -1,5 +1,5 @@
-import { IMG_URL } from '~/constants';
 import styled from '@emotion/styled';
+import { IMG_URL } from '~/constants';
 
 export const Section = styled.section`
   padding-bottom: 45vw;

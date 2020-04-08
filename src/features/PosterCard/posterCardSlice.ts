@@ -39,8 +39,8 @@ const posterCardSlice = createSlice({
     },
     getBoardSuccess(state, action: PayloadAction<PosterCardPayload>) {
       if (state.isLoading) {
-        const { movies, viewName }: PosterCardPayload = action.payload;
-        state.views[viewName] = movies;
+        const { movies, menuName }: PosterCardPayload = action.payload;
+        state.views[menuName] = movies;
         state.isLoading = false;
       }
     },
@@ -51,13 +51,13 @@ const posterCardSlice = createSlice({
 });
 
 export const fetchBillboard = ({
-  viewName,
+  menuName,
   resourcePath
 }: IPosterCard): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getBoardStart());
     const movies = await getMovies({ resourcePath });
-    dispatch(getBoardSuccess({ viewName, movies }));
+    dispatch(getBoardSuccess({ menuName, movies }));
   } catch (error) {
     dispatch(getBoardFailure());
     console.log(error);

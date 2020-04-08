@@ -39,8 +39,8 @@ const keyVisualSlice = createSlice({
     },
     getKeyVisualSuccess(state, action: PayloadAction<KeyVisualPayload>) {
       if (state.isLoading) {
-        const { keyVisual, viewName }: KeyVisualPayload = action.payload;
-        state.views[viewName] = keyVisual;
+        const { keyVisual, menuName }: KeyVisualPayload = action.payload;
+        state.views[menuName] = keyVisual;
         state.isLoading = false;
       }
     },
@@ -51,14 +51,14 @@ const keyVisualSlice = createSlice({
 });
 
 export const fetchKeyVisual = ({
-  viewName,
+  menuName,
   genre,
   id
 }: IKeyVisual): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getkeyVisualStart());
     const keyVisual = await getMovie(genre, id);
-    dispatch(getKeyVisualSuccess({ viewName, keyVisual }));
+    dispatch(getKeyVisualSuccess({ menuName, keyVisual }));
   } catch (error) {
     dispatch(getKeyVisualFailure());
     console.log(error);

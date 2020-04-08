@@ -9,10 +9,10 @@ import { IPosterCard } from './types';
 import { Carousel } from '~/components/Carousel';
 
 export const PosterCard = (props: IPosterCard) => {
-  const { genre, viewName } = props;
+  const { genre, menuName } = props;
   const dispatch = useDispatch();
   const { movies } = useSelector((state: RootState): { movies: IMovie[] } => ({
-    movies: state.posterCard.views[viewName]
+    movies: state.posterCard.views[menuName]
   }));
 
   useEffect(() => {
