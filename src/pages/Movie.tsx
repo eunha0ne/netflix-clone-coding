@@ -12,7 +12,7 @@ const Movie = () => {
 
   return (
     <main>
-      <KeyVisual {...pageDefs} id={157336} />
+      <KeyVisual {...pageDefs} uid={157336} />
       <PosterCard {...pageDefs} />
     </main>
   );

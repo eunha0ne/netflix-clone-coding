@@ -3,7 +3,7 @@ import { IMovie } from '~/features/common/types';
 export interface IKeyVisual {
   menuName: string;
   genre: string;
-  id: number;
+  uid: number;
   resourcePath: string;
 }
 

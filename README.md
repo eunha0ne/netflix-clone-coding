@@ -13,6 +13,7 @@
 - [Link: ko.reactjs](https://ko.reactjs.org/docs/getting-started.html)
 - [Link: create-react-app](https://create-react-app.dev/)
 - [Read: hooks-effect](https://ko.reactjs.org/docs/hooks-effect.html)
+- [Read: lists-and-keys](https://ko.reactjs.org/docs/lists-and-keys.html)
 
 ### 라우터
 
@@ -67,6 +68,7 @@
 - [Read: normalize-css-or-css-reset](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
 - [Read: em-vs-rem-vs-px](https://engageinteractive.co.uk/blog/em-vs-rem-vs-px)
 - [Read: CSS/length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+- [Read: useful-nth-child-recipies](https://css-tricks.com/useful-nth-child-recipies/)
 
 ### 최적화
 
@@ -87,7 +89,7 @@
 
 - [robots](https://www.robotstxt.org/robotstxt.html)
 
-### 트러블 슈팅
+### 트러블 슈팅 및 TIL
 
 - ```powershell
   $ npm install --save-dev typescript-styled-plugin typescript
@@ -130,6 +132,8 @@
   ```
   git config core.ignorecase false
   ```
+
+- Key는 형제 사이에서만 고유한 값이어야 한다.
 
 ### 개발하면서 느낀 점
 
