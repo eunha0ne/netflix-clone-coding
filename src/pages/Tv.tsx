@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { KeyVisual } from '~/features/keyVisual';
-import { Billboard } from '~/features/billboard';
+import { KeyVisual } from '~/features/KeyVisual';
+import { PosterCard } from '~/features/PosterCard';
 
 const Tv = () => {
   const pageDefs = {
@@ -13,7 +13,7 @@ const Tv = () => {
   return (
     <main>
       <KeyVisual {...pageDefs} id={71912} />
-      <Billboard {...pageDefs} />
+      <PosterCard {...pageDefs} />
     </main>
   );
 };

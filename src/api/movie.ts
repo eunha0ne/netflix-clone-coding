@@ -1,7 +1,7 @@
 import { BASE_URL, API_KEY } from '~/constants';
 import axios from 'axios';
 
-import { IMovie } from '~/features/keyVisual/types';
+import { IMovie } from '~/features/common/types';
 
 export async function getMovie(query: string, id: number): Promise<IMovie> {
   const url = `${BASE_URL}/${query}/${id}?api_key=${API_KEY}&language=ko`;

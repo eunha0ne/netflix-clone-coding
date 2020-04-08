@@ -3,9 +3,9 @@ import { AppThunk, AppDispatch } from '~/app/store';
 import { getMovies } from '~/api/movie';
 
 import { IMovie, IFeature } from '~/features/common/types';
-import { IBillboard, BillboardPayload } from './types';
+import { IPosterCard, PosterCardPayload } from './types';
 
-interface BillboardState extends IFeature {
+interface PosterCardState extends IFeature {
   views: {
     [key: string]: IMovie[];
     home: IMovie[];
@@ -16,7 +16,7 @@ interface BillboardState extends IFeature {
   };
 }
 
-const initialState: BillboardState = {
+const initialState: PosterCardState = {
   isLoading: false,
   isError: false,
   views: {
@@ -28,8 +28,8 @@ const initialState: BillboardState = {
   }
 };
 
-const billboardSlice = createSlice({
-  name: 'billboard',
+const posterCardSlice = createSlice({
+  name: 'posterCard',
   initialState,
   reducers: {
     getBoardStart(state) {
@@ -37,9 +37,9 @@ const billboardSlice = createSlice({
         state.isLoading = true;
       }
     },
-    getBoardSuccess(state, action: PayloadAction<BillboardPayload>) {
+    getBoardSuccess(state, action: PayloadAction<PosterCardPayload>) {
       if (state.isLoading) {
-        const { movies, viewName }: BillboardPayload = action.payload;
+        const { movies, viewName }: PosterCardPayload = action.payload;
         state.views[viewName] = movies;
         state.isLoading = false;
       }
@@ -53,7 +53,7 @@ const billboardSlice = createSlice({
 export const fetchBillboard = ({
   viewName,
   query
-}: IBillboard): AppThunk => async (dispatch: AppDispatch) => {
+}: IPosterCard): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getBoardStart());
     const movies = await getMovies(query);
@@ -64,6 +64,6 @@ export const fetchBillboard = ({
   }
 };
 
-const { actions, reducer } = billboardSlice;
+const { actions, reducer } = posterCardSlice;
 export const { getBoardStart, getBoardSuccess, getBoardFailure } = actions;
 export default reducer;
