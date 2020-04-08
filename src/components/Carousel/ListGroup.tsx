@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
-import { IBillBoardProps } from '~/features/billBoard/types';
+import { ICarousel } from './types';
 
 import { ListItems } from './ListItems';
 import * as S from './ListGroup.style';
 
-interface IListProps extends IBillBoardProps {
+interface ListGroupProps extends ICarousel {
   pageIndex: number;
 }
 
-export const ListGroup = ({ pageIndex, movies, genre }: IListProps) => {
+export const ListGroup = ({ pageIndex, movies, genre }: ListGroupProps) => {
   return (
     <S.Ul pageIndex={pageIndex}>
       {useMemo(() => {

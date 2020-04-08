@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getMovie } from '~/api/movie';
-import { IMovie, IKeyVisualProps } from './types';
 
-export interface IKeyVisual {
-  isLoading: boolean;
-  isError: boolean;
+import { IMovie, IFeature } from '~/features/common/types';
+import { IKeyVisual, KeyVisualPayload } from './types';
+
+export interface KeyVisualState extends IFeature {
   views: {
     [key: string]: IMovie | null;
     home: IMovie | null;
@@ -16,7 +16,7 @@ export interface IKeyVisual {
   };
 }
 
-const initialState: IKeyVisual = {
+const initialState: KeyVisualState = {
   isLoading: false,
   isError: false,
   views: {
@@ -37,9 +37,9 @@ const keyVisualSlice = createSlice({
         state.isLoading = true;
       }
     },
-    getKeyVisualSuccess(state, action: PayloadAction<IKeyVisaulPayload>) {
+    getKeyVisualSuccess(state, action: PayloadAction<KeyVisualPayload>) {
       if (state.isLoading) {
-        const { keyVisual, viewName }: IKeyVisaulPayload = action.payload;
+        const { keyVisual, viewName }: KeyVisualPayload = action.payload;
         state.views[viewName] = keyVisual;
         state.isLoading = false;
       }
@@ -50,24 +50,18 @@ const keyVisualSlice = createSlice({
   }
 });
 
-interface IKeyVisaulPayload {
-  viewName: string;
-  keyVisual: IMovie;
-}
-
 export const fetchKeyVisual = ({
   viewName,
   genre,
-  id,
-  query
-}: IKeyVisualProps): AppThunk => async (dispatch: AppDispatch) => {
+  id
+}: IKeyVisual): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getkeyVisualStart());
     const keyVisual = await getMovie(genre, id);
     dispatch(getKeyVisualSuccess({ viewName, keyVisual }));
   } catch (error) {
     dispatch(getKeyVisualFailure());
-    throw error;
+    console.log(error);
   }
 };
 

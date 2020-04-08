@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
-import { fetchKeyVisual, IKeyVisual } from './keyVisualSlice';
-import { IKeyVisualProps } from './types';
+import { fetchKeyVisual, KeyVisualState } from './keyVisualSlice';
+import { IKeyVisual } from './types';
 
 import { KeyVisualContents } from './KeyVisualContents';
 import * as S from './KeyVisualContents.style';
 
-export const KeyVisual = (props: IKeyVisualProps) => {
+export const KeyVisual = (props: IKeyVisual) => {
   const { viewName } = props;
   const dispatch = useDispatch();
   const keyVisual = useSelector((state: RootState) => state.keyVisual);
-  const { isLoading, isError, views }: IKeyVisual = keyVisual;
+  const { isLoading, isError, views }: KeyVisualState = keyVisual;
   const movie = views[viewName];
   let contents;
 

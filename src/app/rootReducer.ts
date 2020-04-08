@@ -1,10 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import keyVisualReducer from '~/features/keyVisual/keyVisualSlice';
-import billBoardReducer from '~/features/billBoard/billBoardSlice';
+import billboardReducer from '~/features/billboard/billboardSlice';
 
 const rootReducer = combineReducers({
   keyVisual: keyVisualReducer,
-  billBoard: billBoardReducer
+  billboard: billboardReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
