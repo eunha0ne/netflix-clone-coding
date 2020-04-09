@@ -7,12 +7,14 @@ export interface IMovie {
   tagline: string;
   overview: string;
   genres: [{ id: number; name: string }];
+  genre_ids: [number];
   backdrop_path: string | null;
   poster_path: string | null;
   vote_average: number;
   production_countries: [{ name: string }];
   runtime: number;
   release_date: string;
+  media_type: string;
 }
 
 export interface IFeature {

@@ -54,3 +54,66 @@ export const InfoCircle = ({ width = '1em', height = '1em' }: IconProps) => (
     <circle cx="8" cy="4.5" r="1" />
   </svg>
 );
+
+export const Plus = ({ width = '1em', height = '1em' }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z"
+      clipRule="evenodd"
+    />
+    <path
+      fillRule="evenodd"
+      d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const IconX = ({ width = '1em', height = '1em' }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z"
+      clipRule="evenodd"
+    />
+    <path
+      fillRule="evenodd"
+      d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+export const Search = ({ width = '1em', height = '1em' }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fillRule="evenodd"
+      d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z"
+      clipRule="evenodd"
+    />
+    <path
+      fillRule="evenodd"
+      d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z"
+      clipRule="evenodd"
+    />
+  </svg>
+);

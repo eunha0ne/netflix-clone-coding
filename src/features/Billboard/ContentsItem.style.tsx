@@ -14,7 +14,9 @@ export const Li = styled.li`
   button {
     margin: 0;
     padding: 0;
+    width: 100%;
     border: none;
+    background: none;
     font-size: 0;
   }
 `;

@@ -11,6 +11,7 @@ export const Header = styled.header`
   align-items: center;
   width: 100%;
   height: 68px;
+  box-sizing: border-box;
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.7) 10%,

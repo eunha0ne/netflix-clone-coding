@@ -2,7 +2,8 @@ import React, { useState, ChangeEvent, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { debounce } from '~/utils/debounce';
 
-// import * as S from './index.style';
+import * as UI from '~/assets/ui/Icons';
+import * as S from './index.style';
 
 export const Search = () => {
   const inputEl = useRef<HTMLInputElement>(null);
@@ -32,7 +33,8 @@ export const Search = () => {
   const debounceOnChange = debounce(goSearch, 600, isTyping);
 
   return (
-    <label htmlFor="headerSearch">
+    <S.Label htmlFor="headerSearch">
+      <UI.Search width="2vw" height="100%" />
       <input
         ref={inputEl}
         id="headerSearch"
@@ -40,6 +42,6 @@ export const Search = () => {
         value={userInput}
         onChange={onChange}
       />
-    </label>
+    </S.Label>
   );
 };

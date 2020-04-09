@@ -1,5 +1,8 @@
 import React from 'react';
+
 import { Header } from '~/components/Header';
+import { Modal } from '~/features/Modal/index';
+
 import * as S from './index.style';
 import 'reset-css';
 
@@ -11,11 +14,19 @@ const Layout = ({ children }: ILayout) => {
   return (
     <>
       <S.Global />
-      <Header />
-      {children}
-      <footer>Created by @eunha0ne</footer>
+      <div className="app">
+        <Header />
+        {children}
+        <Footer />
+      </div>
+
+      <Modal />
     </>
   );
+};
+
+const Footer = () => {
+  return <footer>Created by @eunha0ne</footer>;
 };
 
 export default Layout;
