@@ -93,4 +93,9 @@ export const Article = styled.article`
   .contents {
     margin-top: 1.5rem;
   }
+
+  button {
+    width: 100px;
+    height: 100px;
+  }
 `;

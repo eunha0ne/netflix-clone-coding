@@ -1,16 +1,27 @@
-import React, { useMemo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useMemo, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { IMovie } from '~/features/common/types';
+import { getModalDetails, closeModal } from './modalSlice';
 
 import * as S from './index.style';
 
 export const Modal = () => {
+  const dispatch = useDispatch();
   const { isOpen, movie } = useSelector((state: RootState) => ({
     isOpen: state.modal.isOpen,
     movie: state.modal.data
   }));
+
+  useEffect(() => {
+    if (movie !== null) {
+      const { genre_ids, media_type, id } = movie;
+      dispatch(
+        getModalDetails({ genres: genre_ids, mediaType: media_type, id })
+      );
+    }
+  }, [movie]);
 
   return useMemo(() => {
     console.log('/m');
@@ -63,5 +74,7 @@ const FavButton = () => {
 };
 
 const CloseButton = () => {
-  return <button></button>;
+  const dispatch = useDispatch();
+
+  return <button onClick={() => dispatch(closeModal())}></button>;
 };
