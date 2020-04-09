@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
-
+import { useDispatch } from 'react-redux';
 import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
+
+import { openModal } from '~/features/Modal/modalSlice';
 import { IMovie } from '~/features/common/types';
 import { IMG_URL } from '~/constants';
 
@@ -14,6 +16,8 @@ interface ContentsItemProps {
 }
 
 export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
+  const dispatch = useDispatch();
+
   const itemEl = useRef<HTMLLIElement>(null);
   const [imgPath, setImgPath] = useState(blankPath);
   const backPath = movie.backdrop_path;
@@ -39,7 +43,10 @@ export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
 
   return (
     <S.Li ref={itemEl}>
-      <button arai-label={movie.title} onClick={() => {}}>
+      <button
+        arai-label={movie.title}
+        onClick={() => dispatch(openModal(movie))}
+      >
         <S.Img src={imgPath} alt="" />
       </button>
     </S.Li>

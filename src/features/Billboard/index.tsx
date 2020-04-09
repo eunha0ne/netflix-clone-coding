@@ -32,13 +32,13 @@ export const Billboard = (props: IBillboard) => {
     }
   }, [dispatch, pageNum, movies, props]);
 
-  return useMemo(
-    () => (
+  return useMemo(() => {
+    console.log('/b');
+    return (
       <S.Section>
         <h2 className="section-title">{sectionTitle}</h2>
         <Contents movies={movies} loadPage={() => setPageNum(pageNum + 1)} />
       </S.Section>
-    ),
-    [movies, pageNum, sectionTitle]
-  );
+    );
+  }, [movies, pageNum, sectionTitle]);
 };
