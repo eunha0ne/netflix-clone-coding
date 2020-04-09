@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { IMG_URL } from '~/constants';
 
 export const Ul = styled.ul`
   padding: 0 4%;

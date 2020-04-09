@@ -28,7 +28,7 @@ export const ListItems = ({ movie }: IListItems) => {
       }
     });
 
-    if (imgPath !== posterPath) {
+    if (imgPath === blankPath) {
       iO.observe();
     }
 

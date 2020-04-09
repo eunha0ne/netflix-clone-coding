@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { IMovie } from '~/features/common/types';
 
 import { ContentsItem } from './ContentsItem';
@@ -10,15 +10,20 @@ interface ContentsProps {
 }
 
 export const Contents = ({ movies, loadPage }: ContentsProps) => {
-  const lastNum = movies.length;
+  const lastIdx = movies.length - 1;
 
   return (
     <S.Ul>
-      {useMemo(() => {
-        return movies.map((movie, idx) => (
-          <ContentsItem key={movie.id} movie={movie} />
-        ));
-      }, [movies])}
+      {movies.map((movie, idx) => {
+        const isLastItem = lastIdx === idx;
+        const key = `${idx}`;
+
+        return isLastItem ? (
+          <ContentsItem key={key} movie={movie} idx={idx} loadPage={loadPage} />
+        ) : (
+          <ContentsItem key={key} movie={movie} idx={idx} />
+        );
+      })}
     </S.Ul>
   );
 };

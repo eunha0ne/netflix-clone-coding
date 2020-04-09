@@ -3,7 +3,7 @@ export const BASE_URL = 'https://api.themoviedb.org/3';
 export const IMG_URL = 'https://image.tmdb.org/t/p';
 export const CARDS_LEN_PER_SLIDE = 5;
 export const BILLBOARD_ITEMS_LEN = 20;
-export const BILLBOARD_MAX_LEN = 4;
+export const BILLBOARD_MAX_LEN = 7; // 100 items
 
 // ## Image Sizes
 

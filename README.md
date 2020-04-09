@@ -85,9 +85,11 @@
 - [Read: debounce-react-synthetic-event](https://hyunseob.github.io/2018/06/24/debounce-react-synthetic-event/)
 - [Read: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
 
-### SEO
+### 접근성 및 SEO
 
-- [robots](https://www.robotstxt.org/robotstxt.html)
+- [Read: anchor-is-valid](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md)
+- [Read: robots](https://www.robotstxt.org/robotstxt.html)
+- [Read: dialog_role](https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA/Roles/dialog_role)
 
 ### 트러블 슈팅 및 TIL
 
@@ -135,7 +137,7 @@
 
 - Key는 형제 사이에서만 고유한 값이어야 한다.
 
-### 개발하면서 느낀 점
+### 개발하면서 느낀 점이나 생각들
 
 - API 추상화에 대한 부분
 

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { IMG_URL } from '~/constants';
 
 export const Li = styled.li`
   margin-top: 3vw;
@@ -10,6 +9,13 @@ export const Li = styled.li`
 
   &:nth-of-type(-n + 5) {
     margin-top: 0;
+  }
+
+  button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0;
   }
 `;
 

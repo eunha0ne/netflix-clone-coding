@@ -7,6 +7,8 @@ import { IBillboard, BillboardPayload } from './types';
 
 interface BillboardState {
   [key: string]: {
+    page: number;
+    isOpenDetail: boolean;
     isLoading: boolean;
     isError: boolean;
     data: IMovie[];
@@ -15,26 +17,36 @@ interface BillboardState {
 
 const initialState: BillboardState = {
   home: {
+    page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
   },
   movie: {
+    isOpenDetail: false,
+    page: 1,
     isLoading: false,
     isError: false,
     data: []
   },
   tv: {
+    page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
   },
   latest: {
+    page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
   },
   myList: {
+    page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
@@ -53,9 +65,10 @@ const billboardSlice = createSlice({
       }
     },
     getBoardSuccess(state, { payload }: PayloadAction<BillboardPayload>) {
-      const { movies, menuName } = payload;
+      const { menuName, page, movies } = payload;
       const isLoading = state[menuName].isLoading;
       if (isLoading) {
+        state[menuName].page = page;
         state[menuName].data.push(...movies);
         state[menuName].isLoading = false;
       }
@@ -70,12 +83,12 @@ const billboardSlice = createSlice({
 export const fetchBillboard = ({
   menuName,
   resourcePath,
-  page
+  page = 1
 }: IBillboard): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getBoardStart({ menuName }));
     const movies = await getMovies({ resourcePath, page });
-    dispatch(getBoardSuccess({ menuName, movies }));
+    dispatch(getBoardSuccess({ menuName, movies, page }));
   } catch (error) {
     dispatch(getBoardFailure({ menuName }));
     console.log(error);

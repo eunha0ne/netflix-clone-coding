@@ -11,4 +11,5 @@ export interface IBillboard {
 export interface BillboardPayload {
   menuName: string;
   movies: IMovie[];
+  page: number;
 }
