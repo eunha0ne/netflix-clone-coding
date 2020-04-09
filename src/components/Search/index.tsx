@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { debounce } from '~/utils/debounce';
 
-import * as S from './index.style';
+// import * as S from './index.style';
 
 export const Search = () => {
   const inputEl = useRef<HTMLInputElement>(null);

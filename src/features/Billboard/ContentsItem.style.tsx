@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { IMG_URL } from '~/constants';
 
 export const Li = styled.li`
   margin-top: 3vw;

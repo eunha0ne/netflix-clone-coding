@@ -9,9 +9,11 @@ import * as S from './ContentsItem.style';
 
 interface ContentsItemProps {
   movie: IMovie;
+  idx: number;
+  loadPage?: CallableFunction;
 }
 
-export const ContentsItem = ({ movie }: ContentsItemProps) => {
+export const ContentsItem = ({ movie, idx, loadPage }: ContentsItemProps) => {
   const itemEl = useRef<HTMLLIElement>(null);
   const [imgPath, setImgPath] = useState(blankPath);
   const backPath = movie.backdrop_path;
@@ -19,20 +21,22 @@ export const ContentsItem = ({ movie }: ContentsItemProps) => {
   useEffect(() => {
     const iO: InObserverClosure = InObserver({
       target: itemEl.current!,
-      options: { threshold: 0.1 },
+      options: { threshold: 0.05 },
       callback: () => {
-        const url = `${IMG_URL}/w300/${backPath}`;
-        setImgPath(url);
+        const URL = `${IMG_URL}/w300/${backPath}`;
+        loadPage && loadPage();
+        setImgPath(URL);
         iO.disconnect();
+        console.log('i', idx);
       }
     });
 
-    if (imgPath !== backPath) {
+    if (imgPath === blankPath) {
       iO.observe();
     }
 
     return () => iO.disconnect();
-  }, [itemEl, imgPath, backPath]);
+  }, [itemEl, imgPath, backPath, idx, loadPage]);
 
   return (
     <S.Li ref={itemEl}>
