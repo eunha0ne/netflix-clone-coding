@@ -19,9 +19,9 @@ export const Contents = ({ movies, loadPage }: ContentsProps) => {
         const key = `${idx}`;
 
         return isLastItem ? (
-          <ContentsItem key={key} idx={idx} movie={movie} loadPage={loadPage} />
+          <ContentsItem key={key} movie={movie} idx={idx} loadPage={loadPage} />
         ) : (
-          <ContentsItem key={key} idx={idx} movie={movie} />
+          <ContentsItem key={key} movie={movie} idx={idx} />
         );
       })}
     </S.Ul>

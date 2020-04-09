@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { IMovie } from '~/features/common/types';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 
 import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
+import { IMovie } from '~/features/common/types';
 import { IMG_URL } from '~/constants';
 
 import blankPath from '~/assets/images/blank.png';
@@ -13,7 +13,7 @@ interface ContentsItemProps {
   loadPage?: CallableFunction;
 }
 
-export const ContentsItem = ({ movie, idx, loadPage }: ContentsItemProps) => {
+export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
   const itemEl = useRef<HTMLLIElement>(null);
   const [imgPath, setImgPath] = useState(blankPath);
   const backPath = movie.backdrop_path;
@@ -24,10 +24,9 @@ export const ContentsItem = ({ movie, idx, loadPage }: ContentsItemProps) => {
       options: { threshold: 0.05 },
       callback: () => {
         const URL = `${IMG_URL}/w300/${backPath}`;
-        loadPage && loadPage();
         setImgPath(URL);
+        loadPage && loadPage();
         iO.disconnect();
-        console.log('i', idx);
       }
     });
 
@@ -36,11 +35,13 @@ export const ContentsItem = ({ movie, idx, loadPage }: ContentsItemProps) => {
     }
 
     return () => iO.disconnect();
-  }, [itemEl, imgPath, backPath, idx, loadPage]);
+  }, [itemEl, imgPath, backPath, loadPage]);
 
   return (
     <S.Li ref={itemEl}>
-      <S.Img src={imgPath} alt={movie.title} />
+      <a arai-label={movie.title} onClick={() => {}}>
+        <S.Img src={imgPath} alt="" />
+      </a>
     </S.Li>
   );
 };

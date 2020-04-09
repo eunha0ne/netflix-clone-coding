@@ -8,6 +8,7 @@ import { IBillboard, BillboardPayload } from './types';
 interface BillboardState {
   [key: string]: {
     page: number;
+    isOpenDetail: boolean;
     isLoading: boolean;
     isError: boolean;
     data: IMovie[];
@@ -17,11 +18,13 @@ interface BillboardState {
 const initialState: BillboardState = {
   home: {
     page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
   },
   movie: {
+    isOpenDetail: false,
     page: 1,
     isLoading: false,
     isError: false,
@@ -29,18 +32,21 @@ const initialState: BillboardState = {
   },
   tv: {
     page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
   },
   latest: {
     page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []
   },
   myList: {
     page: 1,
+    isOpenDetail: false,
     isLoading: false,
     isError: false,
     data: []

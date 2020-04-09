@@ -6,12 +6,11 @@ import { IBillboard } from './types';
 import { fetchBillboard } from './billboardSlice';
 
 import { Contents } from './Contents';
-
+import * as S from './index.style';
 import {
   BILLBOARD_ITEMS_LEN as ITEMS_LEN,
   BILLBOARD_MAX_LEN
 } from '~/constants';
-import * as S from './index.style';
 
 export const Billboard = (props: IBillboard) => {
   const dispatch = useDispatch();

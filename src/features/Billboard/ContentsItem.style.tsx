@@ -10,6 +10,13 @@ export const Li = styled.li`
   &:nth-of-type(-n + 5) {
     margin-top: 0;
   }
+
+  button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 0;
+  }
 `;
 
 export const Img = styled.img`
