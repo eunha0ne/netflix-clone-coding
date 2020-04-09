@@ -2,7 +2,7 @@
  * Intersection Observer
  */
 
-interface InObserverProps {
+interface IObserverProps {
   target: HTMLLIElement;
   options: {
     root?: Element;
@@ -12,28 +12,28 @@ interface InObserverProps {
   callback: CallableFunction;
 }
 
-export interface InObserverClosure {
+export interface IObserverClosure {
   observe: CallableFunction;
   disconnect: CallableFunction;
   takeRecords: CallableFunction;
   unobserve: CallableFunction;
 }
 
-export const InObserver = ({ target, options, callback }: InObserverProps) => {
-  const interObserver = new IntersectionObserver(entries => {
+export const IObserver = ({ target, options, callback }: IObserverProps) => {
+  const iObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const { isIntersecting } = entry;
       if (isIntersecting) {
         callback();
-        interObserver.disconnect();
+        iObserver.disconnect();
       }
     });
   }, options);
 
   return {
-    observe: () => interObserver.observe(target),
-    disconnect: () => interObserver.disconnect(),
-    takeRecords: () => interObserver.takeRecords(),
-    unobserve: () => interObserver.unobserve(target)
+    observe: () => iObserver.observe(target),
+    disconnect: () => iObserver.disconnect(),
+    takeRecords: () => iObserver.takeRecords(),
+    unobserve: () => iObserver.unobserve(target)
   };
 };
