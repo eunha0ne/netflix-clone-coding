@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { IMovie } from '~/features/common/types';
 
-import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
+import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 import { IMG_URL } from '~/constants';
 
 import blankPath from '~/assets/images/blank.png';
@@ -18,7 +18,7 @@ export const ListItems = ({ movie }: IListItems) => {
   const posterPath = movie.poster_path;
 
   useEffect(() => {
-    const iO: InObserverClosure = InObserver({
+    const iO: IObserverClosure = IObserver({
       target: itemEl.current!,
       options: { threshold: 0.1 },
       callback: () => {

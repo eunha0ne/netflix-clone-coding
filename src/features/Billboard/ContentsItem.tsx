@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
-import { InObserver, InObserverClosure } from '~/utils/intersectionObserver';
+import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 import { IMovie } from '~/features/common/types';
 import { IMG_URL } from '~/constants';
 
@@ -19,7 +19,7 @@ export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
   const backPath = movie.backdrop_path;
 
   useEffect(() => {
-    const iO: InObserverClosure = InObserver({
+    const iO: IObserverClosure = IObserver({
       target: itemEl.current!,
       options: { threshold: 0.05 },
       callback: () => {
@@ -39,9 +39,9 @@ export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
 
   return (
     <S.Li ref={itemEl}>
-      <a arai-label={movie.title} onClick={() => {}}>
+      <button arai-label={movie.title} onClick={() => {}}>
         <S.Img src={imgPath} alt="" />
-      </a>
+      </button>
     </S.Li>
   );
 };
