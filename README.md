@@ -53,31 +53,26 @@
 - [참고](https://jeonghwan-kim.github.io/dev/2019/07/15/react-redux-ts.html)
 - [참고](https://infoscis.github.io/2017/06/19/TypeScript-handbook-advanced-types/)
 
-- I 프리픽스
-
-  - [I-prefix 참고](https://github.com/microsoft/TypeScript-Handbook/issues/121)
-  - [Interface](https://www.typescriptlang.org/docs/handbook/interfaces.html)
-
-- [keyof-and-lookup-types-in-typescript](https://mariusschulz.com/blog/keyof-and-lookup-types-in-typescript)
-- [a-complete-guide-to-react-hooks-and-typescript](https://levelup.gitconnected.com/usetypescript-a-complete-guide-to-react-hooks-and-typescript-db1858d1fb9c)
+- [Read: interfaces](https://www.typescriptlang.org/docs/handbook/interfaces.html)
+  - [Read: microsoft/issues](https://github.com/microsoft/TypeScript-Handbook/issues/121)
+- [Read: keyof-and-lookup-types-in-typescript](https://mariusschulz.com/blog/keyof-and-lookup-types-in-typescript)
+- [Read: a-complete-guide-to-react-hooks-and-typescript](https://levelup.gitconnected.com/usetypescript-a-complete-guide-to-react-hooks-and-typescript-db1858d1fb9c)
 
 ### 스타일
 
-- [타입스크립트 스타일드 컴포넌트 설정](https://github.com/microsoft/typescript-styled-plugin/tree/f82699d1a0027cb850118adfcdd8cf88203573dc)
+- [Read: typescript-styled-plugin](https://github.com/microsoft/typescript-styled-plugin/tree/f82699d1a0027cb850118adfcdd8cf88203573dc)
 - [Read: naming-styled-components](https://medium.com/inturn-eng/naming-styled-components-d7097950a245)
 - [Read: normalize-css-or-css-reset](https://medium.com/@elad/normalize-css-or-css-reset-9d75175c5d1e)
 - [Read: em-vs-rem-vs-px](https://engageinteractive.co.uk/blog/em-vs-rem-vs-px)
-- [Read: CSS/length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+- [Read: MDN/CSS/length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 - [Read: useful-nth-child-recipies](https://css-tricks.com/useful-nth-child-recipies/)
 
 ### 최적화
 
 - [Read: webp](https://post.naver.com/viewer/postView.nhn?volumeNo=9688816&memberNo=1834)
-- [Read: MDN IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
-
+- [Read: MDN/IntersectionObserver](https://developer.mozilla.org/ko/docs/Web/API/IntersectionObserver)
 - [Read: intersection-observer](https://velog.io/@yejinh/Intersection-Observer%EB%A1%9C-%EB%AC%B4%ED%95%9C-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
 - [Read: intersectionobserver-overview](https://tech.lezhin.com/2017/07/13/intersectionobserver-overview)
-
 - [Read: lazy-loading-images-complete-guide](https://imagekit.io/blog/lazy-loading-images-complete-guide/)
 - [Read: usememo](https://alligator.io/react/usememo/)
 - [Read: review-when-to-usememo-and-usecallback](https://rinae.dev/posts/review-when-to-usememo-and-usecallback)
@@ -90,6 +85,8 @@
 - [Read: anchor-is-valid](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md)
 - [Read: robots](https://www.robotstxt.org/robotstxt.html)
 - [Read: dialog_role](https://developer.mozilla.org/ko/docs/Web/Accessibility/ARIA/Roles/dialog_role)
+- [Todo: chrome/accessibility](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
+- [Todo: reactjs/accessibility](https://ko.reactjs.org/docs/accessibility.html)
 
 ### 트러블 슈팅 및 TIL
 

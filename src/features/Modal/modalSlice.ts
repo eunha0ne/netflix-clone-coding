@@ -5,19 +5,24 @@ import { AppThunk, AppDispatch } from '~/app/store';
 import { getGenres, getCredits } from '~/api/movie';
 
 import { IMovie } from '~/features/common/types';
+import { ModalData, ICredit } from './types';
 
 interface ModalState {
   isOpen: boolean;
   data: IMovie | null;
+  genres: string[];
+  credits: ICredit[] | [];
   isLoading: boolean;
   isError: boolean;
 }
 
 const initialState: ModalState = {
   isOpen: false,
+  genres: [],
+  credits: [],
+  data: null,
   isLoading: false,
-  isError: false,
-  data: null
+  isError: false
 };
 
 const modalSlice = createSlice({
@@ -29,19 +34,21 @@ const modalSlice = createSlice({
         state.isLoading = true;
       }
     },
-    getModalSuccess(state, { payload }: PayloadAction<IMovie>) {
-      // const {} = payload
+    getModalSuccess(state, { payload }: PayloadAction<ModalData>) {
+      const { movie, genreNames, credits } = payload;
+      console.log(payload);
+
       if (state.isLoading) {
-        state.data = payload;
+        state.data = movie;
+        state.genres = genreNames;
+        state.credits = credits;
+
         state.isOpen = true;
         state.isLoading = false;
       }
     },
-    openModal(state, { payload }: PayloadAction<IMovie>) {
-      console.log('=>', payload);
-
-      state.data = payload;
-      state.isOpen = true;
+    getModalFailure(state) {
+      state.isError = true;
     },
     closeModal(state) {
       state.isOpen = false;
@@ -49,47 +56,34 @@ const modalSlice = createSlice({
   }
 });
 
-// export const fetchBillboard = ({
-//   menuName,
-//   resourcePath,
-//   page = 1
-// }: IBillboard): AppThunk => async (dispatch: AppDispatch) => {
-//   try {
-//     dispatch(getBoardStart({ menuName }));
-//     const movies = await getMovies({ resourcePath, page });
-//     dispatch(getBoardSuccess({ menuName, movies, page }));
-//   } catch (error) {
-//     dispatch(getBoardFailure({ menuName }));
-//     console.log(error);
-//   }
-// };
-
 interface getModalDetailsProps {
-  genres: number[];
-  mediaType: string;
-  id: number;
+  movie: IMovie;
 }
 
-export const getModalDetails = ({
-  genres,
-  mediaType,
-  id
-}: getModalDetailsProps): AppThunk => async (dispatch: AppDispatch) => {
+export const fetchModal = ({ movie }: getModalDetailsProps): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
+    dispatch(getModalStart());
+
+    const { media_type: mediaType, genre_ids: genres, id } = movie;
     const allGenres = await getGenres(mediaType);
-    const genreNames = genres.map(genreId => {
+    const genreNames: string[] = genres.map(genreId => {
       return allGenres.find(
         (gen: { id: number; name: string }) => gen.id === genreId
       ).name;
     });
 
-    const credits: [] = await getCredits({ mediaType, id });
-    L.go(L.take(10, credits), L.log);
+    const allCredits = await getCredits({ mediaType, id });
+    const credits = L.take(5, allCredits);
+
+    dispatch(getModalSuccess({ genreNames, credits, movie }));
   } catch (error) {
+    dispatch(getModalSuccess);
     console.log(error);
   }
 };
 
 const { actions, reducer } = modalSlice;
-export const { openModal, closeModal } = actions;
+export const { getModalStart, getModalSuccess, closeModal } = actions;
 export default reducer;

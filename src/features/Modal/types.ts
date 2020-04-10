@@ -1,15 +1,18 @@
 import { IMovie } from '~/features/common/types';
 
-export interface IBillboard {
-  menuName: string;
-  genre: string;
-  resourcePath: string;
-  sectionTitle: string;
-  page?: number;
+export interface ICredit {
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  gender: number;
+  id: number;
+  name: string;
+  order: number;
+  profile_path: string;
 }
 
-export interface BillboardPayload {
-  menuName: string;
-  movies: IMovie[];
-  page: number;
+export interface ModalData {
+  movie: IMovie;
+  genreNames: string[];
+  credits: ICredit[];
 }
