@@ -83,8 +83,9 @@ export const getModalDetails = ({
       ).name;
     });
 
-    const credits: [] = await getCredits({ mediaType, id });
-    L.go(L.take(10, credits), L.log);
+    const allCredits = await getCredits({ mediaType, id });
+    const credits = L.take(10, allCredits);
+    // dispatch();
   } catch (error) {
     console.log(error);
   }

@@ -99,3 +99,31 @@ export const Article = styled.article`
     height: 100px;
   }
 `;
+
+export const CloseBtn = styled.button`
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  border: none;
+  background: none;
+  color: white;
+
+  &:hover {
+    svg {
+      transform: translate(-50%, -50%) rotate(180deg);
+      transition: transform 300ms;
+    }
+  }
+
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: center;
+  }
+`;
