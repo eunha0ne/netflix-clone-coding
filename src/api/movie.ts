@@ -50,12 +50,12 @@ export async function getGenres(mediaType: string = 'movie') {
   return data.genres;
 }
 
-interface getCredits {
+interface IResource {
   mediaType: string;
   id: number;
 }
 
-export async function getCredits({ mediaType, id }: getCredits) {
+export async function getCredits({ mediaType, id }: IResource) {
   const URL = `${BASE_URL}/${mediaType}/${id}/credits`;
   const params = {
     api_key: `${API_KEY}`,
@@ -66,6 +66,21 @@ export async function getCredits({ mediaType, id }: getCredits) {
   return data.cast;
 }
 
-// VIDEO
-// https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=[MY_KEY]
-// https://www.youtube.com/watch?v=[KEY]
+export async function getVideo({ mediaType, id }: IResource) {
+  const URL = `${BASE_URL}/${mediaType}/${id}/videos`;
+  let params = {
+    api_key: `${API_KEY}`,
+    language: `ko`
+  };
+
+  const { data } = await axios.get(URL, { params });
+  const isData = data.results > 0;
+
+  if (isData) return data.results;
+  else {
+    params = { ...params, language: `En-US` };
+    const { data } = await axios.get(URL, { params });
+
+    return data.results;
+  }
+}

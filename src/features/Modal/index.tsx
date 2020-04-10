@@ -7,28 +7,20 @@ import { RootState } from '~/app/rootReducer';
 import { Contents } from './Contents';
 
 export const Modal = () => {
-  const { isOpen, movie, genres, credits } = useSelector(
+  const { isOpen, movie, genres, credits, video } = useSelector(
     (state: RootState) => ({
       isOpen: state.modal.isOpen,
       movie: state.modal.data,
       genres: state.modal.genres,
-      credits: state.modal.credits
+      credits: state.modal.credits,
+      video: state.modal.video
     })
   );
-
-  // useEffect(() => {
-  //   // if (movie !== null) {
-  //   //   const { genre_ids, media_type, id } = movie;
-  //   //   dispatch(
-  //   //     getModalDetails({ genres: genre_ids, mediaType: media_type, id })
-  //   //   );
-  //   // }
-  // }, [movie]);
 
   return useMemo(() => {
     console.log('/m');
     return isOpen && movie ? (
-      <Contents movie={movie} genres={genres} credits={credits} />
+      <Contents movie={movie} genres={genres} credits={credits} video={video} />
     ) : null;
-  }, [isOpen, movie, genres, credits]);
+  }, [isOpen, movie, genres, credits, video]);
 };

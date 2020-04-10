@@ -1,4 +1,4 @@
-import { IMovie } from '~/features/common/types';
+import { IMovie, IVideo } from '~/features/common/types';
 
 export interface ICredit {
   cast_id: number;
@@ -15,4 +15,5 @@ export interface ModalData {
   movie: IMovie;
   genreNames: string[];
   credits: ICredit[];
+  video: IVideo;
 }

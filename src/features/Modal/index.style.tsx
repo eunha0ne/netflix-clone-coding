@@ -27,7 +27,7 @@ export const Background = styled.div`
   }
 `;
 
-interface WrapperProps {
+interface ModalProps {
   backPath: string | null;
 }
 
@@ -42,6 +42,7 @@ export const Modal = styled.div`
   color: white;
   background-color: black;
   transform: translate(-50%, -50%);
+  overflow: hidden;
 
   &:before,
   &:after {
@@ -53,7 +54,7 @@ export const Modal = styled.div`
   }
 
   &:before {
-    z-index: 1;
+    z-index: 2;
     left: 0;
     background: linear-gradient(
       270deg,
@@ -71,13 +72,25 @@ export const Modal = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    ${({ backPath }: WrapperProps) =>
+    ${({ backPath }: ModalProps) =>
       backPath && `background-image: url(${IMG_URL}/original/${backPath});`};
+  }
+
+  /* temp */
+
+  iframe {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    height: 100%;
+    transform: scale(1.5);
   }
 `;
 
 export const Article = styled.article`
-  z-index: 1;
+  z-index: 2;
   padding: 1.5rem 0 0 4%;
   position: relative;
   width: 40%;
@@ -86,6 +99,8 @@ export const Article = styled.article`
   font-size: 1.1vw;
   line-height: 1.6;
   box-sizing: border-box;
+
+  border: 1px solid red;
 
   .title {
     font-size: 2.1vw;
@@ -128,7 +143,7 @@ export const Meta = styled.div`
 
 export const CloseBtn = styled.button`
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
   position: absolute;
   right: 0;
   top: 0;
