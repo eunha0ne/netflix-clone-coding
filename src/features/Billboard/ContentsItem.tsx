@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 
-import { openModal } from '~/features/Modal/modalSlice';
+import { fetchModal } from '~/features/Modal/modalSlice';
 import { IMovie } from '~/features/common/types';
 import { IMG_URL } from '~/constants';
 
@@ -44,8 +44,8 @@ export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
   return (
     <S.Li ref={itemEl}>
       <button
-        arai-label={movie.title}
-        onClick={() => dispatch(openModal(movie))}
+        aria-label={movie.title}
+        onClick={() => dispatch(fetchModal({ movie }))}
       >
         <S.Img src={imgPath} alt="" />
       </button>

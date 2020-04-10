@@ -27,6 +27,21 @@ const cssText = css`
     overflow-y: hidden;
   }
 
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
   .blind {
     margin: -1px;
     position: absolute;

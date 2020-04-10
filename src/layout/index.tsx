@@ -4,7 +4,7 @@ import { Header } from '~/components/Header';
 import { Modal } from '~/features/Modal/index';
 
 import * as S from './index.style';
-import 'reset-css';
+import 'normalize.css';
 
 interface ILayout {
   children: string;
