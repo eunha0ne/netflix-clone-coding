@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { shorten } from '~/utils/common';
 
 import { closeModal } from './modalSlice';
 import { IMovie } from '~/features/common/types';
@@ -23,6 +24,8 @@ export const Contents = ({
   }
 }: ContentsProps) => {
   const releaseDate = release_date && release_date.split('-')[0];
+  const descriptions =
+    overview.length > 300 ? shorten(overview, 300) : overview;
 
   return (
     <S.Background className="app-modal">
@@ -30,12 +33,22 @@ export const Contents = ({
         <S.Article>
           <header>
             <strong className="title">{title || name}</strong>
-            <p>{original_title || original_name}</p>
+            <p>
+              {original_title || original_name}
+              {releaseDate && (
+                <span className="release-date">, {releaseDate}</span>
+              )}
+            </p>
           </header>
 
-          {releaseDate && <span className="release-date">{releaseDate}</span>}
-          <p className="contents">{overview}</p>
-          <FavButton />
+          <div className="contents">
+            <p>{descriptions}</p>
+          </div>
+
+          <div className="btn-groups">
+            <button>재생</button>
+            <FavButton />
+          </div>
         </S.Article>
         <CloseButton />
       </S.Wrapper>
@@ -45,9 +58,10 @@ export const Contents = ({
 
 const FavButton = () => {
   return (
-    <button>
+    <S.PlusBtn>
+      <UI.Plus width="2vw" height="2vw" />
       <span>내가 찜한 콘텐츠</span>
-    </button>
+    </S.PlusBtn>
   );
 };
 
