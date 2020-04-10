@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as L from '~/utils/fx';
 
 import { AppThunk, AppDispatch } from '~/app/store';
-import { getGenres, getCredits } from '~/api/movie';
+import { getGenres, getCredits, getVideo } from '~/api/movie';
 
-import { IMovie } from '~/features/common/types';
+import { IMovie, IVideo } from '~/features/common/types';
 import { ModalData, ICredit } from './types';
 
 interface ModalState {
@@ -14,6 +14,7 @@ interface ModalState {
   credits: ICredit[] | [];
   isLoading: boolean;
   isError: boolean;
+  video: IVideo | null;
 }
 
 const initialState: ModalState = {
@@ -22,7 +23,8 @@ const initialState: ModalState = {
   credits: [],
   data: null,
   isLoading: false,
-  isError: false
+  isError: false,
+  video: null
 };
 
 const modalSlice = createSlice({
@@ -35,14 +37,14 @@ const modalSlice = createSlice({
       }
     },
     getModalSuccess(state, { payload }: PayloadAction<ModalData>) {
-      const { movie, genreNames, credits } = payload;
+      const { movie, genreNames, credits, video } = payload;
       console.log(payload);
 
       if (state.isLoading) {
         state.data = movie;
         state.genres = genreNames;
         state.credits = credits;
-
+        state.video = video;
         state.isOpen = true;
         state.isLoading = false;
       }
@@ -77,13 +79,23 @@ export const fetchModal = ({ movie }: getModalDetailsProps): AppThunk => async (
     const allCredits = await getCredits({ mediaType, id });
     const credits = L.take(5, allCredits);
 
-    dispatch(getModalSuccess({ genreNames, credits, movie }));
+    const allVideos = await getVideo({ mediaType, id });
+    const video = allVideos[allVideos.length - 1];
+
+    dispatch(getModalSuccess({ genreNames, credits, movie, video }));
   } catch (error) {
     dispatch(getModalSuccess);
     console.log(error);
   }
 };
 
+export const fetchVideo = () => {};
+
 const { actions, reducer } = modalSlice;
-export const { getModalStart, getModalSuccess, closeModal } = actions;
+export const {
+  getModalStart,
+  getModalSuccess,
+  getModalFailure,
+  closeModal
+} = actions;
 export default reducer;

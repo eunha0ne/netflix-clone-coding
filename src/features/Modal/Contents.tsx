@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { closeModal } from './modalSlice';
-import { IMovie } from '~/features/common/types';
+import { IMovie, IVideo } from '~/features/common/types';
 import { ICredit } from './types';
 
 // import { IMG_URL } from '~/constants';
@@ -15,6 +15,7 @@ interface ContentsProps {
   movie: IMovie;
   genres: string[];
   credits: ICredit[];
+  video: IVideo | null;
 }
 
 export const Contents = ({
@@ -28,10 +29,12 @@ export const Contents = ({
     backdrop_path: backdropPath
   },
   genres,
-  credits
+  credits,
+  video
 }: ContentsProps) => {
   const releaseDate = release_date && release_date.split('-')[0];
   const synopsis = text.length > 300 ? shorten(text, 300) : text;
+  const videoKey = video!.key;
 
   return (
     <S.Background className="app-modal">
@@ -54,6 +57,13 @@ export const Contents = ({
           <Meta genres={genres} credits={credits} />
         </S.Article>
         <CloseButton />
+
+        <iframe
+          title={video?.name}
+          frameBorder="0"
+          allow="accelerometer"
+          src={`https://www.youtube.com/embed/${videoKey}?controls=0&autoplay=1&mute=1`}
+        ></iframe>
       </S.Modal>
     </S.Background>
   );
