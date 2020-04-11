@@ -15,13 +15,13 @@ const render = () => {
   const App = require('./app/App').default;
 
   ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
-    </React.StrictMode>,
+    // <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+    // </React.StrictMode>,
     document.getElementById('appMountPoint')
   );
 };

@@ -17,7 +17,7 @@ export const KeyVisualContents = ({
   backdrop_path: backPath,
   menuName
 }: IMovieContent) => {
-  const backDir = ['tv'].includes(menuName) ? 'default' : 'reverse';
+  const backDir = ['home', 'tv'].includes(menuName) ? 'default' : 'reverse';
 
   return (
     <>

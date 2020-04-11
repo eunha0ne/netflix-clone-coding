@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { DetailPopup } from '~/features/Detail/DetailPopup';
 import { Header } from '~/components/Header';
-import { DetailPopup } from '~/features/Detail/index';
+import { Loading } from '~/components/Loading';
 
 import * as S from './index.style';
 import 'normalize.css';
@@ -21,6 +22,7 @@ const Layout = ({ children }: ILayout) => {
       </div>
 
       <DetailPopup />
+      <Loading />
     </>
   );
 };
