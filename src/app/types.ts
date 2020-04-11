@@ -28,6 +28,11 @@ export interface IVideo {
   type: string;
 }
 
+export interface IResource {
+  mediaType: string;
+  id: number;
+}
+
 export interface IFeature {
   isLoading: boolean;
   isError: boolean;

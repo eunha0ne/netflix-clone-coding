@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { IVideo } from '~/app/types';
+import { IVideo, IResource } from '~/app/types';
 
-export const VideoPlayer = ({ video }: { video?: IVideo | null }) => {
-  console.log(video);
+export const VideoPlayer = ({ mediaType, id }: IResource) => {
+  const video = { name: '', key: '' };
 
   return video ? (
     <iframe

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { IMovie } from '~/app/types';
+import { IMovie, IResource } from '~/app/types';
 import { BASE_URL, API_KEY } from '~/constants';
 
 export async function getMovie(
@@ -48,11 +48,6 @@ export async function getGenres(mediaType: string = 'movie') {
 
   const { data } = await axios.get(URL, { params });
   return data.genres;
-}
-
-interface IResource {
-  mediaType: string;
-  id: number;
 }
 
 export async function getCredits({ mediaType, id }: IResource) {

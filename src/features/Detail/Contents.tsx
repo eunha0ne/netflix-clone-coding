@@ -25,11 +25,12 @@ export const Contents = ({
     original_title: originalTitle,
     original_name: originalName,
     release_date,
-    overview: text
+    overview: text,
+    media_type: mediaType,
+    id
   },
   genres,
-  credits,
-  video
+  credits
 }: ContentsProps) => {
   const releaseDate = release_date && release_date.split('-')[0];
   const synopsis = text.length > 300 ? shorten(text, 300) : text;
@@ -54,7 +55,7 @@ export const Contents = ({
         <ContentsMeta genres={genres} credits={credits} />
       </S.Article>
 
-      <VideoPlayer video={video} />
+      <VideoPlayer mediaType={mediaType} id={id} />
     </>
   );
 };
