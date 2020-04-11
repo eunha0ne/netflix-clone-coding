@@ -1,13 +1,13 @@
 import React from 'react';
 
 import { Header } from '~/components/Header';
-import { Modal } from '~/features/Modal/index';
+import { DetailPopup } from '~/features/Detail/index';
 
 import * as S from './index.style';
 import 'normalize.css';
 
 interface ILayout {
-  children: string;
+  children: JSX.Element;
 }
 
 const Layout = ({ children }: ILayout) => {
@@ -20,7 +20,7 @@ const Layout = ({ children }: ILayout) => {
         <Footer />
       </div>
 
-      <Modal />
+      <DetailPopup />
     </>
   );
 };

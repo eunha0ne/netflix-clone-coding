@@ -1,12 +1,12 @@
-import React, { useMemo, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 // import { getModalDetails, closeModal } from './modalSlice';
 
 import { Contents } from './Contents';
 
-export const Modal = () => {
+export const DetailPopup = () => {
   const { isOpen, movie, genres, credits } = useSelector(
     (state: RootState) => ({
       isOpen: state.modal.isOpen,
@@ -18,7 +18,6 @@ export const Modal = () => {
   );
 
   return useMemo(() => {
-    console.log('/m', isOpen, movie);
     return isOpen && movie ? (
       <Contents movie={movie} genres={genres} credits={credits} />
     ) : null;

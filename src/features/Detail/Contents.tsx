@@ -8,7 +8,7 @@ import { Modal } from '~/components/Modal';
 import { shorten } from '~/utils/common';
 
 import * as UI from '~/assets/ui/Icons';
-import * as S from './index.style';
+import * as S from './Contents.style';
 
 interface ContentsProps {
   movie: IMovie;
