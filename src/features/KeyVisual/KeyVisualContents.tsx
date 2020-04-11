@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 
 import * as UI from '~/assets/ui/Icons';
 import * as S from './KeyVisualContents.style';

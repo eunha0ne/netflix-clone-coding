@@ -134,6 +134,11 @@
 
 - Key는 형제 사이에서만 고유한 값이어야 한다.
 
+- props.children으로 JSX.Element 전달 할 때, 타입 오류가 발생하면
+  전달하는 엘리먼트 전체를 <></> 감싸서 전달하면 된다. 타입은 `children: JSX.Element` 가 된다.
+  - https://github.com/microsoft/TypeScript/issues/33487
+  - https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20356
+
 ### 개발하면서 느낀 점이나 생각들
 
 - API 추상화에 대한 부분

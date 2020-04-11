@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getMovies } from '~/api/movie';
 
-import { IMovie, IFeature } from '~/features/common/types';
+import { IMovie, IFeature } from '~/app/types';
 import { IPosterCard, PosterCardPayload } from './types';
 
 interface PosterCardState extends IFeature {

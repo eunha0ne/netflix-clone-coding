@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchKeyVisual } from './keyVisualSlice';
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 import { IKeyVisual } from './types';
 
 import { KeyVisualContents } from './KeyVisualContents';
@@ -38,7 +38,6 @@ export const KeyVisual = (props: IKeyVisual) => {
   }
 
   return useMemo(() => {
-    console.log('/k');
     return <S.Section>{contents}</S.Section>;
   }, [contents]);
 };

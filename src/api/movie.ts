@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 import { BASE_URL, API_KEY } from '~/constants';
 
 export async function getMovie(

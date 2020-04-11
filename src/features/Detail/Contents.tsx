@@ -8,13 +8,13 @@ import { Modal } from '~/components/Modal';
 import { shorten } from '~/utils/common';
 
 import * as UI from '~/assets/ui/Icons';
-import * as S from './Contents.style';
+import * as S from './index.style';
 
 interface ContentsProps {
   movie: IMovie;
   genres: string[];
   credits: ICredit[];
-  video: IVideo | null;
+  video?: IVideo | null;
 }
 
 export const Contents = ({

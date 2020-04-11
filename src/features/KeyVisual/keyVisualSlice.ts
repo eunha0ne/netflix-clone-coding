@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getMovie } from '~/api/movie';
 
-import { IMovie, IFeature } from '~/features/common/types';
+import { IMovie, IFeature } from '~/app/types';
 import { IKeyVisual, KeyVisualPayload } from './types';
 
 export interface KeyVisualState extends IFeature {

@@ -1,4 +1,4 @@
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 
 export interface IPosterCard {
   menuName: string;

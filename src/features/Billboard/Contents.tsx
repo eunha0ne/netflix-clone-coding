@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 
 import { ContentsItem } from './ContentsItem';
 import * as S from './Contents.style';

@@ -4,7 +4,7 @@ import * as L from '~/utils/fx';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getGenres, getCredits, getVideo } from '~/api/movie';
 
-import { IMovie, IVideo } from '~/features/common/types';
+import { IMovie, IVideo } from '~/app/types';
 import { ModalData, ICredit } from './types';
 
 interface ModalState {
@@ -52,6 +52,9 @@ const modalSlice = createSlice({
     getModalFailure(state) {
       state.isError = true;
     },
+    openModal(state) {
+      state.isOpen = true;
+    },
     closeModal(state) {
       state.isOpen = false;
     }
@@ -62,32 +65,32 @@ interface getModalDetailsProps {
   movie: IMovie;
 }
 
-export const fetchModal = ({ movie }: getModalDetailsProps): AppThunk => async (
-  dispatch: AppDispatch
-) => {
-  try {
-    dispatch(getModalStart());
+// export const fetchModal = ({ movie }: getModalDetailsProps): AppThunk => async (
+//   dispatch: AppDispatch
+// ) => {
+//   try {
+//     dispatch(getModalStart());
 
-    const { media_type: mediaType, genre_ids: genres, id } = movie;
-    const allGenres = await getGenres(mediaType);
-    const genreNames: string[] = genres.map(genreId => {
-      return allGenres.find(
-        (gen: { id: number; name: string }) => gen.id === genreId
-      ).name;
-    });
+//     const { media_type: mediaType, genre_ids: genres, id } = movie;
+//     const allGenres = await getGenres(mediaType);
+//     const genreNames: string[] = genres.map(genreId => {
+//       return allGenres.find(
+//         (gen: { id: number; name: string }) => gen.id === genreId
+//       ).name;
+//     });
 
-    const allCredits = await getCredits({ mediaType, id });
-    const credits = L.take(5, allCredits);
+//     const allCredits = await getCredits({ mediaType, id });
+//     const credits = L.take(5, allCredits);
 
-    const allVideos = await getVideo({ mediaType, id });
-    const video = allVideos[allVideos.length - 1];
+//     const allVideos = await getVideo({ mediaType, id });
+//     const video = allVideos[allVideos.length - 1];
 
-    dispatch(getModalSuccess({ genreNames, credits, movie, video }));
-  } catch (error) {
-    dispatch(getModalSuccess);
-    console.log(error);
-  }
-};
+//     dispatch(getModalSuccess({ genreNames, credits, movie }));
+//   } catch (error) {
+//     dispatch(getModalSuccess);
+//     console.log(error);
+//   }
+// };
 
 export const fetchVideo = () => {};
 
@@ -96,6 +99,7 @@ export const {
   getModalStart,
   getModalSuccess,
   getModalFailure,
+  openModal,
   closeModal
 } = actions;
 export default reducer;

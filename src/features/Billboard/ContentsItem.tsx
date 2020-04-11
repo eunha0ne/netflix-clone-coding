@@ -2,8 +2,10 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 
-import { fetchModal } from '~/features/Modal/modalSlice';
-import { IMovie } from '~/features/common/types';
+import { openModal } from '~/features/Modal/modalSlice';
+import { fetchDetail } from '~/features/Detail/detailSlice';
+import { IMovie } from '~/app/types';
+
 import { IMG_URL } from '~/constants';
 
 import blankPath from '~/assets/images/blank.png';
@@ -45,7 +47,11 @@ export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
     <S.Li ref={itemEl}>
       <button
         aria-label={movie.title}
-        onClick={() => dispatch(fetchModal({ movie }))}
+        onClick={() => {
+          dispatch(openModal());
+          dispatch(fetchDetail({ movie }));
+          console.log('/');
+        }}
       >
         <S.Img src={imgPath} alt="" />
       </button>
