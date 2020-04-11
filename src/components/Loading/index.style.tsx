@@ -8,14 +8,13 @@ const animation = keyframes`
 `;
 
 export const Loading = styled.div`
+  z-index: 9;
   padding: 0 4%;
-  z-index: 10;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background: black;
   box-sizing: border-box;
 
   ul {
@@ -25,6 +24,7 @@ export const Loading = styled.div`
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: row;
+    width: 75vw;
   }
 `;
 

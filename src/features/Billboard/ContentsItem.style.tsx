@@ -10,15 +10,15 @@ export const Li = styled.li`
   &:nth-of-type(-n + 5) {
     margin-top: 0;
   }
+`;
 
-  button {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    border: none;
-    background: none;
-    font-size: 0;
-  }
+export const Button = styled.button`
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: none;
+  background: none;
+  font-size: 0;
 `;
 
 export const Img = styled.img`

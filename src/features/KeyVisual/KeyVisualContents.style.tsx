@@ -3,6 +3,7 @@ import { IMG_URL } from '~/constants';
 
 export const Section = styled.section`
   padding-bottom: 45vw;
+  position: relative;
   width: 100%;
   overflow: hidden;
 `;

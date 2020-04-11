@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { RootState } from '~/app/rootReducer';
 
 import { DetailPopup } from '~/features/Detail/DetailPopup';
 import { Header } from '~/components/Header';
-import { Loading } from '~/components/Loading';
 
 import * as S from './index.style';
 import 'normalize.css';
@@ -11,7 +13,11 @@ interface ILayout {
   children: JSX.Element;
 }
 
-const Layout = ({ children }: ILayout) => {
+export const Layout = ({ children }: ILayout) => {
+  const { isOpen } = useSelector((state: RootState) => ({
+    isOpen: state.modal.isOpen
+  }));
+
   return (
     <>
       <S.Global />
@@ -21,8 +27,7 @@ const Layout = ({ children }: ILayout) => {
         <Footer />
       </div>
 
-      <DetailPopup />
-      <Loading />
+      {isOpen && <DetailPopup />}
     </>
   );
 };

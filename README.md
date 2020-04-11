@@ -77,6 +77,7 @@
 - [Read: debounce-and-throttle-in-real-life-scenario](https://medium.com/walkme-engineering/debounce-and-throttle-in-real-life-scenarios-1cc7e2e38c68)
 - [Read: debounce-react-synthetic-event](https://hyunseob.github.io/2018/06/24/debounce-react-synthetic-event/)
 - [Read: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
+- [Read: wiki/memoization](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)
 
 ### 접근성 및 SEO
 
@@ -134,8 +135,12 @@
 
 - props.children으로 JSX.Element 전달 할 때, 타입 오류가 발생하면
   전달하는 엘리먼트 전체를 <></> 감싸서 전달하면 된다. 타입은 `children: JSX.Element` 가 된다.
+
   - https://github.com/microsoft/TypeScript/issues/33487
   - https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20356
+
+- useEffect 사용 시에 비동기 동작이 들어있을 때는 테스크 cleanup하기
+  - 관련 링크는 리액트 이팩트 훅 문서 참고하기
 
 ### 개발하면서 느낀 점이나 생각들
 
