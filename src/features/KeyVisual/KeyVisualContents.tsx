@@ -1,23 +1,19 @@
 import React from 'react';
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 
 import * as UI from '~/assets/ui/Icons';
 import * as S from './KeyVisualContents.style';
 
-interface IMovieContent extends IMovie {
+interface IMovieContent {
+  movie: IMovie;
   menuName: string;
 }
 
 export const KeyVisualContents = ({
-  title,
-  name,
-  tagline,
-  overview,
-  genres,
-  backdrop_path: backPath,
+  movie: { title, name, tagline, overview, genres, backdrop_path: backPath },
   menuName
 }: IMovieContent) => {
-  const backDir = ['tv'].includes(menuName) ? 'default' : 'reverse';
+  const backDir = ['home', 'tv'].includes(menuName) ? 'default' : 'reverse';
 
   return (
     <>

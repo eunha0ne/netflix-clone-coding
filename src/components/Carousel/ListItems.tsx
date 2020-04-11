@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 
 import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 import { IMG_URL } from '~/constants';

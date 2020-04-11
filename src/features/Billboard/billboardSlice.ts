@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch } from '~/app/store';
 import { getMovies } from '~/api/movie';
 
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 import { IBillboard, BillboardPayload } from './types';
 
 interface BillboardState {

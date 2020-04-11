@@ -1,21 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
-import { closeModal } from './modalSlice';
-import { IMovie, IVideo } from '~/features/common/types';
+import { IMovie, IVideo } from '~/app/types';
 import { ICredit } from './types';
 
-// import { IMG_URL } from '~/constants';
+import { VideoPlayer } from '~/components/VideoPlayer';
+import { Modal } from '~/components/Modal';
 import { shorten } from '~/utils/common';
 
 import * as UI from '~/assets/ui/Icons';
-import * as S from './index.style';
+import * as S from './Contents.style';
 
 interface ContentsProps {
   movie: IMovie;
   genres: string[];
   credits: ICredit[];
-  video: IVideo | null;
+  video?: IVideo | null;
 }
 
 export const Contents = ({
@@ -34,11 +33,10 @@ export const Contents = ({
 }: ContentsProps) => {
   const releaseDate = release_date && release_date.split('-')[0];
   const synopsis = text.length > 300 ? shorten(text, 300) : text;
-  const videoKey = video!.key;
 
   return (
-    <S.Background className="app-modal">
-      <S.Modal backPath={backdropPath}>
+    <Modal backPath={backdropPath}>
+      <>
         <S.Article>
           <Header
             title={title || name}
@@ -49,6 +47,7 @@ export const Contents = ({
           <div className="contents">
             <p>{synopsis}</p>
           </div>
+
           <div className="btn-groups">
             <button>재생</button>
             <FavButton />
@@ -56,16 +55,9 @@ export const Contents = ({
 
           <Meta genres={genres} credits={credits} />
         </S.Article>
-        <CloseButton />
-
-        <iframe
-          title={video?.name}
-          frameBorder="0"
-          allow="accelerometer"
-          src={`https://www.youtube.com/embed/${videoKey}?controls=0&autoplay=1&mute=1`}
-        ></iframe>
-      </S.Modal>
-    </S.Background>
+        <VideoPlayer video={video} />
+      </>
+    </Modal>
   );
 };
 
@@ -129,16 +121,5 @@ const FavButton = () => {
       <UI.Plus width="2vw" height="2vw" />
       <span>내가 찜한 콘텐츠</span>
     </S.PlusBtn>
-  );
-};
-
-const CloseButton = () => {
-  const dispatch = useDispatch();
-
-  return (
-    <S.CloseBtn className="close-btn" onClick={() => dispatch(closeModal())}>
-      <UI.IconX width="3vw" height="3vw" />
-      <span className="blind">콘텐츠 닫기</span>
-    </S.CloseBtn>
   );
 };

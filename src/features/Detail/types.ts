@@ -11,9 +11,8 @@ export interface ICredit {
   profile_path: string;
 }
 
-export interface ModalData {
+export interface IDetails {
   movie: IMovie;
   genreNames: string[];
   credits: ICredit[];
-  video: IVideo;
 }

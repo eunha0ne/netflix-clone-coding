@@ -8,15 +8,12 @@
 - [Read: baeharam/architecture](https://baeharam.netlify.com/posts/architecture/%EB%B2%88%EC%97%AD-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C)
 - [Read: redux-toolkit/advanced-tutorial](https://redux-toolkit.js.org/tutorials/advanced-tutorial)
 
-### 리액트
+### 리액트 및 라우터
 
 - [Link: ko.reactjs](https://ko.reactjs.org/docs/getting-started.html)
 - [Link: create-react-app](https://create-react-app.dev/)
 - [Read: hooks-effect](https://ko.reactjs.org/docs/hooks-effect.html)
 - [Read: lists-and-keys](https://ko.reactjs.org/docs/lists-and-keys.html)
-
-### 라우터
-
 - [Read: react-router](https://reacttraining.com/react-router/web/guides/quick-start)
 
 ### 환경 설정, 오버라이딩
@@ -58,7 +55,7 @@
 - [Read: keyof-and-lookup-types-in-typescript](https://mariusschulz.com/blog/keyof-and-lookup-types-in-typescript)
 - [Read: a-complete-guide-to-react-hooks-and-typescript](https://levelup.gitconnected.com/usetypescript-a-complete-guide-to-react-hooks-and-typescript-db1858d1fb9c)
 
-### 스타일
+### 스타일 및 애니메이션
 
 - [Read: typescript-styled-plugin](https://github.com/microsoft/typescript-styled-plugin/tree/f82699d1a0027cb850118adfcdd8cf88203573dc)
 - [Read: naming-styled-components](https://medium.com/inturn-eng/naming-styled-components-d7097950a245)
@@ -66,6 +63,7 @@
 - [Read: em-vs-rem-vs-px](https://engageinteractive.co.uk/blog/em-vs-rem-vs-px)
 - [Read: MDN/CSS/length](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
 - [Read: useful-nth-child-recipies](https://css-tricks.com/useful-nth-child-recipies/)
+- [Read: react-transition-group/css-transition](https://reactcommunity.org/react-transition-group/css-transition)
 
 ### 최적화
 
@@ -79,6 +77,7 @@
 - [Read: debounce-and-throttle-in-real-life-scenario](https://medium.com/walkme-engineering/debounce-and-throttle-in-real-life-scenarios-1cc7e2e38c68)
 - [Read: debounce-react-synthetic-event](https://hyunseob.github.io/2018/06/24/debounce-react-synthetic-event/)
 - [Read: optimize-useSelector](https://react.vlpt.us/redux/08-optimize-useSelector.html)
+- [Read: wiki/memoization](https://ko.wikipedia.org/wiki/%EB%A9%94%EB%AA%A8%EC%9D%B4%EC%A0%9C%EC%9D%B4%EC%85%98)
 
 ### 접근성 및 SEO
 
@@ -133,6 +132,15 @@
   ```
 
 - Key는 형제 사이에서만 고유한 값이어야 한다.
+
+- props.children으로 JSX.Element 전달 할 때, 타입 오류가 발생하면
+  전달하는 엘리먼트 전체를 <></> 감싸서 전달하면 된다. 타입은 `children: JSX.Element` 가 된다.
+
+  - https://github.com/microsoft/TypeScript/issues/33487
+  - https://github.com/DefinitelyTyped/DefinitelyTyped/issues/20356
+
+- useEffect 사용 시에 비동기 동작이 들어있을 때는 테스크 cleanup하기
+  - 관련 링크는 리액트 이팩트 훅 문서 참고하기
 
 ### 개발하면서 느낀 점이나 생각들
 

@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 
-import { fetchModal } from '~/features/Modal/modalSlice';
-import { IMovie } from '~/features/common/types';
+import { openModal } from '~/features/Modal/modalSlice';
+import { fetchDetail } from '~/features/Detail/detailSlice';
+import { IMovie } from '~/app/types';
+
+import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 import { IMG_URL } from '~/constants';
 
 import blankPath from '~/assets/images/blank.png';
@@ -15,7 +17,7 @@ interface ContentsItemProps {
   loadPage?: CallableFunction;
 }
 
-export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
+export const ContentsItem = ({ movie, idx, loadPage }: ContentsItemProps) => {
   const dispatch = useDispatch();
 
   const itemEl = useRef<HTMLLIElement>(null);
@@ -43,12 +45,15 @@ export const ContentsItem = ({ movie, loadPage }: ContentsItemProps) => {
 
   return (
     <S.Li ref={itemEl}>
-      <button
+      <S.Button
         aria-label={movie.title}
-        onClick={() => dispatch(fetchModal({ movie }))}
+        onClick={() => {
+          dispatch(openModal());
+          dispatch(fetchDetail({ movie }));
+        }}
       >
         <S.Img src={imgPath} alt="" />
-      </button>
+      </S.Button>
     </S.Li>
   );
 };

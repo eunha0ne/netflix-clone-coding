@@ -3,14 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchBillboard } from './posterCardSlice';
-import { IMovie } from '~/features/common/types';
+import { IMovie } from '~/app/types';
 import { IPosterCard } from './types';
 
 import { Carousel } from '~/components/Carousel';
 
 export const PosterCard = (props: IPosterCard) => {
-  const { genre, menuName } = props;
   const dispatch = useDispatch();
+  const { genre, menuName } = props;
   const { movies } = useSelector((state: RootState): { movies: IMovie[] } => ({
     movies: state.posterCard.views[menuName]
   }));

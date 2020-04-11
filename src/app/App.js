@@ -1,5 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
+import { Loading } from '~/components/Loading';
 import Layout from '~/layout';
 
 const Home = lazy(() => import('~/pages/Home'));
@@ -12,7 +14,7 @@ const Search = lazy(() => import('~/pages/Search'));
 export default function App() {
   return (
     <Layout>
-      <Suspense fallback={<div>페이지를 불러오는 중입니다.</div>}>
+      <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/">
             <Home />
