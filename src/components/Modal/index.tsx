@@ -13,7 +13,7 @@ interface ModalProps {
 
 export const Modal = ({ backPath, children }: ModalProps) => {
   return (
-    <S.Background className="app-modal">
+    <S.Background>
       <S.Modal backPath={backPath}>
         {children}
         <CloseButton />

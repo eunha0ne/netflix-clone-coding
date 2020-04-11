@@ -7,7 +7,7 @@ import { Loading } from '~/components/Loading';
 import { Modal } from '~/components/Modal';
 import { Contents } from './Contents';
 
-export const DetailPopup = () => {
+export const Detail = () => {
   const modalState = useSelector((state: RootState) => ({
     isLoading: state.detail.isLoading,
     isError: state.detail.isLoading,
@@ -19,14 +19,12 @@ export const DetailPopup = () => {
 
   return useMemo(() => {
     const { isLoading, isError, movie, genres, credits } = modalState;
-    const isContentReady = !isLoading && !isError && movie !== null;
+    const isContentReady = !isLoading && !isError;
 
     return isContentReady && movie !== null ? (
       <Contents movie={movie} genres={genres} credits={credits} />
     ) : (
-      <Modal>
-        <Loading />
-      </Modal>
+      <Loading />
     );
   }, [modalState]);
 };
