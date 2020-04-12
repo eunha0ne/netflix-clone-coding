@@ -9,8 +9,8 @@ export async function getMovie(
 ): Promise<IMovie> {
   const URL = `${BASE_URL}/${resourcePath}/${uid}`;
   const params = {
-    api_key: `${API_KEY}`,
-    language: `ko`
+    api_key: API_KEY,
+    language: 'ko'
   };
 
   const { data } = await axios.get(URL, { params });
@@ -28,11 +28,11 @@ export async function getMovies({
 }: GetMoviesProps): Promise<IMovie[]> {
   const URL = `${BASE_URL}${resourcePath}`;
   const params = {
-    api_key: `${API_KEY}`,
+    api_key: API_KEY,
     with_networks: 213,
-    sort_by: `popularity.desc`,
-    language: `ko`,
-    page: `${page}`
+    sort_by: 'popularity.desc',
+    language: 'ko',
+    page: page
   };
 
   const { data } = await axios.get(URL, { params });
@@ -42,8 +42,8 @@ export async function getMovies({
 export async function getGenres(mediaType: string = 'movie') {
   const URL = `${BASE_URL}/genre/${mediaType}/list`;
   const params = {
-    api_key: `${API_KEY}`,
-    language: `ko`
+    api_key: API_KEY,
+    language: 'ko'
   };
 
   const { data } = await axios.get(URL, { params });
@@ -53,8 +53,8 @@ export async function getGenres(mediaType: string = 'movie') {
 export async function getCredits({ mediaType, id }: IResource) {
   const URL = `${BASE_URL}/${mediaType}/${id}/credits`;
   const params = {
-    api_key: `${API_KEY}`,
-    language: `ko`
+    api_key: API_KEY,
+    language: 'ko'
   };
 
   const { data } = await axios.get(URL, { params });
@@ -64,8 +64,8 @@ export async function getCredits({ mediaType, id }: IResource) {
 export async function getVideo({ mediaType, id }: IResource) {
   const URL = `${BASE_URL}/${mediaType}/${id}/videos`;
   let params = {
-    api_key: `${API_KEY}`,
-    language: `ko`
+    api_key: API_KEY,
+    language: 'ko'
   };
 
   const { data } = await axios.get(URL, { params });
@@ -78,4 +78,21 @@ export async function getVideo({ mediaType, id }: IResource) {
 
     return data.results;
   }
+}
+
+interface ISearch extends IResource {
+  keywords: string;
+}
+
+export async function getSearchMovie({ mediaType, id, keywords }: ISearch) {
+  const URL = `${BASE_URL}/search/${mediaType}`;
+  let params = {
+    api_key: API_KEY,
+    language: 'ko',
+    query: keywords
+  };
+
+  const { data } = await axios.get(URL, { params });
+
+  console.log(data);
 }
