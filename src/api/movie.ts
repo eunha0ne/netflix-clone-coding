@@ -7,6 +7,9 @@ interface IParams {
   api_key: string;
   language: string;
   query?: string;
+  with_networks?: number;
+  sort_by?: number;
+  page?: number;
 }
 
 let params: IParams = {
@@ -34,15 +37,15 @@ export async function getMovies({
   page = 1
 }: GetMoviesProps): Promise<IMovie[]> {
   const URL = `${BASE_URL}${resourcePath}`;
-  const params = {
-    api_key: API_KEY,
-    with_networks: 213,
-    sort_by: 'popularity.desc',
-    language: 'ko',
-    page: page
-  };
+  const { data } = await axios.get(URL, {
+    params: {
+      ...params,
+      with_networks: 213,
+      sort_by: 'popularity.desc',
+      page: page
+    }
+  });
 
-  const { data } = await axios.get(URL, { params });
   return data.results;
 }
 

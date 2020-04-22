@@ -44,6 +44,10 @@ const detailSlice = createSlice({
         state.isLoading = false;
       }
     },
+    getDetailVideo(state, action) {
+      const { video } = action.payload;
+      state.video = video;
+    },
     getDetailFailure(state) {
       state.isError = true;
     },
@@ -81,16 +85,17 @@ export const fetchDetail = ({ movie }: DetailProps): AppThunk => async (
   }
 };
 
-export const fetchVideo = ({ movie }: DetailProps): AppThunk => async (
-  dispatch: AppDispatch
-) => {
-  // dispatch(getDetailStart());
-
-  const { media_type: mediaType, genre_ids: genres, id } = movie;
+export const fetchVideo = ({
+  mediaType,
+  id
+}: {
+  mediaType: string;
+  id: number;
+}): AppThunk => async (dispatch: AppDispatch) => {
   const allVideos = await getVideo({ mediaType, id });
   const latestVideo = allVideos[allVideos.length - 1];
 
-  // dispatch(getDetailSuccess({ genreNames, credits, movie }));
+  dispatch(getDetailVideo({ video: latestVideo }));
 };
 
 const { actions, reducer } = detailSlice;
@@ -98,6 +103,7 @@ export const {
   getDetailStart,
   getDetailSuccess,
   getDetailFailure,
+  getDetailVideo,
   clearDetail
 } = actions;
 export default reducer;
