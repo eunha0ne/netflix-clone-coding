@@ -41,23 +41,29 @@ const detailSlice = createSlice({
         state.data = movie;
         state.genres = genreNames;
         state.credits = credits;
-
         state.isLoading = false;
       }
     },
+    getDetailVideo(state, action) {
+      const { video } = action.payload;
+      state.video = video;
+    },
     getDetailFailure(state) {
       state.isError = true;
+    },
+    clearDetail(state) {
+      state.data = null;
     }
   }
 });
 
-interface getModalDetailsProps {
+interface DetailProps {
   movie: IMovie;
 }
 
-export const fetchDetail = ({
-  movie
-}: getModalDetailsProps): AppThunk => async (dispatch: AppDispatch) => {
+export const fetchDetail = ({ movie }: DetailProps): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(getDetailStart());
 
@@ -72,9 +78,6 @@ export const fetchDetail = ({
     const allCredits = await getCredits({ mediaType, id });
     const credits = L.take(5, allCredits);
 
-    // const allVideos = await getVideo({ mediaType, id });
-    // const video = allVideos[allVideos.length - 1];
-
     dispatch(getDetailSuccess({ genreNames, credits, movie }));
   } catch (error) {
     dispatch(getDetailSuccess);
@@ -82,8 +85,25 @@ export const fetchDetail = ({
   }
 };
 
-export const fetchVideo = () => {};
+export const fetchVideo = ({
+  mediaType,
+  id
+}: {
+  mediaType: string;
+  id: number;
+}): AppThunk => async (dispatch: AppDispatch) => {
+  const allVideos = await getVideo({ mediaType, id });
+  const latestVideo = allVideos[allVideos.length - 1];
+
+  dispatch(getDetailVideo({ video: latestVideo }));
+};
 
 const { actions, reducer } = detailSlice;
-export const { getDetailStart, getDetailSuccess, getDetailFailure } = actions;
+export const {
+  getDetailStart,
+  getDetailSuccess,
+  getDetailFailure,
+  getDetailVideo,
+  clearDetail
+} = actions;
 export default reducer;

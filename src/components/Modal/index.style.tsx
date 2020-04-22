@@ -77,7 +77,6 @@ export const Modal = styled.div`
   }
 
   /* temp */
-
   iframe {
     z-index: 1;
     position: absolute;

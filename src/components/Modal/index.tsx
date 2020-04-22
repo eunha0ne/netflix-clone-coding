@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { closeModal } from '~/features/Modal/modalSlice';
+import { clearDetail } from '~/features/Detail/detailSlice';
 
 import * as UI from '~/assets/ui/Icons';
 import * as S from './index.style';
@@ -13,7 +14,7 @@ interface ModalProps {
 
 export const Modal = ({ backPath, children }: ModalProps) => {
   return (
-    <S.Background className="app-modal">
+    <S.Background>
       <S.Modal backPath={backPath}>
         {children}
         <CloseButton />
@@ -24,9 +25,13 @@ export const Modal = ({ backPath, children }: ModalProps) => {
 
 const CloseButton = () => {
   const dispatch = useDispatch();
+  const onClose = () => {
+    dispatch(closeModal());
+    dispatch(clearDetail());
+  };
 
   return (
-    <S.CloseBtn className="close-btn" onClick={() => dispatch(closeModal())}>
+    <S.CloseBtn className="close-btn" onClick={onClose}>
       <UI.IconX width="3vw" height="3vw" />
       <span className="blind">콘텐츠 닫기</span>
     </S.CloseBtn>

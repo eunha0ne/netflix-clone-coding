@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 
-import { DetailPopup } from '~/features/Detail/DetailPopup';
+import { Modal } from '~/components/Modal';
+import { Detail } from '~/features/Detail';
 import { Header } from '~/components/Header';
 
 import * as S from './index.style';
@@ -14,20 +15,26 @@ interface ILayout {
 }
 
 export const Layout = ({ children }: ILayout) => {
-  const { isOpen } = useSelector((state: RootState) => ({
-    isOpen: state.modal.isOpen
+  const { isPopupOpen, backPath } = useSelector((state: RootState) => ({
+    isPopupOpen: state.modal.isOpen,
+    backPath: state.detail.data?.backdrop_path
   }));
 
   return (
     <>
       <S.Global />
+
       <div className="app">
         <Header />
         {children}
         <Footer />
       </div>
 
-      {isOpen && <DetailPopup />}
+      {isPopupOpen && (
+        <Modal backPath={backPath}>
+          <Detail />
+        </Modal>
+      )}
     </>
   );
 };

@@ -11,10 +11,10 @@ import { KeyVisualContents } from './KeyVisualContents';
 
 import * as S from './KeyVisualContents.style';
 
-export const KeyVisual = (props: IKeyVisual) => {
+export const KeyVisual = (pageDefs: IKeyVisual) => {
   const dispatch = useDispatch();
 
-  const { menuName } = props;
+  const { menuName } = pageDefs;
   const { isLoading, isError, movie } = useSelector((state: RootState): {
     isLoading: boolean;
     isError: boolean;
@@ -27,13 +27,12 @@ export const KeyVisual = (props: IKeyVisual) => {
 
   useEffect(() => {
     if (!movie) {
-      dispatch(fetchKeyVisual(props));
+      dispatch(fetchKeyVisual(pageDefs));
     }
-  }, [dispatch, movie, props]);
+  }, [dispatch, movie, pageDefs]);
 
+  const isContentReady = !isLoading && !isError;
   return useMemo(() => {
-    const isContentReady = !isLoading && !isError;
-
     return (
       <S.Section>
         {isContentReady && movie !== null ? (
@@ -43,5 +42,5 @@ export const KeyVisual = (props: IKeyVisual) => {
         )}
       </S.Section>
     );
-  }, [isLoading, isError, movie, menuName]);
+  }, [isContentReady, movie, menuName]);
 };
