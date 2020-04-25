@@ -53,6 +53,7 @@ const detailSlice = createSlice({
     },
     clearDetail(state) {
       state.data = null;
+      state.video = null;
     }
   }
 });
