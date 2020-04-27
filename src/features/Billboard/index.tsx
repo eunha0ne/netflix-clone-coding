@@ -5,7 +5,9 @@ import { RootState } from '~/app/rootReducer';
 import { IBillboard } from './types';
 import { fetchBillboard } from './billboardSlice';
 
-import { Contents } from './Contents';
+// import { Contents } from './Contents';
+import { ContentBoard } from '~/components/ContentBoard';
+
 import * as S from './index.style';
 import {
   BILLBOARD_ITEMS_LEN as ITEMS_LEN,
@@ -36,7 +38,10 @@ export const Billboard = (props: IBillboard) => {
     return (
       <S.Section>
         <h2 className="section-title">{sectionTitle}</h2>
-        <Contents movies={movies} loadPage={() => setPageNum(pageNum + 1)} />
+        <ContentBoard
+          movies={movies}
+          loadPage={() => setPageNum(pageNum + 1)}
+        />
       </S.Section>
     );
   }, [movies, pageNum, sectionTitle]);

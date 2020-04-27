@@ -85,7 +85,5 @@ export async function getSearchKeyword({ mediaType, keyword }: ISearch) {
     params: { ...params, query: keyword }
   });
 
-  console.log('getSearchKeyword', data);
-
   return data.results;
 }
