@@ -9,15 +9,15 @@ import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 import { IMG_URL } from '~/constants';
 
 import blankPath from '~/assets/images/blank.png';
-import * as S from './ContentsItem.style';
+import * as S from './Item.style';
 
-interface ContentsItemProps {
+interface ItemProps {
   movie: IMovie;
   idx: number;
   loadPage?: CallableFunction;
 }
 
-export const ContentsItem = ({ movie, idx, loadPage }: ContentsItemProps) => {
+export const Item = ({ movie, idx, loadPage }: ItemProps) => {
   const dispatch = useDispatch();
 
   const itemEl = useRef<HTMLLIElement>(null);

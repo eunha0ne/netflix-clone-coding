@@ -21,6 +21,9 @@ const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
+    clearSearch(state) {
+      state.movies = [];
+    },
     getSearchStart(state) {
       if (!state.isLoading) {
         state.isLoading = true;
@@ -29,7 +32,7 @@ const searchSlice = createSlice({
     getSearchSuccess(state, { payload }: PayloadAction<searchPayload>) {
       const { movies } = payload;
       if (state.isLoading) {
-        state.movies.push(...movies);
+        state.movies = movies;
         state.isLoading = false;
       }
     },
@@ -44,6 +47,7 @@ export const fetchSearchResults = ({
   keyword
 }: ISearch): AppThunk => async (dispatch: AppDispatch) => {
   try {
+    dispatch(clearSearch());
     dispatch(getSearchStart());
     const movies = await getSearchKeyword({ mediaType, keyword });
     dispatch(getSearchSuccess({ movies }));
@@ -53,5 +57,5 @@ export const fetchSearchResults = ({
 };
 
 const { actions, reducer } = searchSlice;
-export const { getSearchStart, getSearchSuccess } = actions;
+export const { clearSearch, getSearchStart, getSearchSuccess } = actions;
 export default reducer;

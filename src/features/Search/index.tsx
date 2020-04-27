@@ -2,15 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
-// import { IBillboard } from './types';
 import { fetchSearchResults } from './searchSlice';
 
-// import { Contents } from './Contents';
-import * as S from './index.style';
-import {
-  BILLBOARD_ITEMS_LEN as ITEMS_LEN,
-  BILLBOARD_MAX_LEN
-} from '~/constants';
+import { ContentBoard } from '~/components/ContentBoard';
 
 interface SearchBoardProps {
   mediaType: string;
@@ -26,9 +20,9 @@ export const SearchBoard = ({ mediaType, keyword }: SearchBoardProps) => {
 
   useEffect(() => {
     dispatch(fetchSearchResults({ mediaType, keyword }));
-  }, [keyword]);
+  }, [mediaType, keyword]);
 
   return useMemo(() => {
-    return <div></div>;
+    return <ContentBoard movies={movies} />;
   }, [movies]);
 };
