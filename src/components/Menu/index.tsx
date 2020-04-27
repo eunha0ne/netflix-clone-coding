@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Search } from '~/components/Search';
+import { SearchBar } from '~/components/SearchBar';
 
 import * as S from './index.style';
 
 export const Menu = () => (
   <S.Menu>
-    <Search />
+    <SearchBar />
   </S.Menu>
 );

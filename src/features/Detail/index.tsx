@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '~/app/rootReducer';
 
 import { Loading } from '~/components/Loading';
-import { Modal } from '~/components/Modal';
 import { Contents } from './Contents';
 
 export const Detail = () => {
@@ -14,7 +13,6 @@ export const Detail = () => {
     movie: state.detail.data,
     genres: state.detail.genres,
     credits: state.detail.credits
-    // video: state.detail.video
   }));
 
   return useMemo(() => {

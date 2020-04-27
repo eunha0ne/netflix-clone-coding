@@ -5,7 +5,7 @@ import { debounce } from '~/utils/debounce';
 import * as UI from '~/assets/ui/Icons';
 import * as S from './index.style';
 
-export const Search = () => {
+export const SearchBar = () => {
   const inputEl = useRef<HTMLInputElement>(null);
   const [userInput, setUserInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
