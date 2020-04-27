@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { IMovie, IResource } from '~/app/types';
+import { ISearch } from '~/features/Search/types';
 import { BASE_URL, API_KEY } from '~/constants';
 
 interface MoiveParams {
@@ -78,15 +79,13 @@ export async function getVideo({ mediaType, id }: IResource) {
   }
 }
 
-interface ISearch extends IResource {
-  keyword: string;
-}
-
-export async function getSearchKeyword({ mediaType, id, keyword }: ISearch) {
+export async function getSearchKeyword({ mediaType, keyword }: ISearch) {
   const URL = `${BASE_URL}/search/${mediaType}`;
   const { data } = await axios.get(URL, {
     params: { ...params, query: keyword }
   });
 
   console.log('getSearchKeyword', data);
+
+  return data.results;
 }

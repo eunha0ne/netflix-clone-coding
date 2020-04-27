@@ -12,7 +12,12 @@ import {
   BILLBOARD_MAX_LEN
 } from '~/constants';
 
-export const SearchBoard = ({ mediaType, keyword }) => {
+interface SearchBoardProps {
+  mediaType: string;
+  keyword: string;
+}
+
+export const SearchBoard = ({ mediaType, keyword }: SearchBoardProps) => {
   const dispatch = useDispatch();
 
   const { movies } = useSelector((state: RootState) => ({
@@ -21,7 +26,7 @@ export const SearchBoard = ({ mediaType, keyword }) => {
 
   useEffect(() => {
     dispatch(fetchSearchResults({ mediaType, keyword }));
-  }, []);
+  }, [keyword]);
 
   return useMemo(() => {
     return <div></div>;

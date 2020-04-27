@@ -3,8 +3,7 @@ import { AppThunk, AppDispatch } from '~/app/store';
 import { getSearchKeyword } from '~/api/movie';
 
 import { IMovie, IFeature } from '~/app/types';
-import Axios from 'axios';
-// import { IBillboard, BillboardPayload } from './types';
+import { ISearch, searchPayload } from './types';
 
 interface SearchState extends IFeature {
   page: number;
@@ -27,11 +26,10 @@ const searchSlice = createSlice({
         state.isLoading = true;
       }
     },
-    getSearchSuccess(state, { payload }: PayloadAction) {
-      const { page, movies } = payload;
+    getSearchSuccess(state, { payload }: PayloadAction<searchPayload>) {
+      const { movies } = payload;
       if (state.isLoading) {
-        state.page = page;
-        state.data.push(...movies);
+        state.movies.push(...movies);
         state.isLoading = false;
       }
     },
@@ -41,13 +39,14 @@ const searchSlice = createSlice({
   }
 });
 
-export const fetchSearchResults = ({ mediaType, keyword }): AppThunk => async (
-  dispatch: AppDispatch
-) => {
+export const fetchSearchResults = ({
+  mediaType,
+  keyword
+}: ISearch): AppThunk => async (dispatch: AppDispatch) => {
   try {
     dispatch(getSearchStart());
     const movies = await getSearchKeyword({ mediaType, keyword });
-    dispatch(getSearchSuccess());
+    dispatch(getSearchSuccess({ movies }));
   } catch (error) {
     console.log(error);
   }

@@ -42,7 +42,6 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
           if (window.YT.loaded === 1) {
             clearInterval(interval);
             setIsScriptLoad(true);
-            console.log('/load');
           }
         }, 30);
       };
@@ -58,17 +57,18 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
         host: 'https://www.youtube.com',
         events: {
           onReady: (event: any) => {
-            console.log('/onReady', event, typeof event);
             event.target.playVideo();
           },
           onStateChange: (event: any) => {
-            const stateCode = event.data;
             const wrapper = wrapperEl.current;
+            const wrapperClasses = wrapper?.classList;
+            const stateCode = event.data;
+            const isLoaded = stateCode < 1;
 
-            if (stateCode === 1) {
-              wrapper?.classList.add('is-enter');
-            } else if (stateCode < 1) {
-              wrapper?.classList.remove('is-enter');
+            if (isLoaded) {
+              wrapperClasses?.remove('is-enter');
+            } else {
+              wrapperClasses?.add('is-enter');
             }
           }
         }

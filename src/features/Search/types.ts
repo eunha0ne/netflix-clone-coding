@@ -1,15 +1,10 @@
 import { IMovie } from '~/app/types';
 
-export interface IBillboard {
-  menuName: string;
-  genre: string;
-  resourcePath: string;
-  sectionTitle: string;
-  page?: number;
+export interface ISearch {
+  mediaType: string;
+  keyword: string;
 }
 
-export interface BillboardPayload {
-  menuName: string;
+export interface searchPayload {
   movies: IMovie[];
-  page: number;
 }
