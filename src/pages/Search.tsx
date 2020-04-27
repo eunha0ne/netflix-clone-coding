@@ -1,7 +1,7 @@
 import React from 'react';
-// import { MovieList } from '~/features/movie/MovieList';
-// import { KeyVisual } from '~/features/keyVisual';
 import { useHistory } from 'react-router-dom';
+
+import { SearchBoard } from '~/features/Search';
 
 const Search = () => {
   const history = useHistory();
@@ -12,6 +12,7 @@ const Search = () => {
   return (
     <main>
       <p>검색어: {query}</p>
+      <SearchBoard mediaType={'movie'} keyword={query} />
     </main>
   );
 };
