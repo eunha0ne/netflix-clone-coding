@@ -1,47 +1,61 @@
-import React, { useState, ChangeEvent, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { debounce } from '~/utils/debounce';
+import { trimFirstSpace } from '~/utils/common';
 
 import * as UI from '~/assets/ui/Icons';
 import * as S from './index.style';
 
 export const SearchBar = () => {
-  const inputEl = useRef<HTMLInputElement>(null);
-  const [userInput, setUserInput] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setIsTyping(true);
+  const inputEl = useRef<HTMLInputElement>(null);
+  const [isBlur, setIsBlur] = useState(true);
+  const [userInput, setUserInput] = useState('');
+  const [isUserTyping, setIsUserTyping] = useState(false);
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsUserTyping(true);
     setUserInput(event.target.value);
     debounceOnChange();
   };
   const goSearch = () => {
-    setIsTyping(false);
+    setIsUserTyping(false);
 
-    if (inputEl.current !== null) {
-      let keywords = inputEl.current.value;
-      if (/^\s/.test(keywords)) {
-        keywords = keywords.replace(/^\s/, '');
-      }
+    const inputNode = inputEl.current;
+    if (inputNode) {
+      let keyword = inputNode.value;
+      const isFirstSpace = /^\s/.test(keyword);
+      isFirstSpace && (keyword = trimFirstSpace(keyword));
 
-      keywords.length > 0
-        ? history.push(`/search?q=${keywords}`)
-        : history.push(`/`);
+      const isKeywordGiven = keyword.length > 0;
+      const query = isKeywordGiven ? `/search?q=${keyword}` : `/`;
+
+      history.push(query);
     }
   };
-  const debounceOnChange = debounce(goSearch, 600, isTyping);
+  const debounceOnChange = debounce(goSearch, 600, isUserTyping);
+  const stayOnFocus = () => {
+    const input = inputEl?.current;
+    input?.focus();
+  };
 
   return (
-    <S.Label htmlFor="headerSearch">
-      <UI.Search width="2vw" height="100%" />
-      <input
+    <S.Label htmlFor="headerSearch" isBlur={isBlur}>
+      <UI.Search width="2.5rem" height="2.5rem" />
+      <S.Input
         ref={inputEl}
         id="headerSearch"
         type="search"
         value={userInput}
         onChange={onChange}
+        onFocus={() => setIsBlur(false)}
+        onBlur={() => setIsBlur(true)}
+        isBlur={isBlur}
       />
+      <div onClick={stayOnFocus} className="clear-btn">
+        <UI.IconX width="2.5rem" height="2.5rem" />
+      </div>
     </S.Label>
   );
 };
