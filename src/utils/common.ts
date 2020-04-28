@@ -13,3 +13,5 @@ export function shorten(text: string, limit: number = 300) {
 
   return shorts;
 }
+
+export const trimFirstSpace = (keyword: string) => keyword.replace(/^\s/, '');

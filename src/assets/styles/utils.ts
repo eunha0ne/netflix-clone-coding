@@ -17,3 +17,12 @@ export const guide = css`
     ${guideProperties('pink')};
   }
 `;
+
+export const hideInputXButton = `
+&::-ms-clear,
+&::-ms-reveal {display: none; width : 0; height: 0;}
+&::-webkit-search-decoration,
+&::-webkit-search-cancel-button,
+&::-webkit-search-results-button,
+&::-webkit-search-results-decoration { display: none; }
+`;
