@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 import { fetchSearchResults } from './searchSlice';
 
-import { ContentBoard } from '~/components/ContentBoard';
+import { ContentsBoard } from '~/components/ContentsBoard';
 
-interface SearchBoardProps {
+interface SearchProps {
   mediaType: string;
   keyword: string;
 }
 
-export const SearchBoard = ({ mediaType, keyword }: SearchBoardProps) => {
+export const SearchBoard = ({ mediaType, keyword }: SearchProps) => {
   const dispatch = useDispatch();
-
   const { movies } = useSelector((state: RootState) => ({
     movies: state.search.movies
   }));
@@ -23,6 +22,6 @@ export const SearchBoard = ({ mediaType, keyword }: SearchBoardProps) => {
   }, [mediaType, keyword]);
 
   return useMemo(() => {
-    return <ContentBoard movies={movies} />;
+    return <ContentsBoard movies={movies} />;
   }, [movies]);
 };

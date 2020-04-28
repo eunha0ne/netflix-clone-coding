@@ -9,17 +9,18 @@ interface ContentsProps {
   movies: IMovie[];
 }
 
-export const ContentBoard = ({ movies, loadPage }: ContentsProps) => {
+export const ContentsBoard = ({ movies, loadPage }: ContentsProps) => {
   const lastIdx = movies.length - 1;
 
   return (
     <S.Ul>
       {movies.map((movie, idx) => {
-        const isLastItem = lastIdx === idx;
-        const key = `${idx}`;
         const isContents = movie.backdrop_path;
 
         if (isContents) {
+          const key = `${idx}`;
+          const isLastItem = lastIdx === idx;
+
           return isLastItem ? (
             <Item key={key} movie={movie} idx={idx} loadPage={loadPage} />
           ) : (
