@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
-import { IResource } from '~/app/types';
+import { IResource, IVideo } from '~/app/types';
 import { fetchVideo } from '~/features/Detail/detailSlice';
 
 import * as S from './index.style';
@@ -17,8 +17,6 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
   const dispatch = useDispatch();
 
   const wrapperEl = useRef<HTMLDivElement>(null);
-  const [player, setPlayer] = useState(null);
-  // const [isPlayerReady, setIsPlayerReady] = useState(false);
   const [isScriptLoad, setIsScriptLoad] = useState(false);
   const { video } = useSelector((state: RootState) => ({
     video: state.detail.video
@@ -49,38 +47,13 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
 
       head?.insertBefore(tag, scriptTag);
     } else if (isReady && video) {
-      const player = new window.YT.Player('playerMountedPoint', {
-        height: '360',
-        width: '640',
-        videoId: video.key,
-        playerVars: { autoplay: 1, controls: 0 },
-        events: {
-          onReady: (event: any) => {
-            event.target.playVideo();
-          },
-          onStateChange: (event: any) => {
-            const wrapper = wrapperEl.current;
-            const wrapperClasses = wrapper?.classList;
-            const stateCode = event.data;
-            const isLoaded = stateCode < 1;
-
-            if (isLoaded) {
-              wrapperClasses?.remove('is-enter');
-            } else {
-              wrapperClasses?.add('is-enter');
-            }
-          }
-        }
-      });
-
-      setPlayer(player);
-      // setIsPlayerReady(true);
+      createPlayer({ video, wrapperEl });
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [isScriptLoad, video, player]);
+  }, [isScriptLoad, video]);
 
   return useMemo(() => {
     return (
@@ -89,4 +62,35 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
       </S.PlayerWrapper>
     );
   }, []);
+};
+
+interface CreatePlayerProps {
+  video: IVideo;
+  wrapperEl: React.RefObject<HTMLDivElement>;
+}
+
+const createPlayer = ({ video, wrapperEl }: CreatePlayerProps) => {
+  return new window.YT.Player('playerMountedPoint', {
+    height: '360',
+    width: '640',
+    videoId: video.key,
+    playerVars: { autoplay: 1, controls: 0 },
+    events: {
+      onReady: (event: any) => {
+        event.target.playVideo();
+      },
+      onStateChange: (event: any) => {
+        const wrapper = wrapperEl.current;
+        const wrapperClasses = wrapper?.classList;
+        const stateCode = event.data;
+        const isPlay = stateCode >= 1;
+
+        if (isPlay) {
+          wrapperClasses?.add('is-enter');
+        } else {
+          wrapperClasses?.remove('is-enter');
+        }
+      }
+    }
+  });
 };
