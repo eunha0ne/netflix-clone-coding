@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
-import { IVideo, IResource } from '~/app/types';
+import { IResource } from '~/app/types';
 import { fetchVideo } from '~/features/Detail/detailSlice';
 
 import * as S from './index.style';
@@ -17,7 +17,8 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
   const dispatch = useDispatch();
 
   const wrapperEl = useRef<HTMLDivElement>(null);
-  const [isPlayerReady, setIsPlayerReady] = useState(false);
+  const [player, setPlayer] = useState(null);
+  // const [isPlayerReady, setIsPlayerReady] = useState(false);
   const [isScriptLoad, setIsScriptLoad] = useState(false);
   const { video } = useSelector((state: RootState) => ({
     video: state.detail.video
@@ -25,7 +26,7 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
 
   useEffect(() => {
     dispatch(fetchVideo({ mediaType, id }));
-  }, [dispatch]);
+  }, [dispatch, mediaType, id]);
 
   useEffect(() => {
     const isReady = isScriptLoad && window.YT;
@@ -53,8 +54,6 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
         width: '640',
         videoId: video.key,
         playerVars: { autoplay: 1, controls: 0 },
-        origin: 'aaa',
-        host: 'https://www.youtube.com',
         events: {
           onReady: (event: any) => {
             event.target.playVideo();
@@ -74,13 +73,14 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
         }
       });
 
-      setIsPlayerReady(true);
+      setPlayer(player);
+      // setIsPlayerReady(true);
     }
 
     return () => {
       clearInterval(interval);
     };
-  }, [isScriptLoad, video]);
+  }, [isScriptLoad, video, player]);
 
   return useMemo(() => {
     return (
@@ -88,5 +88,5 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
         <div id="playerMountedPoint"></div>
       </S.PlayerWrapper>
     );
-  }, [isPlayerReady]);
+  }, []);
 };
