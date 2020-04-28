@@ -19,7 +19,7 @@ export const SearchBoard = ({ mediaType, keyword }: SearchProps) => {
 
   useEffect(() => {
     dispatch(fetchSearchResults({ mediaType, keyword }));
-  }, [mediaType, keyword]);
+  }, [dispatch, mediaType, keyword]);
 
   return useMemo(() => {
     return <ContentsBoard movies={movies} />;
