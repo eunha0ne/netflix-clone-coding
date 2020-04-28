@@ -79,11 +79,23 @@ export async function getVideo({ mediaType, id }: IResource) {
   }
 }
 
-export async function getSearchKeyword({ mediaType, keyword }: ISearch) {
-  const URL = `${BASE_URL}/search/${mediaType}`;
-  const { data } = await axios.get(URL, {
-    params: { ...params, query: keyword }
-  });
+interface ISearchData {
+  data: {
+    results: IMovie[];
+  };
+}
 
-  return data.results;
+export async function getSearchKeyword({ keyword }: ISearch) {
+  const URL = `${BASE_URL}/search`;
+  const createSearchURL = (genre: string) => `${URL}/${genre}`;
+  const getDataFrom = (genre: string): Promise<ISearchData> =>
+    axios.get(createSearchURL(genre), {
+      params: { ...params, query: keyword }
+    });
+
+  const { data: movies } = await getDataFrom('movie');
+  const { data: tvShows } = await getDataFrom('tv');
+  const results = [...movies.results, ...tvShows.results];
+
+  return results;
 }

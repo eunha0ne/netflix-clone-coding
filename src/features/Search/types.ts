@@ -1,7 +1,7 @@
 import { IMovie } from '~/app/types';
 
 export interface ISearch {
-  mediaType: string;
+  mediaType?: string;
   keyword: string;
 }
 

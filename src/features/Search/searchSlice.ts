@@ -32,6 +32,8 @@ const searchSlice = createSlice({
     getSearchSuccess(state, { payload }: PayloadAction<searchPayload>) {
       const { movies } = payload;
       if (state.isLoading) {
+        console.log('movies', movies);
+
         state.movies = movies;
         state.isLoading = false;
       }
@@ -42,14 +44,13 @@ const searchSlice = createSlice({
   }
 });
 
-export const fetchSearchResults = ({
-  mediaType,
-  keyword
-}: ISearch): AppThunk => async (dispatch: AppDispatch) => {
+export const fetchSearchResults = ({ keyword }: ISearch): AppThunk => async (
+  dispatch: AppDispatch
+) => {
   try {
     dispatch(clearSearch());
     dispatch(getSearchStart());
-    const movies = await getSearchKeyword({ mediaType, keyword });
+    const movies = await getSearchKeyword({ keyword });
     dispatch(getSearchSuccess({ movies }));
   } catch (error) {
     console.log(error);
