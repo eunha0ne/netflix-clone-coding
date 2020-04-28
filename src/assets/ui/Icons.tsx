@@ -3,6 +3,7 @@ import React from 'react';
 interface IconProps {
   width?: string;
   height?: string;
+  className?: string;
 }
 
 export const ArrowLeft = ({ width = '1em', height = '1em' }: IconProps) => (
