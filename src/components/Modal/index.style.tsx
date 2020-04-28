@@ -61,6 +61,7 @@ export const Modal = styled.div`
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 1) 70%
     );
+    transform: scale(1.01);
   }
 
   &:after {
@@ -74,17 +75,6 @@ export const Modal = styled.div`
     background-position: center;
     ${({ backPath }: ModalProps) =>
       backPath && `background-image: url(${IMG_URL}/original/${backPath});`};
-  }
-
-  /* temp */
-  iframe {
-    z-index: 1;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 70%;
-    height: 100%;
-    transform: scale(1.5);
   }
 `;
 
