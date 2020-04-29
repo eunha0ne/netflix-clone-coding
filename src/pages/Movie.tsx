@@ -3,6 +3,8 @@ import React from 'react';
 import { KeyVisual } from '~/features/KeyVisual';
 import { PosterCard } from '~/features/PosterCard';
 
+import * as S from '~/assets/styles/main';
+
 const Movie = () => {
   const pageDefs = {
     menuName: 'movie',
@@ -11,10 +13,10 @@ const Movie = () => {
   };
 
   return (
-    <main>
+    <S.Main>
       <KeyVisual {...pageDefs} uid={157336} />
       <PosterCard {...pageDefs} />
-    </main>
+    </S.Main>
   );
 };
 

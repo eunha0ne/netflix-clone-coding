@@ -1,10 +1,9 @@
 import React from 'react';
-// import { MovieList } from '~/features/movie/MovieList';
-// import { KeyVisual } from '~/features/keyVisual';
+
+import * as S from '~/assets/styles/main';
 
 const MyList = () => {
-  return <main>{/* <KeyVisual />
-      <MovieList /> */}</main>;
+  return <S.Main></S.Main>;
 };
 
 export { MyList as default };

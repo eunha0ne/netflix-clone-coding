@@ -3,12 +3,13 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '~/app/rootReducer';
 
+import { Header } from '~/components/Header';
+import { Footer } from '~/components/Footer';
 import { Modal } from '~/components/Modal';
 import { Detail } from '~/features/Detail';
-import { Header } from '~/components/Header';
 
-import * as S from './index.style';
 import 'normalize.css';
+import * as S from './index.style';
 
 interface ILayout {
   children: JSX.Element;
@@ -37,10 +38,6 @@ export const Layout = ({ children }: ILayout) => {
       )}
     </>
   );
-};
-
-const Footer = () => {
-  return <footer>Created by @eunha0ne</footer>;
 };
 
 export default Layout;

@@ -13,21 +13,22 @@ export const ContentsBoard = ({ movies, loadPage }: ContentsProps) => {
   const lastIdx = movies.length - 1;
 
   return (
-    <S.Ul>
-      {movies.map((movie, idx) => {
-        const isContents = movie.backdrop_path;
+    <>
+      <S.Ul>
+        {movies.map((movie, idx) => {
+          const isContents = movie.backdrop_path;
+          if (isContents) {
+            const key = `${idx}`;
+            const isLastItem = lastIdx === idx;
 
-        if (isContents) {
-          const key = `${idx}`;
-          const isLastItem = lastIdx === idx;
-
-          return isLastItem ? (
-            <Item key={key} movie={movie} idx={idx} loadPage={loadPage} />
-          ) : (
-            <Item key={key} movie={movie} idx={idx} />
-          );
-        } else return null;
-      })}
-    </S.Ul>
+            return isLastItem ? (
+              <Item key={key} movie={movie} idx={idx} loadPage={loadPage} />
+            ) : (
+              <Item key={key} movie={movie} idx={idx} />
+            );
+          } else return null;
+        })}
+      </S.Ul>
+    </>
   );
 };

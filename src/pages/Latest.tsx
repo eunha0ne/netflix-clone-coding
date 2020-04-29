@@ -3,6 +3,8 @@ import React from 'react';
 import { KeyVisual } from '~/features/KeyVisual';
 import { PosterCard } from '~/features/PosterCard';
 
+import * as S from '~/assets/styles/main';
+
 const Latest = () => {
   const pageDefs = {
     menuName: 'latest',
@@ -11,10 +13,10 @@ const Latest = () => {
   };
 
   return (
-    <main>
+    <S.Main>
       <KeyVisual {...pageDefs} uid={653567} />
       <PosterCard {...pageDefs} />
-    </main>
+    </S.Main>
   );
 };
 

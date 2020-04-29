@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 
 import { SearchBoard } from '~/features/Search';
 
+import * as S from '~/assets/styles/main';
+
 const Search = () => {
   const history = useHistory();
 
@@ -10,10 +12,9 @@ const Search = () => {
   const query = search.split('=')[1];
 
   return (
-    <main>
-      <p>검색어: {query}</p>
-      <SearchBoard mediaType={'movie'} keyword={query} />
-    </main>
+    <S.Main>
+      <SearchBoard keyword={query} />
+    </S.Main>
   );
 };
 
