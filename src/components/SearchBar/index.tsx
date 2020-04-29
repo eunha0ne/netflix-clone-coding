@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { debounce } from '~/utils/debounce';
 import { trimFirstSpace } from '~/utils/common';
@@ -21,8 +21,6 @@ export const SearchBar = () => {
   };
 
   const goSearch = () => {
-    setIsUserTyping(false);
-
     const inputNode = inputEl.current;
     if (inputNode) {
       let keyword = inputNode.value;
@@ -34,6 +32,8 @@ export const SearchBar = () => {
 
       history.push(query);
     }
+
+    setIsUserTyping(false);
   };
 
   const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -42,12 +42,26 @@ export const SearchBar = () => {
     }
   };
 
-  const stayOnFocus = () => {
+  const clearUserInput = () => {
     const inputNode = inputEl.current;
     if (inputNode) {
+      inputNode.value = '';
       setUserInput('');
+      goSearch();
+
       inputNode.focus();
     }
+  };
+
+  const handleIsBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+    const btn = event.target;
+    const listenTabPress = () => {
+      setIsBlur(true);
+      btn.removeEventListener('blur', listenTabPress);
+    };
+
+    btn.addEventListener('blur', listenTabPress);
+    setIsBlur(false);
   };
 
   return (
@@ -64,9 +78,9 @@ export const SearchBar = () => {
         onBlur={() => setIsBlur(true)}
         isBlur={isBlur}
       />
-      <div onClick={stayOnFocus} className="clear-btn">
+      <S.Button onFocus={handleIsBlur} onClick={clearUserInput} isBlur={isBlur}>
         <UI.IconX width="2.5rem" height="2.5rem" />
-      </div>
+      </S.Button>
     </S.Label>
   );
 };
