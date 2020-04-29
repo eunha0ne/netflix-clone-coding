@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 
 import { hideInputXButton } from '~/assets/styles/utils';
 
-interface LabelProps {
+interface IProps {
   isBlur: boolean;
 }
 
-export const Label = styled.label<LabelProps>`
+export const Label = styled.label<IProps>`
   cursor: pointer;
   padding: 5px;
   position: relative;
@@ -33,19 +33,24 @@ export const Label = styled.label<LabelProps>`
     display: table;
     clear: both;
   }
-
-  > svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
 `;
 
-export const Input = styled.input<LabelProps>`
+export const InputWrapper = styled.div<IProps>`
   float: right;
-  padding: ${({ isBlur }) => (isBlur ? `0` : `3px`)};
-  vertical-align: middle;
+  position: relative;
   width: ${({ isBlur }) => (isBlur ? `0%` : `calc(100% - 2.5rem - 10px)`)};
   height: 2.5rem;
+  transition: ${({ isBlur }) =>
+    isBlur ? `width 300ms 1000ms` : `width 300ms 0`};
+`;
+
+export const Input = styled.input<IProps>`
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   font-size: 1.4rem;
   color: white;
   background: black;
@@ -55,6 +60,16 @@ export const Input = styled.input<LabelProps>`
     isBlur ? `width 300ms 1000ms` : `width 300ms 0`};
 
   ${hideInputXButton};
+`;
+
+export const Placeholder = styled.span`
+  z-index: 1;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(200, 200, 200, 0.5);
+  font-size: 1.3rem;
 `;
 
 interface IButton {
@@ -78,7 +93,7 @@ const StyledButton: SFC<IButton> = ({
   );
 };
 
-export const Button = styled(StyledButton)<LabelProps>`
+export const Button = styled(StyledButton)<IProps>`
   cursor: pointer;
   z-index: 1;
   position: absolute;

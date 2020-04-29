@@ -67,17 +67,23 @@ export const SearchBar = () => {
   return (
     <S.Label htmlFor="headerSearch" isBlur={isBlur}>
       <UI.Search width="2.5rem" height="2.5rem" />
-      <S.Input
-        ref={inputEl}
-        id="headerSearch"
-        type="search"
-        value={userInput}
-        onChange={onChange}
-        onKeyPress={onKeyPress}
-        onFocus={() => setIsBlur(false)}
-        onBlur={() => setIsBlur(true)}
-        isBlur={isBlur}
-      />
+      <S.InputWrapper isBlur={isBlur}>
+        <S.Input
+          ref={inputEl}
+          id="headerSearch"
+          type="search"
+          title="검색어 입력"
+          value={userInput}
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          onFocus={() => setIsBlur(false)}
+          onBlur={() => setIsBlur(true)}
+          isBlur={isBlur}
+        />
+        {userInput.length < 1 && (
+          <S.Placeholder>영화, TV 프로그램 제목</S.Placeholder>
+        )}
+      </S.InputWrapper>
       <S.Button onFocus={handleIsBlur} onClick={clearUserInput} isBlur={isBlur}>
         <UI.IconX width="2.5rem" height="2.5rem" />
       </S.Button>
