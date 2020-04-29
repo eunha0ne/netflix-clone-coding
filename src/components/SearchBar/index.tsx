@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { debounce } from '~/utils/debounce';
 import { trimFirstSpace } from '~/utils/common';
@@ -17,8 +17,9 @@ export const SearchBar = () => {
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsUserTyping(true);
     setUserInput(event.target.value);
-    debounceOnChange();
+    debounce(goSearch, 600, isUserTyping)();
   };
+
   const goSearch = () => {
     setIsUserTyping(false);
 
@@ -34,10 +35,19 @@ export const SearchBar = () => {
       history.push(query);
     }
   };
-  const debounceOnChange = debounce(goSearch, 600, isUserTyping);
+
+  const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      goSearch();
+    }
+  };
+
   const stayOnFocus = () => {
-    const input = inputEl?.current;
-    input?.focus();
+    const inputNode = inputEl.current;
+    if (inputNode) {
+      setUserInput('');
+      inputNode.focus();
+    }
   };
 
   return (
@@ -49,6 +59,7 @@ export const SearchBar = () => {
         type="search"
         value={userInput}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         onFocus={() => setIsBlur(false)}
         onBlur={() => setIsBlur(true)}
         isBlur={isBlur}
