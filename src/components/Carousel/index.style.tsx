@@ -4,6 +4,12 @@ export const Wrapper = styled.div`
   padding: 0 4%;
   position: relative;
   overflow: hidden;
+
+  &:hover {
+    svg {
+      opacity: 1;
+    }
+  }
 `;
 
 interface ButtonProps {
@@ -11,6 +17,7 @@ interface ButtonProps {
 }
 
 export const Button = styled.button`
+  cursor: pointer;
   z-index: 10;
   position: absolute;
   top: 0;
@@ -24,12 +31,6 @@ export const Button = styled.button`
   background-color: rgba(0, 0, 0, 0.75);
   transform: ${({ arrowDir }: ButtonProps) =>
     arrowDir === 'PREV' ? 'translateX(-4%);' : 'translateX(4%);'};
-
-  &:hover {
-    svg {
-      opacity: 1;
-    }
-  }
 
   svg {
     position: absolute;
