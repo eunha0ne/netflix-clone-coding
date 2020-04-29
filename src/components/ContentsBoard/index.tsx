@@ -16,7 +16,6 @@ export const ContentsBoard = ({ movies, loadPage }: ContentsProps) => {
     <S.Ul>
       {movies.map((movie, idx) => {
         const isContents = movie.backdrop_path;
-
         if (isContents) {
           const key = `${idx}`;
           const isLastItem = lastIdx === idx;
