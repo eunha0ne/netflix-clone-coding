@@ -13,8 +13,6 @@ const Search = () => {
 
   return (
     <S.Main>
-      <p>검색어: {query}</p>
-      <h2>영화/TV 프로그램 검색</h2>
       <SearchBoard keyword={query} />
     </S.Main>
   );

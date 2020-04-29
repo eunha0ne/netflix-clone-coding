@@ -7,6 +7,8 @@ import { fetchSearchResults } from './searchSlice';
 import { Loading } from '~/components/Loading';
 import { ContentsBoard } from '~/components/ContentsBoard';
 
+import * as S from './index.style';
+
 interface SearchProps {
   mediaType?: string;
   keyword: string;
@@ -25,7 +27,17 @@ export const SearchBoard = ({ mediaType, keyword }: SearchProps) => {
   }, [dispatch, mediaType, keyword]);
 
   const isContentsReady = !isLoading && !isError;
-  return useMemo(() => {
-    return isContentsReady ? <ContentsBoard movies={movies} /> : <Loading />;
-  }, [movies, isContentsReady]);
+  return (
+    <S.Section>
+      <p>검색어: {keyword}</p>
+      <h2>영화/TV 프로그램 검색</h2>
+      {useMemo(() => {
+        return isContentsReady ? (
+          <ContentsBoard movies={movies} />
+        ) : (
+          <Loading />
+        );
+      }, [movies, isContentsReady])}
+    </S.Section>
+  );
 };
