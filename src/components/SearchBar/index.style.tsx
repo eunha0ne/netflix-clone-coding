@@ -23,7 +23,7 @@ export const Label = styled.label`
   background: ${({ isBlur }: LabelProps) => (isBlur ? `none` : `black`)};
   transition: ${({ isBlur }: LabelProps) =>
     isBlur
-      ? `width 300ms 1000ms, background 300ms 0ms, border 0ms 1000ms`
+      ? `width 300ms 1000ms, background 300ms 1000ms, border 0ms 1000ms`
       : `width 300ms 0ms, background 300ms 0ms, border 300ms 0ms`};
 
   &:after {
@@ -58,7 +58,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   float: right;
-  padding: ${({ isBlur }: LabelProps) => (isBlur ? `0` : `5px`)};
+  padding: 3px;
   vertical-align: middle;
   width: ${({ isBlur }: LabelProps) =>
     isBlur ? `0%` : `calc(100% - 2.5rem - 10px)`};
@@ -68,6 +68,8 @@ export const Input = styled.input`
   background: black;
   border: none;
   outline: none;
+  transition: ${({ isBlur }: LabelProps) =>
+    isBlur ? `width 300ms 1000ms` : `width 300ms 0`};
 
   ${hideInputXButton};
 `;
