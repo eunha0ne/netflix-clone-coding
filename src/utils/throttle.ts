@@ -56,11 +56,8 @@ export const combinedThrottle = (
 
     clearTimeout(timeout);
     timeout = setTimeout(() => {
-      const isOverLimit = totalRunTime <= limit;
-      if (isOverLimit) {
-        func.apply(context, [args]);
-        initialRunTime = null;
-      }
+      func.apply(context, [args]);
+      initialRunTime = null;
     }, restTime);
   };
 };
