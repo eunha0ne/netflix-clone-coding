@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Navigation } from '~/components/Navigation';
 import { Menu } from '~/components/Menu';
 
-import { throttle } from '~/utils/throttle';
+import { throttle, combinedThrottle } from '~/utils/throttle';
 
 import * as S from './index.style';
 
@@ -13,10 +13,12 @@ export const Header = () => {
     const htmlTag = document.documentElement;
     const scrollTop = htmlTag.scrollTop;
 
-    console.log(scrollTop);
+    const top = htmlTag.getBoundingClientRect().top;
+
+    console.log(scrollTop, '/', top);
   };
 
-  const throttleScroll = throttle(checkScrollTop, 300);
+  const throttleScroll = combinedThrottle(checkScrollTop, 1000);
 
   useEffect(() => {
     window.addEventListener('scroll', throttleScroll, { passive: true });
