@@ -1,54 +1,30 @@
-// ES6 code
-// function throttled(delay, fn) {
-//   let lastCall = 0;
-//   return function (...args) {
-//     const now = (new Date).getTime();
-//     if (now - lastCall < delay) {
-//       return;
-//     }
-//     lastCall = now;
-//     return fn(...args);
-//   }
-// }
+export const throttle = (
+  func: (a: IArguments) => void,
+  limit: number = 1000
+) => {
+  let timeout: NodeJS.Timeout | null;
+  let initialRunTime: number;
 
-// export const throttle = (func, limit) => {
-//   let lastFunc;
-//   let lastRan;
-
-//   return function() {
-//     const context = this;
-//     const args = arguments;
-
-//     if (!lastRan) {
-//       func.apply(context, args);
-//       lastRan = Date.now();
-//     } else {
-//       clearTimeout(lastFunc);
-//       lastFunc = setTimeout(function() {
-//         if (Date.now() - lastRan >= limit) {
-//           func.apply(context, args);
-//           lastRan = Date.now();
-//         }
-//       }, limit - (Date.now() - lastRan));
-//     }
-//   };
-// };
-
-export function throttle(func: CallableFunction, limit: number = 1000) {
-  let lastFunc;
-  let lastRunnigTime: number;
-
-  console.log('/1', func, limit);
-
-  return function(this: any) {
+  return function(this: Window) {
     const context = this;
     const args = arguments;
 
-    console.log('/2', context, args);
+    if (!initialRunTime) {
+      initialRunTime = new Date().getTime();
+      func.apply(context, [args]);
+    } else {
+      const currRunTime = new Date().getTime();
+      const totalRunTime = currRunTime - initialRunTime;
+      const restTime = limit - totalRunTime;
 
-    if (!lastRunnigTime) {
-      lastRunnigTime = Date.now();
-      func();
+      clearTimeout(timeout!);
+      timeout = setTimeout(function() {
+        const isOverLimit = totalRunTime >= limit;
+        if (isOverLimit) {
+          func.apply(context, [args]);
+          initialRunTime = new Date().getTime();
+        }
+      }, restTime);
     }
   };
-}
+};

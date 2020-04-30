@@ -13,19 +13,14 @@ export const Header = () => {
     const htmlTag = document.documentElement;
     const scrollTop = htmlTag.scrollTop;
 
-    console.log(htmlTag, scrollTop);
+    console.log(scrollTop);
   };
 
   const throttleScroll = throttle(checkScrollTop, 300);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttleScroll);
-    console.log('/mounted');
-
-    return () => {
-      window.removeEventListener('scroll', throttleScroll);
-      console.log('/unmounted');
-    };
+    window.addEventListener('scroll', throttleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', throttleScroll);
   }, []);
 
   return (
