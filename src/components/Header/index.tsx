@@ -4,26 +4,14 @@ import { Link } from 'react-router-dom';
 import { Navigation } from '~/components/Navigation';
 import { Menu } from '~/components/Menu';
 
-import { throttle, combinedThrottle } from '~/utils/throttle';
+import { useScroll } from '~/hooks/useScroll';
 
 import * as S from './index.style';
 
 export const Header = () => {
-  const checkScrollTop = () => {
-    const htmlTag = document.documentElement;
-    const scrollTop = htmlTag.scrollTop;
+  const isTop = useScroll(100);
 
-    const top = htmlTag.getBoundingClientRect().top;
-
-    console.log(scrollTop, '/', top);
-  };
-
-  const throttleScroll = combinedThrottle(checkScrollTop, 1000);
-
-  useEffect(() => {
-    window.addEventListener('scroll', throttleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', throttleScroll);
-  }, []);
+  console.log('isTop', isTop);
 
   return (
     <S.Header>
