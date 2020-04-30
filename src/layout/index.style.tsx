@@ -11,11 +11,14 @@ const cssText = css`
     user-select: none;
     position: relative;
     width: 100%;
-    height: 100%;
     overflow-x: hidden;
     color: white;
     background-color: #141414;
     word-break: keep-all;
+  }
+
+  body {
+    overflow-y: hidden;
   }
 
   a {

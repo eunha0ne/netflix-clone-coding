@@ -32,8 +32,6 @@ const searchSlice = createSlice({
     getSearchSuccess(state, { payload }: PayloadAction<searchPayload>) {
       const { movies } = payload;
       if (state.isLoading) {
-        console.log('movies', movies);
-
         state.movies = movies;
         state.isLoading = false;
       }

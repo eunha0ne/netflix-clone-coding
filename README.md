@@ -142,6 +142,9 @@
 - useEffect 사용 시에 비동기 동작이 들어있을 때는 테스크 cleanup하기
   - 관련 링크는 리액트 이팩트 훅 문서 참고하기
 
+* html height: 100% 스크롤 이벤트 이슈
+  - https://stackoverflow.com/questions/15275969/javascript-scroll-handler-not-firing
+
 ### 개발하면서 느낀 점이나 생각들
 
 - API 추상화에 대한 부분
