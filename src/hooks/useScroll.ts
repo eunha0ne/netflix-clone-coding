@@ -2,22 +2,39 @@ import { useState, useEffect } from 'react';
 import { combinedThrottle } from '~/utils/throttle';
 
 export const useScroll = (limit: number) => {
-  const [isTop, setIsTop] = useState(false);
+  const [isTop, setIsTop] = useState(true);
+  const [isGoingDown, setIsGoingDown] = useState(false);
+  const [prevTop, setPrevTop] = useState(0);
 
   useEffect(() => {
-    const handleIsTop = () => {
-      const doc = document.documentElement;
-      const rect = doc.getBoundingClientRect();
-      const isRectTop = rect.top === 0;
+    let currTop = 0;
 
-      setIsTop(isRectTop);
+    const handleIsTop = () => setIsTop(currTop === 0);
+    const handlePrevTop = () => setPrevTop(currTop);
+    const handleIsGoingDown = () => {
+      if (prevTop < currTop) {
+        setIsGoingDown(false);
+      } else if (prevTop > currTop) {
+        setIsGoingDown(true);
+      }
     };
 
-    const throttleScroll = combinedThrottle(handleIsTop, limit);
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const rect = doc.getBoundingClientRect();
+
+      currTop = rect.top;
+
+      handleIsTop();
+      handlePrevTop();
+      handleIsGoingDown();
+    };
+
+    const throttleScroll = combinedThrottle(onScroll, limit);
 
     window.addEventListener('scroll', throttleScroll, { passive: true });
     return () => window.removeEventListener('scroll', throttleScroll);
-  }, [isTop, limit]);
+  }, [prevTop, limit]);
 
-  return isTop;
+  return { isTop, isGoingDown };
 };
