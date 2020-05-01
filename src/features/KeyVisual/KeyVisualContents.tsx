@@ -22,7 +22,7 @@ export const KeyVisualContents = ({
         <S.Contents>
           <h3 className="title">{title || name}</h3>
           <p className="subTitle">{tagline}</p>
-          <Genres genres={genres} />
+          {/* <Genres genres={genres} /> */}
           <p className="overview">{overview}</p>
           <BtnGroups />
         </S.Contents>
@@ -48,6 +48,7 @@ const Genres = ({ genres }: IGeners) => {
 const BtnGroups = () => (
   <S.ButtonGroup>
     <button className="play">
+      <UI.Play width="2vw" height="100%" />
       <span>재생</span>
     </button>
 

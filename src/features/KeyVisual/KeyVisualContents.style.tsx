@@ -13,7 +13,7 @@ interface IBackground {
   backDir: 'default' | 'reverse';
 }
 
-export const Background = styled.div`
+export const Background = styled.div<IBackground>`
   z-index: 0;
   position: absolute;
   left: 0;
@@ -45,10 +45,10 @@ export const Background = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
 
-    ${({ backPath }: IBackground) =>
+    ${({ backPath }) =>
       backPath && `background-image: url(${IMG_URL}/original/${backPath});`};
 
-    ${({ backDir }: IBackground) =>
+    ${({ backDir }) =>
       backDir === 'default'
         ? 'background-position: 0vw center; transform: scaleX(1);'
         : 'background-position: -10vw; transform: scaleX(-1);'};
@@ -67,15 +67,17 @@ export const Contents = styled.div`
   text-shadow: black 2px 0 10px;
 
   .title {
+    margin: 0;
     font-size: 2.6vw;
   }
 
   .subTitle {
+    margin-top: 1.5rem;
     font-size: 1.6vw;
   }
 
   .overview {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     font-size: 1.3vw;
     line-height: 1.6;
   }
@@ -111,7 +113,7 @@ export const ListGroup = styled.ul`
 `;
 
 export const ButtonGroup = styled.div`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   flex-direction: row;
 
@@ -124,18 +126,25 @@ export const ButtonGroup = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    min-width: 11vw;
     box-sizing: border-box;
-    border-radius: 5px;
     border: none;
-    background: rgba(100, 100, 100, 0.5);
-    color: white;
-    font-size: 1.4vw;
+    border-radius: 5px;
     text-align: center;
+    font-size: 1.4vw;
+    color: white;
+    background: rgba(200, 200, 200, 0.25);
     transition: background 300ms;
 
     &:hover {
-      background: rgba(50, 50, 50, 0.5);
+      background: rgba(100, 100, 100, 0.25);
+    }
+
+    &:nth-of-type(1) {
+      min-width: 8vw;
+    }
+
+    &:nth-of-type(2) {
+      min-width: 12vw;
     }
 
     svg {
