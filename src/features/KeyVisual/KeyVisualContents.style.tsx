@@ -126,6 +126,7 @@ export const ButtonGroup = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    max-height: 3vw;
     box-sizing: border-box;
     border: none;
     border-radius: 5px;
