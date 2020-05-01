@@ -21,19 +21,34 @@ export const Article = styled.article`
   }
 `;
 
-export const PlusBtn = styled.button`
+export const BtnGroups = styled.div`
   margin-top: 1vw;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background: rgba(100, 100, 100, 0.5);
-  border: none;
-  border-radius: 5px;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  font-size: 0;
 
-  &:hover {
-    background: rgba(50, 50, 50, 0.5);
+  button {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    color: white;
+    background: rgba(100, 100, 100, 0.5);
+    transition: background 300ms;
+
+    &:hover {
+      background: rgba(50, 50, 50, 0.5);
+    }
+
+    &:first-of-type {
+      margin-right: 10px;
+    }
   }
 `;
