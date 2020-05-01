@@ -22,7 +22,7 @@ export const KeyVisualContents = ({
         <S.Contents>
           <h3 className="title">{title || name}</h3>
           <p className="subTitle">{tagline}</p>
-          <Genres genres={genres} />
+          {/* <Genres genres={genres} /> */}
           <p className="overview">{overview}</p>
           <BtnGroups />
         </S.Contents>
@@ -35,19 +35,20 @@ interface IGeners {
   genres: [{ id: number; name: string }];
 }
 
-const Genres = ({ genres }: IGeners) => {
-  return genres ? (
-    <S.ListGroup>
-      {genres.map((genre, idx) => (
-        <li key={`key-genre-${idx}`}>{genre.name}</li>
-      ))}
-    </S.ListGroup>
-  ) : null;
-};
+// const Genres = ({ genres }: IGeners) => {
+//   return genres ? (
+//     <S.ListGroup>
+//       {genres.map((genre, idx) => (
+//         <li key={`key-genre-${idx}`}>{genre.name}</li>
+//       ))}
+//     </S.ListGroup>
+//   ) : null;
+// };
 
 const BtnGroups = () => (
   <S.ButtonGroup>
     <button className="play">
+      <UI.Play width="2vw" height="100%" />
       <span>재생</span>
     </button>
 
