@@ -1,3 +1,6 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -5,6 +8,8 @@ import { Provider } from 'react-redux';
 
 import * as serviceWorker from './serviceWorker';
 import store from '~/app/store';
+
+require('intersection-observer');
 
 const render = () => {
   // The require('./rootReducer').default looks a bit odd.
