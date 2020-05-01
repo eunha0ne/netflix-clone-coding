@@ -47,11 +47,8 @@ export const Contents = ({
         <div className="contents">
           <p>{synopsis}</p>
         </div>
-        <div className="btn-groups">
-          <button>재생</button>
-          <FavButton />
-        </div>
 
+        <BtnGroups />
         <ContentsMeta genres={genres} credits={credits} />
       </S.Article>
 
@@ -78,11 +75,15 @@ const Header = ({
   );
 };
 
-const FavButton = () => {
-  return (
-    <S.PlusBtn>
+const BtnGroups = () => (
+  <S.BtnGroups>
+    <button>
+      <UI.Play width="2vw" height="2vw" />
+      <span>재생</span>
+    </button>
+    <button>
       <UI.Plus width="2vw" height="2vw" />
       <span>내가 찜한 콘텐츠</span>
-    </S.PlusBtn>
-  );
-};
+    </button>
+  </S.BtnGroups>
+);
