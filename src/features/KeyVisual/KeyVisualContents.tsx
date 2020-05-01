@@ -35,15 +35,15 @@ interface IGeners {
   genres: [{ id: number; name: string }];
 }
 
-const Genres = ({ genres }: IGeners) => {
-  return genres ? (
-    <S.ListGroup>
-      {genres.map((genre, idx) => (
-        <li key={`key-genre-${idx}`}>{genre.name}</li>
-      ))}
-    </S.ListGroup>
-  ) : null;
-};
+// const Genres = ({ genres }: IGeners) => {
+//   return genres ? (
+//     <S.ListGroup>
+//       {genres.map((genre, idx) => (
+//         <li key={`key-genre-${idx}`}>{genre.name}</li>
+//       ))}
+//     </S.ListGroup>
+//   ) : null;
+// };
 
 const BtnGroups = () => (
   <S.ButtonGroup>
