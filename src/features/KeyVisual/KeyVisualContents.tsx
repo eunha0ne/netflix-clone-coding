@@ -1,17 +1,29 @@
 import React from 'react';
 import { IMovie } from '~/app/types';
 
+import { VideoPlayer } from '~/components/VideoPlayer';
+
 import * as UI from '~/assets/ui/Icons';
 import * as S from './KeyVisualContents.style';
 
 interface IMovieContent {
   movie: IMovie;
   menuName: string;
+  mediaType: string;
 }
 
 export const KeyVisualContents = ({
-  movie: { title, name, tagline, overview, genres, backdrop_path: backPath },
-  menuName
+  movie: {
+    title,
+    name,
+    tagline,
+    overview,
+    genres,
+    backdrop_path: backPath,
+    id
+  },
+  menuName,
+  mediaType
 }: IMovieContent) => {
   const backDir = ['home', 'tv'].includes(menuName) ? 'default' : 'reverse';
 
@@ -26,6 +38,8 @@ export const KeyVisualContents = ({
           <p className="overview">{overview}</p>
           <BtnGroups />
         </S.Contents>
+
+        <VideoPlayer mediaType={mediaType} id={id} />
       </S.Background>
     </>
   );
