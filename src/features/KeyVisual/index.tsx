@@ -36,7 +36,11 @@ export const KeyVisual = (pageDefs: IKeyVisual) => {
     return (
       <S.Section>
         {isContentReady && movie !== null ? (
-          <KeyVisualContents movie={movie} menuName={menuName} />
+          <KeyVisualContents
+            movie={movie}
+            menuName={menuName}
+            mediaType={pageDefs.genre}
+          />
         ) : (
           <Loading />
         )}
