@@ -1,6 +1,17 @@
 import styled from '@emotion/styled';
 
 export const PlayerWrapper = styled.div`
+  &:before {
+    content: '';
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
   iframe {
     z-index: 1;
     position: absolute;

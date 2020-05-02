@@ -14,7 +14,7 @@ interface IBackground {
 }
 
 export const Background = styled.div<IBackground>`
-  z-index: 0;
+  z-index: 1;
   position: absolute;
   left: 0;
   top: 0;
@@ -32,7 +32,7 @@ export const Background = styled.div<IBackground>`
   }
 
   &:before {
-    z-index: 1;
+    z-index: 9;
     background: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0) 50%,
@@ -57,7 +57,7 @@ export const Background = styled.div<IBackground>`
 
 export const Contents = styled.div`
   padding: 0 4%;
-  z-index: 1;
+  z-index: 10;
   position: absolute;
   left: 0;
   bottom: 27.5%;
