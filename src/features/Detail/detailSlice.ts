@@ -93,6 +93,8 @@ export const fetchVideo = ({
   mediaType: string;
   id: number;
 }): AppThunk => async (dispatch: AppDispatch) => {
+  dispatch(clearDetail());
+
   const allVideos = await getVideo({ mediaType, id });
   const latestVideo = allVideos[allVideos.length - 1];
 

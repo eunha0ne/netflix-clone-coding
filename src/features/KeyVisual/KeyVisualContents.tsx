@@ -13,15 +13,7 @@ interface IMovieContent {
 }
 
 export const KeyVisualContents = ({
-  movie: {
-    title,
-    name,
-    tagline,
-    overview,
-    genres,
-    backdrop_path: backPath,
-    id
-  },
+  movie: { title, name, tagline, overview, backdrop_path: backPath, id },
   menuName,
   mediaType
 }: IMovieContent) => {
