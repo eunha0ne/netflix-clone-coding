@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { SearchBoard } from '~/features/Search';
 
-import * as S from '~/assets/styles/main';
+import * as S from '~/assets/styles/Main';
 
 const Search = () => {
   const history = useHistory();

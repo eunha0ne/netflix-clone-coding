@@ -39,5 +39,3 @@ export const Layout = ({ children }: ILayout) => {
     </>
   );
 };
-
-export default Layout;

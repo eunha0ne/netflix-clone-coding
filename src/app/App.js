@@ -1,13 +1,10 @@
 import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
+import { Layout } from '~/layout';
 import { Loading } from '~/components/Loading';
-import Layout from '~/layout';
 
 const Home = lazy(() => import('~/pages/Home'));
-const Tv = lazy(() => import('~/pages/Tv'));
-const Movie = lazy(() => import('~/pages/Movie'));
-const Latest = lazy(() => import('~/pages/Latest'));
 const MyList = lazy(() => import('~/pages/MyList'));
 const Search = lazy(() => import('~/pages/Search'));
 
@@ -17,22 +14,26 @@ export default function App() {
       <Suspense fallback={<Loading />}>
         <Switch>
           <Route exact path="/">
+            <Redirect to={'/browse'} />
+          </Route>
+          <Route exact path="/browse">
             <Home />
           </Route>
-          <Route path="/tv">
-            <Tv />
-          </Route>
-          <Route path="/movie">
-            <Movie />
-          </Route>
-          <Route path="/latest">
-            <Latest />
-          </Route>
+          <Route
+            path="/browse/:genre/:id"
+            render={({ match }) => {
+              const isPathMatch = match.isExact;
+              return isPathMatch ? <Home /> : <Redirect to={match.url} />;
+            }}
+          />
           <Route path="/my-list">
             <MyList />
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="*">
+            <Redirect to="/browse" />
           </Route>
         </Switch>
       </Suspense>

@@ -17,6 +17,6 @@ const StyledMain: SFC<IMain> = ({ className, children }) => {
 
 export const Main = styled(StyledMain)<IMain>`
   position: relative;
-  min-height: 20vw;
+  min-height: 100vw;
   box-sizing: border-box;
 `;

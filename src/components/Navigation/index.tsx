@@ -22,10 +22,10 @@ export const Navigation = () => {
   return (
     <S.Nav>
       <S.Ul>
-        <Link path="/">홈</Link>
-        <Link path="/tv">TV프로그램</Link>
-        <Link path="/movie">영화</Link>
-        <Link path="/latest">최신 콘텐츠</Link>
+        <Link path="/browse">홈</Link>
+        <Link path="/browse/tv/71912">TV프로그램</Link>
+        <Link path="/browse/movie/157336">영화</Link>
+        <Link path="/browse/latest/653567">최신 콘텐츠</Link>
         <Link path="/my-list">내가 찜한 콘텐츠</Link>
       </S.Ul>
     </S.Nav>
