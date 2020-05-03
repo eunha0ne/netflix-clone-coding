@@ -11,11 +11,12 @@ export const Ul = styled.ul`
   }
 
   a {
+    padding: 3px;
     text-decoration: none;
     font-size: 1.3rem;
 
     &.is-active {
-      font-weight: bold;
+      border-bottom: 2px solid red;
     }
   }
 `;

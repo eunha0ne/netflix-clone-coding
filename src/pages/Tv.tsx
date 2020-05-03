@@ -3,7 +3,7 @@ import React from 'react';
 import { KeyVisual } from '~/features/KeyVisual';
 import { PosterCard } from '~/features/PosterCard';
 
-import * as S from '~/assets/styles/main';
+import * as S from '~/assets/styles/Main';
 
 const Tv = () => {
   const pageDefs = {
