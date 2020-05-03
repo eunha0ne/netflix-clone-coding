@@ -8,7 +8,7 @@ interface ILink {
   children: string;
 }
 
-const Link = ({ path, children }: ILink) => {
+const MenuLink = ({ path, children }: ILink) => {
   return (
     <li>
       <NavLink exact to={path} activeClassName="is-active">
@@ -22,11 +22,11 @@ export const Navigation = () => {
   return (
     <S.Nav>
       <S.Ul>
-        <Link path="/browse">홈</Link>
-        <Link path="/browse/tv/71912">TV프로그램</Link>
-        <Link path="/browse/movie/157336">영화</Link>
-        <Link path="/browse/latest/653567">최신 콘텐츠</Link>
-        <Link path="/my-list">내가 찜한 콘텐츠</Link>
+        <MenuLink path="/browse">홈</MenuLink>
+        <MenuLink path="/browse/tv/71912">TV프로그램</MenuLink>
+        <MenuLink path="/browse/movie/157336">영화</MenuLink>
+        <MenuLink path="/browse/latest/653567">최신 콘텐츠</MenuLink>
+        <MenuLink path="/my-list">내가 찜한 콘텐츠</MenuLink>
       </S.Ul>
     </S.Nav>
   );

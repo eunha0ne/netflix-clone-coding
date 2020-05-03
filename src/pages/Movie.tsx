@@ -14,7 +14,7 @@ const Movie = () => {
 
   return (
     <S.Main>
-      <KeyVisual {...pageDefs} uid={157336} />
+      <KeyVisual {...pageDefs} movieID={157336} />
       <PosterCard {...pageDefs} />
     </S.Main>
   );

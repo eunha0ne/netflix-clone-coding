@@ -14,7 +14,7 @@ const Latest = () => {
 
   return (
     <S.Main>
-      <KeyVisual {...pageDefs} uid={653567} />
+      <KeyVisual {...pageDefs} movieID={653567} />
       <PosterCard {...pageDefs} />
     </S.Main>
   );
