@@ -14,7 +14,7 @@ const Tv = () => {
 
   return (
     <S.Main>
-      <KeyVisual {...pageDefs} uid={71912} />
+      <KeyVisual {...pageDefs} movieID={71912} />
       <PosterCard {...pageDefs} />
     </S.Main>
   );
