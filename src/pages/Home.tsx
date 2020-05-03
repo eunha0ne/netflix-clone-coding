@@ -20,7 +20,6 @@ const Home = () => {
   const history = useHistory();
 
   const param = useParams();
-
   // const { pathname } = history.location;
   // const match = matchPath(pathname, {
   //   path: `/browse/movie/:id`,
@@ -32,9 +31,8 @@ const Home = () => {
 
   useEffect(() => {
     console.log('/mounted', history);
-    // console.log('/match', match);
     console.log('/param', param);
-  }, [param]);
+  }, [history, param]);
 
   return (
     <S.Main>
