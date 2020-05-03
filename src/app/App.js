@@ -16,14 +16,20 @@ export default function App() {
           <Route exact path="/">
             <Redirect to="/browse" />
           </Route>
-          <Route path="/browse">
-            <Home />
-          </Route>
+          <Route
+            path="/browse/:genre/:id"
+            render={({ match }) =>
+              match.isExact ? <Home /> : <Redirect to={match.url} />
+            }
+          />
           <Route path="/my-list">
             <MyList />
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="*">
+            <Redirect to="/browse" />
           </Route>
         </Switch>
       </Suspense>

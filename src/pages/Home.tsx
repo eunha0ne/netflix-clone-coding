@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { matchPath, useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 
 import { KeyVisual } from '~/features/KeyVisual';
@@ -10,7 +11,7 @@ import * as S from '~/assets/styles/Main';
 const defaultPageDef = {
   menuName: 'home',
   genre: 'movie',
-  resourcePath: '/trending/all/week',
+  resourcePath: '/trending/all/week', // RESOURCE_PATH.moive === 'trending/all/week'
   sectionTitle: '특별 콘텐츠',
   movieID: 0
 };
@@ -18,11 +19,22 @@ const defaultPageDef = {
 const Home = () => {
   const history = useHistory();
 
+  const param = useParams();
+
+  // const { pathname } = history.location;
+  // const match = matchPath(pathname, {
+  //   path: `/browse/movie/:id`,
+  //   exact: true,
+  //   strict: false
+  // });
+
   const [pageDef, setPageDef] = useState(defaultPageDef);
 
   useEffect(() => {
     console.log('/mounted', history);
-  }, []);
+    // console.log('/match', match);
+    console.log('/param', param);
+  }, [param]);
 
   return (
     <S.Main>
