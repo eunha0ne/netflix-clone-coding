@@ -18,7 +18,7 @@ export const BILLBOARD_MAX_LEN = 7;
  * 페이지를 생성할 때 사용할 기본 상수를 정의합니다.
  */
 
-export const DEFAULT_MENU_NAME = 'movie';
+export const DEFAULT_MENU_NAME = 'home';
 export const DEFAULT_MOVIE_ID = '4935';
 
 /**
