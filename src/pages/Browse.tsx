@@ -5,14 +5,8 @@ import { KeyVisual } from '~/features/KeyVisual';
 import { PosterCard } from '~/features/PosterCard';
 import { Billboard } from '~/features/Billboard';
 
+import { DEFAULT_MENU_NAME, DEFAULT_MOVIE_ID } from '~/constants';
 import * as S from '~/assets/styles/Main';
-
-const getMenuName = (genre?: string) => {
-  const defaultName = 'home';
-  const isGenreName = genre !== undefined;
-
-  return isGenreName ? genre! : defaultName;
-};
 
 interface IResourcePath {
   [key: string]: {
@@ -51,12 +45,17 @@ interface IParam {
 }
 
 const Browse = () => {
-  const { genre, id } = useParams<IParam>();
+  const { genre = DEFAULT_MENU_NAME, id = DEFAULT_MOVIE_ID } = useParams<
+    IParam
+  >();
+
   const pageDef = {
     ...pagePreset[genre],
-    menuName: getMenuName(genre),
+    menuName: genre,
     movieID: parseInt(id)
   };
+
+  console.log('pageDef', pageDef);
 
   return (
     <S.Main>
