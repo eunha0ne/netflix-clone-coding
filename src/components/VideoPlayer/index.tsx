@@ -23,6 +23,18 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
   }));
 
   useEffect(() => {
+    const oldPlayer = document.getElementById('playerMountedPoint');
+
+    if (oldPlayer) {
+      const playerWrapper = oldPlayer?.parentNode as HTMLElement;
+      const newPlayer = document.createElement('div');
+
+      newPlayer.id = 'playerMountedPoint';
+      playerWrapper.classList.remove('is-enter');
+      playerWrapper.removeChild(oldPlayer);
+      playerWrapper.appendChild(newPlayer);
+    }
+
     dispatch(fetchVideo({ mediaType, id }));
   }, [dispatch, mediaType, id]);
 
@@ -69,6 +81,11 @@ interface CreatePlayerProps {
   wrapperEl: React.RefObject<HTMLDivElement>;
 }
 
+interface PlayerYT {
+  target: any; // 실제로는 유투브 플레이어 객체로 인터페이스가 구현되어 있음
+  data: number;
+}
+
 const createPlayer = ({ video, wrapperEl }: CreatePlayerProps) => {
   return new window.YT.Player('playerMountedPoint', {
     height: '360',
@@ -76,20 +93,17 @@ const createPlayer = ({ video, wrapperEl }: CreatePlayerProps) => {
     videoId: video.key,
     playerVars: { autoplay: 1, controls: 0 },
     events: {
-      onReady: (event: any) => {
-        event.target.playVideo();
+      onReady: (player: PlayerYT) => {
+        player.target.playVideo();
       },
-      onStateChange: (event: any) => {
+      onStateChange: (player: PlayerYT) => {
         const wrapper = wrapperEl.current;
-        const wrapperClasses = wrapper?.classList;
-        const stateCode = event.data;
-        const isPlay = stateCode >= 1;
+        const wrapperClasses = wrapper?.classList!;
+        const isPlayState = player.data >= 1;
 
-        if (isPlay) {
-          wrapperClasses?.add('is-enter');
-        } else {
-          wrapperClasses?.remove('is-enter');
-        }
+        isPlayState
+          ? wrapperClasses.add('is-enter')
+          : wrapperClasses.remove('is-enter');
       }
     }
   });
