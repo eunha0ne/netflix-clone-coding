@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 
 import { ICarousel } from './types';
 import { ListGroup } from './ListGroup';
-import { CARDS_LEN_PER_SLIDE as CARDS_LEN } from '~/constants';
 
 import * as UI from '~/assets/ui/Icons';
 import * as S from './index.style';
 
+import { CARDS_LEN_PER_SLIDE as CARDS_LEN } from '~/constants';
+
 export const Carousel = (props: ICarousel) => {
   const { movies } = props;
+
   const [pageIndex, setPageIndex] = useState(0);
 
   const isNotStart = 0 < pageIndex;
