@@ -93,9 +93,10 @@ export async function getSearchKeyword({ keyword }: ISearch) {
       params: { ...params, query: keyword }
     });
 
-  const { data: movies } = await getDataFrom('movie');
-  const { data: tvShows } = await getDataFrom('tv');
-  const results = [...movies.results, ...tvShows.results];
+  const [{ data: movies }, { data: tvShows }] = await Promise.all([
+    getDataFrom('movie'),
+    getDataFrom('tv')
+  ]);
 
-  return results;
+  return [...movies.results, ...tvShows.results];
 }
