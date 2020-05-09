@@ -1,5 +1,8 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { setLatestPage } from '~/features/Search/searchSlice';
 
 import { Layout } from '~/layout';
 import { Loading } from '~/components/Loading';
@@ -12,11 +15,21 @@ const MyList = lazy(() => import('~/pages/MyList'));
 const Search = lazy(() => import('~/pages/Search'));
 
 export default function App() {
+  const dispatch = useDispatch();
   const { pathname } = useLocation();
 
   useEffect(() => {
+    const isSearchPage = /search/.test(pathname);
+
+    if (!isSearchPage) {
+      const isPageTv = /tv/.test(pathname);
+      const pageGenre = isPageTv ? 'tv' : 'movie';
+
+      dispatch(setLatestPage({ previousPage: pathname, pageGenre: pageGenre }));
+    }
+
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [dispatch, pathname]);
 
   return (
     <Layout>

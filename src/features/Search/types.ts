@@ -5,6 +5,11 @@ export interface ISearch {
   keyword: string;
 }
 
-export interface searchPayload {
+export interface ISearchPayload {
   movies: IMovie[];
+}
+
+export interface IPagePayload {
+  previousPage: string;
+  pageGenre: string;
 }
