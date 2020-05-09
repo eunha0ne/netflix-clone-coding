@@ -1,11 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Section = styled.section`
-  z-index: 1;
+  padding-bottom: 45vw;
   position: relative;
-
-  .section-title {
-    padding: 0 4%;
-    font-size: 1.6vw;
-  }
+  width: 100%;
 `;
