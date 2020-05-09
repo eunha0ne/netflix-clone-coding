@@ -18,13 +18,11 @@ export const ContentsBoard = ({ movies, loadPage }: ContentsProps) => {
         {movies.map((movie, idx) => {
           const isContents = movie.backdrop_path;
           if (isContents) {
-            const key = `${idx}`;
             const isLastItem = lastIdx === idx;
-
             return isLastItem ? (
-              <Item key={key} movie={movie} idx={idx} loadPage={loadPage} />
+              <Item key={idx} movie={movie} loadPage={loadPage} />
             ) : (
-              <Item key={key} movie={movie} idx={idx} />
+              <Item key={idx} movie={movie} />
             );
           } else return null;
         })}
