@@ -55,8 +55,6 @@ const Browse = () => {
     movieID: parseInt(id)
   };
 
-  console.log('pageDef', pageDef);
-
   return (
     <S.Main>
       <KeyVisual {...pageDef} />
