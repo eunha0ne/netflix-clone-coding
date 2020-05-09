@@ -75,13 +75,12 @@ export const fetchDetail = ({ movie }: DetailProps): AppThunk => async (
       getCredits({ mediaType, id })
     ]);
 
+    const credits = L.take(5, allCredits);
     const genreNames: string[] = genres.map(genreId => {
       return allGenres.find(
         (gen: { id: number; name: string }) => gen.id === genreId
       ).name;
     });
-
-    const credits = L.take(5, allCredits);
 
     dispatch(getDetailSuccess({ genreNames, credits, movie }));
   } catch (error) {

@@ -18,9 +18,8 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
 
   const wrapperEl = useRef<HTMLDivElement>(null);
   const [isScriptLoad, setIsScriptLoad] = useState(false);
-  const { video, isModalOpen } = useSelector((state: RootState) => ({
-    video: state.detail.video,
-    isModalOpen: state.modal.isOpen
+  const { video } = useSelector((state: RootState) => ({
+    video: state.detail.video
   }));
 
   useEffect(() => {
