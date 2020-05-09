@@ -4,6 +4,7 @@ export interface IPosterCard {
   menuName: string;
   genre: string;
   resourcePath: string;
+  sectionTitle: string;
 }
 
 export interface PosterCardPayload {
