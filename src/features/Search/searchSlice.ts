@@ -51,10 +51,16 @@ export const fetchSearchResults = ({ keyword }: ISearch): AppThunk => async (
     const movies = await getSearchKeyword({ keyword });
     dispatch(getSearchSuccess({ movies }));
   } catch (error) {
+    dispatch(getSearchFailure());
     console.log(error);
   }
 };
 
 const { actions, reducer } = searchSlice;
-export const { clearSearch, getSearchStart, getSearchSuccess } = actions;
+export const {
+  clearSearch,
+  getSearchStart,
+  getSearchSuccess,
+  getSearchFailure
+} = actions;
 export default reducer;

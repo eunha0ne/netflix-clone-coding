@@ -18,7 +18,7 @@ export const SearchBoard = ({ mediaType, keyword }: SearchProps) => {
   const dispatch = useDispatch();
   const { movies, isContentsReady } = useSelector((state: RootState) => ({
     movies: state.search.movies,
-    isContentsReady: !state.keyVisual.isLoading && !state.keyVisual.isError
+    isContentsReady: !state.search.isLoading && !state.search.isError
   }));
 
   useEffect(() => {
