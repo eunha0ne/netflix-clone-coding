@@ -3,17 +3,21 @@ import { AppThunk, AppDispatch } from '~/app/store';
 import { getSearchKeyword } from '~/api/movie';
 
 import { IMovie, IFeature } from '~/app/types';
-import { ISearch, searchPayload } from './types';
+import { ISearch, ISearchPayload, IPagePayload } from './types';
 
 interface SearchState extends IFeature {
   page: number;
   movies: IMovie[];
+  previousPage: string;
+  pageGenre: string;
 }
 
 const initialState: SearchState = {
   page: 1,
   isLoading: false,
   isError: false,
+  previousPage: '/browse',
+  pageGenre: 'movie',
   movies: []
 };
 
@@ -29,7 +33,7 @@ const searchSlice = createSlice({
         state.isLoading = true;
       }
     },
-    getSearchSuccess(state, { payload }: PayloadAction<searchPayload>) {
+    getSearchSuccess(state, { payload }: PayloadAction<ISearchPayload>) {
       const { movies } = payload;
       if (state.isLoading) {
         state.movies = movies;
@@ -38,6 +42,11 @@ const searchSlice = createSlice({
     },
     getSearchFailure(state) {
       state.isError = true;
+    },
+    setLatestPage(state, { payload }: PayloadAction<IPagePayload>) {
+      const { previousPage, pageGenre } = payload;
+      state.previousPage = previousPage;
+      state.pageGenre = pageGenre;
     }
   }
 });
@@ -51,10 +60,17 @@ export const fetchSearchResults = ({ keyword }: ISearch): AppThunk => async (
     const movies = await getSearchKeyword({ keyword });
     dispatch(getSearchSuccess({ movies }));
   } catch (error) {
+    dispatch(getSearchFailure());
     console.log(error);
   }
 };
 
 const { actions, reducer } = searchSlice;
-export const { clearSearch, getSearchStart, getSearchSuccess } = actions;
+export const {
+  clearSearch,
+  getSearchStart,
+  getSearchSuccess,
+  getSearchFailure,
+  setLatestPage
+} = actions;
 export default reducer;

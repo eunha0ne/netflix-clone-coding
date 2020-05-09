@@ -10,12 +10,14 @@ interface IMovieContent {
   movie: IMovie;
   menuName: string;
   mediaType: string;
+  isPopupOpen: boolean;
 }
 
 export const KeyVisualContents = ({
   movie: { title, name, tagline, overview, backdrop_path: backPath, id },
   menuName,
-  mediaType
+  mediaType,
+  isPopupOpen
 }: IMovieContent) => {
   const backDir = ['home', 'tv'].includes(menuName) ? 'default' : 'reverse';
 
@@ -31,7 +33,7 @@ export const KeyVisualContents = ({
           <BtnGroups />
         </S.Contents>
 
-        <VideoPlayer mediaType={mediaType} id={id} />
+        {!isPopupOpen && <VideoPlayer mediaType={mediaType} id={id} />}
       </S.Background>
     </>
   );

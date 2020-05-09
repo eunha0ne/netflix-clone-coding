@@ -20,7 +20,7 @@ export const Header = () => {
       onFocus={() => setIsOnEye(false)}
     >
       <S.H1>
-        <Link to="/">
+        <Link to="/browse">
           <span>Netflix Clone Coding</span>
         </Link>
       </S.H1>

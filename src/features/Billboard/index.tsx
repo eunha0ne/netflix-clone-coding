@@ -17,10 +17,13 @@ export const Billboard = (props: IBillboard) => {
   const dispatch = useDispatch();
 
   const { menuName, sectionTitle } = props;
-  const { movies, currPageNum } = useSelector((state: RootState) => ({
-    currPageNum: state.billboard[menuName].page,
-    movies: state.billboard[menuName].data
-  }));
+  const { movies, currPageNum, pageGenre } = useSelector(
+    (state: RootState) => ({
+      currPageNum: state.billboard[menuName].page,
+      movies: state.billboard[menuName].data,
+      pageGenre: state.search.pageGenre
+    })
+  );
   const [pageNum, setPageNum] = useState(currPageNum);
 
   useEffect(() => {
@@ -39,9 +42,10 @@ export const Billboard = (props: IBillboard) => {
         <h2 className="section-title">{sectionTitle}</h2>
         <ContentsBoard
           movies={movies}
+          pageGenre={pageGenre}
           loadPage={() => setPageNum(pageNum + 1)}
         />
       </S.Section>
     );
-  }, [movies, pageNum, sectionTitle]);
+  }, [sectionTitle, movies, pageGenre, pageNum]);
 };

@@ -13,7 +13,6 @@ import * as S from './Item.style';
 
 interface ItemProps {
   movie: IMovie;
-  idx: number;
   loadPage?: CallableFunction;
 }
 

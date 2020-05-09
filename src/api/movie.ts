@@ -96,7 +96,16 @@ export async function getSearchKeyword({ keyword }: ISearch) {
   const [{ data: movies }, { data: tvShows }] = await Promise.all([
     getDataFrom('movie'),
     getDataFrom('tv')
-  ]);
+  ]).then(responses => {
+    responses.forEach((res, idx) => {
+      const type = idx === 0 ? 'movie' : 'tv';
+      for (const item of res.data.results) {
+        item.media_type = type;
+      }
+    });
+
+    return responses;
+  });
 
   return [...movies.results, ...tvShows.results];
 }

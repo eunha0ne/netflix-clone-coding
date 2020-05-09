@@ -67,13 +67,14 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
     };
   }, [isScriptLoad, video]);
 
-  return useMemo(() => {
-    return (
+  return useMemo(
+    () => (
       <S.PlayerWrapper ref={wrapperEl}>
         <div id="playerMountedPoint"></div>
       </S.PlayerWrapper>
-    );
-  }, []);
+    ),
+    []
+  );
 };
 
 interface CreatePlayerProps {
@@ -98,12 +99,15 @@ const createPlayer = ({ video, wrapperEl }: CreatePlayerProps) => {
       },
       onStateChange: (player: PlayerYT) => {
         const wrapper = wrapperEl.current;
-        const wrapperClasses = wrapper?.classList!;
-        const isPlayState = player.data >= 1;
 
-        isPlayState
-          ? wrapperClasses.add('is-enter')
-          : wrapperClasses.remove('is-enter');
+        if (wrapper !== null && wrapper !== undefined) {
+          const wrapperClasses = wrapper.classList;
+          const isPlayState = player.data >= 1;
+
+          isPlayState && wrapper !== undefined
+            ? wrapperClasses.add('is-enter')
+            : wrapperClasses.remove('is-enter');
+        }
       }
     }
   });

@@ -1,5 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { RootState } from '~/app/rootReducer';
+
 import { debounce } from '~/utils/debounce';
 import { trimFirstSpace } from '~/utils/common';
 
@@ -8,6 +12,9 @@ import * as S from './index.style';
 
 export const SearchBar = () => {
   const history = useHistory();
+  const { previousPage } = useSelector((state: RootState) => ({
+    previousPage: state.search.previousPage
+  }));
 
   const inputEl = useRef<HTMLInputElement>(null);
   const [isBlur, setIsBlur] = useState(true);
@@ -23,12 +30,14 @@ export const SearchBar = () => {
   const goSearch = () => {
     const inputNode = inputEl.current;
     if (inputNode) {
-      let keyword = inputNode.value;
-      const isFirstSpace = /^\s/.test(keyword);
-      isFirstSpace && (keyword = trimFirstSpace(keyword));
+      let keyword = (() => {
+        const value = inputNode.value;
+        const isFirstSpace = /^\s/.test(value);
 
+        return isFirstSpace ? trimFirstSpace(value) : value;
+      })();
       const isKeywordGiven = keyword.length > 0;
-      const query = isKeywordGiven ? `/search?q=${keyword}` : `/`;
+      const query = isKeywordGiven ? `/search?q=${keyword}` : previousPage;
 
       history.push(query);
     }

@@ -10,7 +10,7 @@ import * as S from '~/assets/styles/Main';
 
 interface IResourcePath {
   [key: string]: {
-    genre: string;
+    genre: 'movie' | 'tv';
     resourcePath: string;
     sectionTitle: string;
   };

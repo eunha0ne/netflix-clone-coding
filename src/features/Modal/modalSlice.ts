@@ -20,8 +20,6 @@ const modalSlice = createSlice({
   }
 });
 
-export const fetchVideo = () => {};
-
 const { actions, reducer } = modalSlice;
 export const { openModal, closeModal } = actions;
 export default reducer;
