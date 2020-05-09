@@ -18,14 +18,17 @@ export const Li = styled.li`
     padding-right: 0;
   }
 
-  strong {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  .btn {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    background: none;
+    border: none;
   }
 
-  img {
+  .poster {
     width: 100%;
     height: 100%;
   }
