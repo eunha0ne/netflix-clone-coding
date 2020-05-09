@@ -66,22 +66,26 @@ export const fetchDetail = ({ movie }: DetailProps): AppThunk => async (
   dispatch: AppDispatch
 ) => {
   try {
+    dispatch(clearDetail());
     dispatch(getDetailStart());
 
-    const { media_type: mediaType, genre_ids: genres, id } = movie;
-    const allGenres = await getGenres(mediaType);
+    const { media_type: mediaType = 'tv', genre_ids: genres, id } = movie;
+    const [allGenres, allCredits] = await Promise.all([
+      getGenres(mediaType),
+      getCredits({ mediaType, id })
+    ]);
+
     const genreNames: string[] = genres.map(genreId => {
       return allGenres.find(
         (gen: { id: number; name: string }) => gen.id === genreId
       ).name;
     });
 
-    const allCredits = await getCredits({ mediaType, id });
     const credits = L.take(5, allCredits);
 
     dispatch(getDetailSuccess({ genreNames, credits, movie }));
   } catch (error) {
-    dispatch(getDetailSuccess);
+    dispatch(getDetailFailure());
     console.log(error);
   }
 };
@@ -93,8 +97,6 @@ export const fetchVideo = ({
   mediaType: string;
   id: number;
 }): AppThunk => async (dispatch: AppDispatch) => {
-  dispatch(clearDetail());
-
   const allVideos = await getVideo({ mediaType, id });
   const latestVideo = allVideos[allVideos.length - 1];
 

@@ -18,8 +18,9 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
 
   const wrapperEl = useRef<HTMLDivElement>(null);
   const [isScriptLoad, setIsScriptLoad] = useState(false);
-  const { video } = useSelector((state: RootState) => ({
-    video: state.detail.video
+  const { video, isModalOpen } = useSelector((state: RootState) => ({
+    video: state.detail.video,
+    isModalOpen: state.modal.isOpen
   }));
 
   useEffect(() => {
@@ -67,13 +68,14 @@ export const VideoPlayer = ({ mediaType, id }: IResource) => {
     };
   }, [isScriptLoad, video]);
 
-  return useMemo(() => {
-    return (
+  return useMemo(
+    () => (
       <S.PlayerWrapper ref={wrapperEl}>
         <div id="playerMountedPoint"></div>
       </S.PlayerWrapper>
-    );
-  }, []);
+    ),
+    []
+  );
 };
 
 interface CreatePlayerProps {
