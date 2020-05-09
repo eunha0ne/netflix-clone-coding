@@ -5,14 +5,15 @@ import { IObserver, IObserverClosure } from '~/utils/intersectionObserver';
 import { IMG_URL } from '~/constants';
 
 import blankPath from '~/assets/images/blank.png';
-import * as S from './ListItems.style';
+import * as S from './ListItem.style';
 
 interface IListItems {
   movie: IMovie;
   genre: string;
+  tabindex: number;
 }
 
-export const ListItems = ({ movie }: IListItems) => {
+export const ListItem = ({ movie, tabindex }: IListItems) => {
   const itemEl = useRef<HTMLLIElement>(null);
   const [imgPath, setImgPath] = useState(blankPath);
   const posterPath = movie.poster_path;
@@ -37,7 +38,9 @@ export const ListItems = ({ movie }: IListItems) => {
 
   return (
     <S.Li ref={itemEl}>
-      <img src={imgPath} alt={movie.title} />
+      <button className="btn" tabIndex={tabindex}>
+        <img className="poster" src={imgPath} alt={movie.title} />
+      </button>
     </S.Li>
   );
 };

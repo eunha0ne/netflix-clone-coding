@@ -5,7 +5,6 @@ export const Section = styled.section`
   padding-bottom: 45vw;
   position: relative;
   width: 100%;
-  overflow: hidden;
 `;
 
 interface IBackground {
@@ -19,7 +18,8 @@ export const Background = styled.div<IBackground>`
   left: 0;
   top: 0;
   width: 100%;
-  height: 53vw;
+  height: 55vw;
+  overflow: hidden;
 
   &:before,
   &:after {
@@ -28,11 +28,11 @@ export const Background = styled.div<IBackground>`
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
   }
 
   &:before {
     z-index: 9;
+    height: 200%;
     background: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0) 50%,
@@ -42,6 +42,7 @@ export const Background = styled.div<IBackground>`
 
   &:after {
     z-index: 0;
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 
