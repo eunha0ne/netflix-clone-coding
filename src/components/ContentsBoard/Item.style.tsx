@@ -5,7 +5,7 @@ interface IProps {
 }
 
 export const Li = styled.li`
-  margin: 4px;
+  margin: 45px 4px 4px;
   width: calc(20% - 8px);
   box-sizing: border-box;
   background: rgba(200, 200, 200, 0.1);
@@ -19,6 +19,7 @@ export const Li = styled.li`
 `;
 
 export const Button = styled.button`
+  cursor: pointer;
   margin: 0;
   padding: 0;
   padding-bottom: 53.333%;
@@ -37,7 +38,5 @@ export const Img = styled.img<IProps>`
   top: 0;
   width: 100%;
   transition: transform 300ms;
-  transform: ${({ isEnter }) => {
-    return isEnter ? `scale(1);` : `scale(0.8);`;
-  }};
+  transform: ${({ isEnter }) => (isEnter ? `scale(1);` : `scale(0.8);`)};
 `;
