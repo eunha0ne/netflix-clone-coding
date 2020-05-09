@@ -17,11 +17,12 @@ interface ItemProps {
   loadPage?: CallableFunction;
 }
 
-export const Item = ({ movie, idx, loadPage }: ItemProps) => {
+export const Item = ({ movie, loadPage }: ItemProps) => {
   const dispatch = useDispatch();
 
   const itemEl = useRef<HTMLLIElement>(null);
   const [imgPath, setImgPath] = useState(blankPath);
+  const [isEnter, setIsEnter] = useState(false);
   const backPath = movie.backdrop_path;
 
   useEffect(() => {
@@ -31,6 +32,7 @@ export const Item = ({ movie, idx, loadPage }: ItemProps) => {
       callback: () => {
         const URL = `${IMG_URL}/w300/${backPath}`;
         setImgPath(URL);
+        setIsEnter(true);
         loadPage && loadPage();
         iO.disconnect();
       }
@@ -52,7 +54,7 @@ export const Item = ({ movie, idx, loadPage }: ItemProps) => {
           dispatch(fetchDetail({ movie }));
         }}
       >
-        <S.Img src={imgPath} alt="" />
+        <S.Img src={imgPath} alt="" isEnter={isEnter} />
       </S.Button>
     </S.Li>
   );

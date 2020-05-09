@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+interface IProps {
+  isEnter: boolean;
+}
+
 export const Li = styled.li`
   margin: 4px;
   width: calc(20% - 8px);
@@ -27,9 +31,13 @@ export const Button = styled.button`
   font-size: 0;
 `;
 
-export const Img = styled.img`
+export const Img = styled.img<IProps>`
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
+  transition: transform 300ms;
+  transform: ${({ isEnter }) => {
+    return isEnter ? `scale(1);` : `scale(0.8);`;
+  }};
 `;
