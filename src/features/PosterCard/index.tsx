@@ -12,6 +12,7 @@ import * as S from './index.style';
 
 export const PosterCard = (props: IPosterCard) => {
   const dispatch = useDispatch();
+
   const { genre, menuName } = props;
   const { movies } = useSelector((state: RootState): { movies: IMovie[] } => ({
     movies: state.posterCard.views[menuName]
@@ -25,7 +26,7 @@ export const PosterCard = (props: IPosterCard) => {
 
   return (
     <S.Section>
-      <h2 className="section-title">추천 콘텐츠</h2>
+      <h2 className="section-title">Netflix 인기 콘텐츠</h2>
       <Carousel movies={movies} genre={genre} />
     </S.Section>
   );
