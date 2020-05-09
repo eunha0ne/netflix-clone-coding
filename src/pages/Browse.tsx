@@ -20,22 +20,22 @@ const pagePreset: IResourcePath = {
   home: {
     genre: 'movie',
     resourcePath: '/trending/all/week',
-    sectionTitle: '특별 콘텐츠'
+    sectionTitle: '지금 뜨는 콘텐츠'
   },
   movie: {
     genre: 'movie',
     resourcePath: '/discover/movie',
-    sectionTitle: ''
+    sectionTitle: '인기 영화'
   },
   tv: {
     genre: 'tv',
     resourcePath: '/discover/tv',
-    sectionTitle: ''
+    sectionTitle: '인기 TV 프로그램'
   },
   latest: {
     genre: 'movie',
     resourcePath: '/movie/now_playing',
-    sectionTitle: ''
+    sectionTitle: '신규 콘텐츠'
   }
 };
 

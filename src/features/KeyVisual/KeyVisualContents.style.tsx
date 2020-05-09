@@ -1,12 +1,6 @@
 import styled from '@emotion/styled';
 import { IMG_URL } from '~/constants';
 
-export const Section = styled.section`
-  padding-bottom: 45vw;
-  position: relative;
-  width: 100%;
-`;
-
 interface IBackground {
   backPath?: string | null;
   backDir: 'default' | 'reverse';

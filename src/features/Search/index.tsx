@@ -16,17 +16,15 @@ interface SearchProps {
 
 export const SearchBoard = ({ mediaType, keyword }: SearchProps) => {
   const dispatch = useDispatch();
-  const { movies, isLoading, isError } = useSelector((state: RootState) => ({
+  const { movies, isContentsReady } = useSelector((state: RootState) => ({
     movies: state.search.movies,
-    isLoading: state.search.isLoading,
-    isError: state.search.isError
+    isContentsReady: !state.keyVisual.isLoading && !state.keyVisual.isError
   }));
 
   useEffect(() => {
     dispatch(fetchSearchResults({ mediaType, keyword }));
   }, [dispatch, mediaType, keyword]);
 
-  const isContentsReady = !isLoading && !isError;
   return (
     <S.Section>
       <p>검색어: {keyword}</p>

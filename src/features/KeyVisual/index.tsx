@@ -9,18 +9,18 @@ import { IKeyVisual } from './types';
 import { Loading } from '~/components/Loading';
 import { KeyVisualContents } from './KeyVisualContents';
 
-import * as S from './KeyVisualContents.style';
+import * as S from './index.style';
 
 export const KeyVisual = (pageDefs: IKeyVisual) => {
   const dispatch = useDispatch();
 
   const { menuName, genre } = pageDefs;
-  const { isContentReady, movie } = useSelector((state: RootState): {
+  const { isContentsReady, movie } = useSelector((state: RootState): {
     movie: IMovie | null;
-    isContentReady: boolean;
+    isContentsReady: boolean;
   } => ({
     movie: state.keyVisual.views[menuName],
-    isContentReady: !state.keyVisual.isLoading && !state.keyVisual.isError
+    isContentsReady: !state.keyVisual.isLoading && !state.keyVisual.isError
   }));
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const KeyVisual = (pageDefs: IKeyVisual) => {
   return useMemo(() => {
     return (
       <S.Section>
-        {isContentReady && movie !== null ? (
+        {isContentsReady && movie !== null ? (
           <KeyVisualContents
             movie={movie}
             menuName={menuName}
@@ -43,5 +43,5 @@ export const KeyVisual = (pageDefs: IKeyVisual) => {
         )}
       </S.Section>
     );
-  }, [isContentReady, movie, menuName, genre]);
+  }, [isContentsReady, movie, menuName, genre]);
 };
