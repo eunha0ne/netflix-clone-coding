@@ -31,7 +31,7 @@ export const SearchBoard = ({ mediaType, keyword }: SearchProps) => {
       <h2>영화/TV 프로그램 검색</h2>
       {useMemo(() => {
         return isContentsReady ? (
-          <ContentsBoard movies={movies} />
+          <ContentsBoard pageGenre="movie" movies={movies} />
         ) : (
           <Loading />
         );

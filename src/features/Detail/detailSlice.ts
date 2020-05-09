@@ -69,7 +69,7 @@ export const fetchDetail = ({ movie }: DetailProps): AppThunk => async (
     dispatch(clearDetail());
     dispatch(getDetailStart());
 
-    const { media_type: mediaType = 'tv', genre_ids: genres, id } = movie;
+    const { media_type: mediaType, genre_ids: genres, id } = movie;
     const [allGenres, allCredits] = await Promise.all([
       getGenres(mediaType),
       getCredits({ mediaType, id })

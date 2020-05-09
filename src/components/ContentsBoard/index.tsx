@@ -7,23 +7,28 @@ import * as S from './index.style';
 interface ContentsProps {
   loadPage?: CallableFunction;
   movies: IMovie[];
+  pageGenre: string;
 }
 
-export const ContentsBoard = ({ movies, loadPage }: ContentsProps) => {
+export const ContentsBoard = ({
+  movies,
+  pageGenre,
+  loadPage
+}: ContentsProps) => {
   const lastIdx = movies.length - 1;
 
   return (
     <>
       <S.Ul>
         {movies.map((movie, idx) => {
-          const isContents = movie.backdrop_path;
-          if (isContents) {
-            const isLastItem = lastIdx === idx;
-            return isLastItem ? (
-              <Item key={idx} movie={movie} loadPage={loadPage} />
-            ) : (
-              <Item key={idx} movie={movie} />
-            );
+          const data = { media_type: pageGenre, ...movie };
+          const isContentEnough = movie.backdrop_path;
+          const isLastItem = lastIdx === idx;
+
+          if (isContentEnough && isLastItem) {
+            return <Item key={idx} movie={data} loadPage={loadPage} />;
+          } else if (isContentEnough) {
+            return <Item key={idx} movie={data} />;
           } else return null;
         })}
       </S.Ul>
