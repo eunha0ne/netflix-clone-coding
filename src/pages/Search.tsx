@@ -9,7 +9,7 @@ const Search = () => {
   const history = useHistory();
 
   const { search } = history.location;
-  const query = search.split('=')[1];
+  const query = decodeURIComponent(search.split('=')[1]);
 
   return (
     <S.Main>
