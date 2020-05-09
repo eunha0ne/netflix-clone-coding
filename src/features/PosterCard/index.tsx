@@ -8,6 +8,8 @@ import { IPosterCard } from './types';
 
 import { Carousel } from '~/components/Carousel';
 
+import * as S from './index.style';
+
 export const PosterCard = (props: IPosterCard) => {
   const dispatch = useDispatch();
   const { genre, menuName } = props;
@@ -22,9 +24,9 @@ export const PosterCard = (props: IPosterCard) => {
   }, [dispatch, movies, props]);
 
   return (
-    <section>
-      <h2>추천 콘텐츠</h2>
+    <S.Section>
+      <h2 className="section-title">추천 콘텐츠</h2>
       <Carousel movies={movies} genre={genre} />
-    </section>
+    </S.Section>
   );
 };

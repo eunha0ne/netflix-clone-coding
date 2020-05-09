@@ -5,7 +5,6 @@ export const Section = styled.section`
   padding-bottom: 45vw;
   position: relative;
   width: 100%;
-  overflow: hidden;
 `;
 
 interface IBackground {
@@ -28,7 +27,7 @@ export const Background = styled.div<IBackground>`
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 200%;
   }
 
   &:before {
