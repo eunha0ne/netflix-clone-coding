@@ -19,7 +19,7 @@ export const BILLBOARD_MAX_LEN = 7;
  */
 
 export const DEFAULT_MENU_NAME = 'home';
-export const DEFAULT_MOVIE_ID = '4935';
+export const DEFAULT_MOVIE_ID = '181808';
 
 /**
  * Image Sizes

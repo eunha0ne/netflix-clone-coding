@@ -25,7 +25,7 @@ export const Navigation = () => {
         <MenuLink path="/browse">홈</MenuLink>
         <MenuLink path="/browse/tv/71912">TV프로그램</MenuLink>
         <MenuLink path="/browse/movie/157336">영화</MenuLink>
-        <MenuLink path="/browse/latest/653567">최신 콘텐츠</MenuLink>
+        <MenuLink path="/browse/latest/481848">최신 콘텐츠</MenuLink>
         <MenuLink path="/my-list">내가 찜한 콘텐츠</MenuLink>
       </S.Ul>
     </S.Nav>
