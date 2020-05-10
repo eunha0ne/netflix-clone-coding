@@ -1,5 +1,4 @@
-const curry = fn => (a, ...args) =>
-  args.length ? fn(a, ...args) : (...args) => fn(a, ...args);
+export const log = console.log;
 
 export const reduce = (fn, acc, iter) => {
   if (!iter) {
@@ -16,6 +15,9 @@ export const reduce = (fn, acc, iter) => {
 
 export const go = (...args) => reduce((a, fn) => fn(a), args);
 
+const curry = fn => (a, ...args) =>
+  args.length ? fn(a, ...args) : (...args) => fn(a, ...args);
+
 export const take = curry((limit, iter) => {
   let res = [];
 
@@ -30,4 +32,12 @@ export const take = curry((limit, iter) => {
   return res;
 });
 
-export const log = console.log;
+export const map = curry(function*(f, iter) {
+  for (const a of iter) yield f(a);
+});
+
+export const filter = curry(function*(f, iter) {
+  for (const a of iter) {
+    if (f(a)) yield a;
+  }
+});
