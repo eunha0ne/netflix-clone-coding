@@ -1,5 +1,3 @@
-# netflix-clone-coding
-
 ![넷플릭스 클론 코딩](./docs/app_sample.png)
 
 ## 소개
