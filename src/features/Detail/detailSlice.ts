@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import * as L from '~/utils/fx';
 
 import { AppThunk, AppDispatch } from '~/app/store';
-import { getGenres, getCredits, getVideo } from '~/api/movie';
+import { getGenres, getCredits, getVideos } from '~/api/movie';
 
 import { IMovie, IVideo } from '~/app/types';
 import { IDetails, ICredit } from './types';
@@ -96,10 +96,25 @@ export const fetchVideo = ({
   mediaType: string;
   id: number;
 }): AppThunk => async (dispatch: AppDispatch) => {
-  const allVideos = await getVideo({ mediaType, id });
-  const latestVideo = allVideos[allVideos.length - 1];
+  try {
+    const allVideos = await getVideos({ mediaType, id });
+    const videos = L.go(
+      allVideos,
+      L.filter((video: { type: string }) =>
+        ['Trailer', 'Teaser'].includes(video.type)
+      ),
+      L.filter(
+        (video: { name: string }) =>
+          /Official\s[Trailer|Teaser]/.test(video.name) ||
+          /[Trailer|Teaser]/i.test(video.name)
+      ),
+      L.take(1)
+    );
 
-  dispatch(getDetailVideo({ video: latestVideo }));
+    dispatch(getDetailVideo({ video: videos[0] }));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const { actions, reducer } = detailSlice;

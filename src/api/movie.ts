@@ -64,7 +64,7 @@ export async function getCredits({ mediaType, id }: IResource) {
   return data.cast;
 }
 
-export async function getVideo({ mediaType, id }: IResource) {
+export async function getVideos({ mediaType, id }: IResource) {
   const URL = `${BASE_URL}/${mediaType}/${id}/videos`;
   const { data } = await axios.get(URL, { params });
   const isKorData = data.results > 0;
