@@ -1,12 +1,15 @@
-> 개발하면서 참고한 문서들, 다시 읽기 위해 기록 저장
+> 개발하면서 참고한 문서들 다시 읽기 위해 기록
 
-## 아키텍처
+## 아키텍처와 디자인 패턴
 
 - [Link: gatsby-starter-bee](https://github.com/JaeYeopHan/gatsby-starter-bee)
 - [Read: baeharam/architecture](https://baeharam.netlify.com/posts/architecture/%EB%B2%88%EC%97%AD-%EB%A6%AC%EB%8D%95%EC%8A%A4-%EC%8A%A4%ED%83%80%EC%9D%BC-%EA%B0%80%EC%9D%B4%EB%93%9C)
 - [Read: redux-toolkit/advanced-tutorial](https://redux-toolkit.js.org/tutorials/advanced-tutorial)
+- [Read: composition-vs-inheritance](https://ko.reactjs.org/docs/composition-vs-inheritance.html)
 
-## 리액트 및 라우터
+## 리액트
+
+Hooks and React's companion libraries.
 
 - [Link: ko.reactjs](https://ko.reactjs.org/docs/getting-started.html)
 - [Link: create-react-app](https://create-react-app.dev/)
