@@ -1,3 +1,8 @@
+export interface ContentsReadyState {
+  isLoading: boolean;
+  isError: boolean;
+}
+
 export interface IMovie {
   id: number;
   title: string;
