@@ -104,7 +104,7 @@ const createPlayer = ({ video, wrapperEl }: CreatePlayerProps) => {
           const wrapperClasses = wrapper.classList;
           const isPlayState = player.data >= 1;
 
-          isPlayState && wrapper !== undefined
+          isPlayState
             ? wrapperClasses.add('is-enter')
             : wrapperClasses.remove('is-enter');
         }
