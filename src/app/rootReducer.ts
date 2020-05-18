@@ -6,6 +6,7 @@ import posterCardReducer from '~/features/PosterCard/posterCardSlice';
 import modalReducer from '~/features/Modal/modalSlice';
 import detailReducer from '~/features/Detail/detailSlice';
 import searchReducer from '~/features/Search/searchSlice';
+import videoReducer from '~/features/VideoPlayer/videoSlice';
 
 const rootReducer = combineReducers({
   keyVisual: keyVisualReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   posterCard: posterCardReducer,
   modal: modalReducer,
   detail: detailReducer,
-  search: searchReducer
+  search: searchReducer,
+  video: videoReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
