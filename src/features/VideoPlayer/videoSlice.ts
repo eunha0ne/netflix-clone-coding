@@ -8,13 +8,13 @@ import { ContentsReadyState, IVideo } from '~/app/types';
 import { IFetchedVideo } from './types';
 
 interface VideoState extends ContentsReadyState {
-  video: IVideo | null;
+  data: IVideo | null;
 }
 
 const initialState: VideoState = {
   isLoading: false,
   isError: false,
-  video: null
+  data: null
 };
 
 const detailSlice = createSlice({
@@ -30,14 +30,14 @@ const detailSlice = createSlice({
     getVideoSuccess(state, { payload }: PayloadAction<IFetchedVideo>) {
       if (state.isLoading) {
         const { video } = payload;
-        state.video = video;
+        state.data = video;
       }
     },
     getDetailFailure(state) {
       state.isError = true;
     },
     clearVideo(state) {
-      state.video = null;
+      state.data = null;
     }
   }
 });
