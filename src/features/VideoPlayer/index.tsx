@@ -6,11 +6,10 @@ import { useCreatePlayer } from './useCreatePlayer';
 
 import { RootState } from '~/app/rootReducer';
 import { IResource } from '~/app/types';
-import { fetchVideo } from '~/features/Detail/detailSlice';
+import { fetchVideo } from './videoSlice';
 
 import * as S from './index.style';
 
-// TODO: 기존 로직을 feature에 위임 필요
 export const VideoPlayer = ({ mediaType, id }: IResource) => {
   const dispatch = useDispatch();
 

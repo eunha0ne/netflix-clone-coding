@@ -1,7 +1,7 @@
 import React from 'react';
 import { IMovie } from '~/app/types';
 
-import { VideoPlayer } from '~/components/VideoPlayer';
+import { VideoPlayer } from '~/features/VideoPlayer';
 
 import * as UI from '~/assets/ui/Icons';
 import * as S from './KeyVisualContents.style';
