@@ -83,9 +83,9 @@ function setFadeInOut(
 
   if (wrapper !== null && wrapper !== undefined) {
     const wrapperClasses = wrapper.classList;
-    const isPlayState = player.data >= 1;
+    const isPlayable = player.data >= 1;
 
-    isPlayState
+    isPlayable
       ? wrapperClasses.add('is-enter')
       : wrapperClasses.remove('is-enter');
   }

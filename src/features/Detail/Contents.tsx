@@ -3,7 +3,7 @@ import React from 'react';
 import { IMovie, IVideo } from '~/app/types';
 import { ICredit } from './types';
 
-import { VideoPlayer } from '~/components/VideoPlayer';
+import { VideoPlayer } from '~/features/VideoPlayer';
 import { ContentsMeta } from './ContentsMeta';
 
 import { shorten } from '~/utils/common';

@@ -12,6 +12,12 @@ export const PlayerWrapper = styled.div`
     height: 100%;
   }
 
+  &.is-enter {
+    iframe {
+      opacity: 1;
+    }
+  }
+
   iframe {
     z-index: 1;
     position: absolute;
@@ -22,11 +28,5 @@ export const PlayerWrapper = styled.div`
     opacity: 0;
     transition: opacity 600ms;
     transform: scale(2);
-  }
-
-  &.is-enter {
-    iframe {
-      opacity: 1;
-    }
   }
 `;
