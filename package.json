@@ -16,7 +16,7 @@
     "axios": "^0.19.2",
     "customize-cra": "^0.9.1",
     "intersection-observer": "^0.10.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
